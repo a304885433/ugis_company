@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyERP.Core</name>
+    </assembly>
+    <members>
+        <member name="T:MyERP.AppVersionHelper">
+            <summary>
+            Central point for application version.
+            </summary>
+        </member>
+        <member name="F:MyERP.AppVersionHelper.Version">
+            <summary>
+            Gets current version of the application.
+            It's also shown in the web page.
+            </summary>
+        </member>
+        <member name="P:MyERP.AppVersionHelper.ReleaseDate">
+            <summary>
+            Gets release (last build) date of the application.
+            It's shown in the web page.
+            </summary>
+        </member>
+        <member name="P:MyERP.Timing.AppTimes.StartupTime">
+            <summary>
+            Gets the startup time of the application.
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.ChkPoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.ChkResult">
+            <summary>
+            排查结果
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.ChkResult.CompanyId">
+            <summary>
+            企业Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.ChkResult.ChkPointId">
+            <summary>
+            点位Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.ChkResult.PoluTypeId">
+            <summary>
+            排放因子
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.ChkResult.ChkDate">
+            <summary>
+            排查日期
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.ChkResult.ChkBatch">
+            <summary>
+            排查批次
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.ChkResult.Concentration">
+            <summary>
+            浓度
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.CompanyInfo">
+            <summary>
+            企业信息
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.Name">
+            <summary>
+            企业名称
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.Address">
+            <summary>
+            企业地址
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.Contact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.Tel">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.LicenseFile">
+            <summary>
+            排污许可证
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.WaterTypeID">
+            <summary>
+            废水类型Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.WaterAmount">
+            <summary>
+            废水月处理量（吨）
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.CraftFile">
+            <summary>
+            污水处理工艺流程图
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.CraftDes">
+            <summary>
+            工艺流程说明（要说明污水分流情况）
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.PipeFile">
+            <summary>
+            管道图片
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.IssSheetFile">
+            <summary>
+            环境污染险保单复印件
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.EnvCompany">
+            <summary>
+            环评公司名称
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.RiskBand">
+            <summary>
+            企业危险评级
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.DischargeDate">
+            <summary>
+            污水排放记录日期
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.MonthResTimes">
+            <summary>
+            污水排放频次(每月)
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.MonthResAmount">
+            <summary>
+            单次排放量(吨)
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.MonthTotalAmount">
+            <summary>
+            月排放量(吨)
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.EmissionTypeID">
+            <summary>
+            排放方式Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.CollTypeID">
+            <summary>
+            自流方式Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.CheckPointIdList">
+            <summary>
+            排查点位Id
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.CompanyMedcineType">
+            <summary>
+            企业药品信息
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyMedcineType.CompanyId">
+            <summary>
+            企业Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyMedcineType.MedTypeId">
+            <summary>
+            药品Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyMedcineType.MonthAmmount">
+            <summary>
+            月购置量
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.CompanyPoluType">
+            <summary>
+            企业因子排放信息
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyPoluType.CompanyId">
+            <summary>
+            企业Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyPoluType.PoluTypeId">
+            <summary>
+            排放因子Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyPoluType.Unit">
+            <summary>
+            排放单位
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyPoluType.EmissionStdType">
+            <summary>
+            排放标准名称
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.Dic">
+            <summary>
+            字典表
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Dic.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Dic.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Dic.Category">
+            <summary>
+            字典类别
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.MeaureMethod">
+            <summary>
+            测量方法
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.MeaureMethod.BaseInfo">
+            <summary>
+            基本信息
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.MeaureMethod.Steps">
+            <summary>
+            操作步骤
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.MedType">
+            <summary>
+            药品信息111
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.MedType.MedName">
+            <summary>
+            药品名称11
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.PoluType">
+            <summary>
+            排放因子
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.PoluType.Name">
+            <summary>
+            排放名称
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.Reagent">
+            <summary>
+            试剂耗材
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Reagent.Name">
+            <summary>
+            试剂名称
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Reagent.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Reagent.EffectiveDate">
+            <summary>
+            有效期
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Reagent.Qualitity">
+            <summary>
+            库存数量
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Reagent.Date">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.WaterType">
+            <summary>
+            药品信息
+            </summary>
+        </member>
+        <member name="T:MyERP.Web.WebContentDirectoryFinder">
+            <summary>
+            This class is used to find root path of the web project in;
+            unit tests (to find views) and entity framework core command line commands (to find conn string).
+            </summary>
+        </member>
+    </members>
+</doc>
