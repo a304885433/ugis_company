@@ -25,5 +25,20 @@ namespace MyERP.UGIS
         /// </summary>
         public string Category { get; set; }
 
+        /// <summary>
+        /// 数据
+        /// </summary>
+        public string Value { get; set; }
+
+        /// <summary>
+        /// 排序Id
+        /// </summary>
+        public int OrderId { get; set; }
+
+        /// <summary>
+        /// 字段类型Id
+        /// </summary>
+        public int DicTypeId { get; set; }
+
     }
 }

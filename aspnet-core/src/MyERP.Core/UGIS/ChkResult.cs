@@ -25,11 +25,6 @@ namespace MyERP.UGIS
         /// </summary>
         public int PoluTypeId { get; set; }
 
-        ///// <summary>
-        ///// 排查结果
-        ///// </summary>
-        //public string Result { get; set; }
-
         /// <summary>
         /// 排查日期
         /// </summary>

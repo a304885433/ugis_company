@@ -1083,31 +1083,254 @@ namespace MyERP.Migrations
                     b.ToTable("AbpTenants");
                 });
 
-            modelBuilder.Entity("MyERP.UGIS.MedType", b =>
+            modelBuilder.Entity("MyERP.UGIS.ChkResult", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ChkBatch");
+
+                    b.Property<DateTime>("ChkDate");
+
+                    b.Property<int>("ChkPointId");
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<decimal>("Concentration");
+
                     b.Property<DateTime>("CreationTime");
 
                     b.Property<long?>("CreatorUserId");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime?>("DeletionTime");
-
-                    b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("LastModificationTime");
 
                     b.Property<long?>("LastModifierUserId");
 
-                    b.Property<string>("MedName");
+                    b.Property<int>("PoluTypeId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MedType");
+                    b.ToTable("ChkResult");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.CompanyInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("CheckPointIdList");
+
+                    b.Property<int>("CollTypeID");
+
+                    b.Property<string>("Contact");
+
+                    b.Property<string>("CraftDes");
+
+                    b.Property<string>("CraftFile");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime>("DischargeDate");
+
+                    b.Property<int>("EmissionTypeID");
+
+                    b.Property<string>("EnvCompany");
+
+                    b.Property<string>("IssSheetFile");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("LicenseFile");
+
+                    b.Property<decimal>("MonthResAmount");
+
+                    b.Property<int>("MonthResTimes");
+
+                    b.Property<decimal>("MonthTotalAmount");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("PipeFile");
+
+                    b.Property<int>("RiskBand");
+
+                    b.Property<string>("Tel");
+
+                    b.Property<int>("WaterAmount");
+
+                    b.Property<int>("WaterTypeID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyInfo");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.CompanyMedcineType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("MedTypeId");
+
+                    b.Property<int>("MonthAmmount");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyMedcineType");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.CompanyPoluType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<string>("EmissionStdType");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("PoluTypeId");
+
+                    b.Property<string>("Unit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyPoluType");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.Dic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Category");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<int>("DicTypeId");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("ParentId");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dic");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.DicType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConfigJson");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<string>("TypeName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DicType");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.MeaureMethod", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BaseInfo");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Steps");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MeaureMethod");
+                });
+
+            modelBuilder.Entity("MyERP.UGIS.Reagent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Batch");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<DateTime>("EffectiveDate");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Qualitity");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reagent");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
