@@ -94,35 +94,74 @@ namespace MyERP.EntityFrameworkCore.Seed.SyncDesp
 
         private void SetDBDescription(string tableName, string columnName, string description)
         {
-            string desc = string.Empty;
+            var sql = @"
+BEGIN
+     IF OBJECT_ID(@tableName) IS NULL
+        RETURN;
+    -- 忽略不存在的列
+    IF @colName <> ''
+        AND @colName IS NOT NULL
+        BEGIN
+            IF NOT EXISTS ( SELECT  1
+                            FROM    syscolumns
+                            WHERE   id = OBJECT_ID(@tableName)
+                                    AND name = @colName )
+                RETURN;
+        END;
+    -- 没有列名，视为增加表注释
+    IF ( @colName = ''
+         OR @colName IS NULL
+       )
+        BEGIN
+            IF NOT EXISTS ( SELECT  A.name ,
+                                    C.value
+                            FROM    sys.tables A
+                                    INNER JOIN sys.extended_properties C ON C.major_id = A.object_id
+                                                              AND minor_id = 0
+                            WHERE   A.name = @tableName )
+                EXEC sys.sp_addextendedproperty @name = N'MS_Description',
+                    @value = @desp, @level0type = N'SCHEMA',
+                    @level0name = N'dbo', @level1type = N'TABLE',
+                    @level1name = @tableName;
+            ELSE
+                EXEC sp_updateextendedproperty @name = N'MS_Description',
+                    @value = @desp, @level0type = N'SCHEMA',
+                    @level0name = N'dbo', @level1type = N'TABLE',
+                    @level1name = @tableName;
+        END;
+    ELSE
+        BEGIN
+            IF NOT EXISTS ( SELECT  C.value AS column_description
+                            FROM    sys.tables A
+                                    INNER JOIN sys.columns B ON B.object_id = A.object_id
+                                    INNER JOIN sys.extended_properties C ON C.major_id = B.object_id
+                                                              AND C.minor_id = B.column_id
+                            WHERE   A.name = @tableName
+                                    AND B.name = @colName )
+                EXEC sys.sp_addextendedproperty @name = N'MS_Description',
+                    @value = @desp, @level0type = N'SCHEMA',
+                    @level0name = N'dbo', @level1type = N'TABLE',
+                    @level1name = @tableName, @level2type = N'COLUMN',
+                    @level2name = @colName;
+            ELSE
+                EXEC sp_updateextendedproperty @name = N'MS_Description',
+                    @value = @desp, @level0type = N'SCHEMA',
+                    @level0name = N'dbo', @level1type = N'TABLE',
+                    @level1name = @tableName, @level2type = N'COLUMN',
+                    @level2name = @colName;
 
-            if (string.IsNullOrEmpty(columnName))
-                desc = "select [value] from fn_listextendedproperty('MS_Description','schema','dbo','table',N'" + tableName + "',null,null);";
-            else
-                desc = "select [value] from fn_listextendedproperty('MS_Description','schema','dbo','table',N'" + tableName + "','column',null) where objname = N'" + columnName + "';";
-
-            var prevDesc = (string)RunSqlScalar(desc);
+        END;
+END
+";
 
             var parameters = new List<SqlParameter>
             {
-                new SqlParameter("@table", tableName),
-                new SqlParameter("@desc", description)
+                new SqlParameter("@tableName", tableName),
+                new SqlParameter("@colName", description),
+                new SqlParameter("@desp", description),
             };
 
-            string funcName = "sp_addextendedproperty";
-
-            if (!string.IsNullOrEmpty(prevDesc))
-                funcName = "sp_updateextendedproperty";
-
-            string query = @"EXEC " + funcName + @" N'MS_Description', @desc, N'Schema', 'dbo', N'Table', @table";
-         
-            if (!string.IsNullOrEmpty(columnName))
-            {
-                query += ", N'Column', @column";
-                parameters.Add(new SqlParameter("@column", columnName));
-            }
-
-            RunSql(query, parameters.ToArray());
+            RunSql(sql, parameters.ToArray());
         }
 
         DbCommand CreateCommand(string cmdText, params SqlParameter[] parameters)
