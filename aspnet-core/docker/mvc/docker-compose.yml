@@ -3,7 +3,7 @@ version: '2'
 services:
 
     abp_mvc:
-        image: abp/mvc
+        image: wenwengxk/abp-host:1.7
         environment:
             - ASPNETCORE_ENVIRONMENT=Staging
         ports:

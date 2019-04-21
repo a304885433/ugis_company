@@ -1,20 +1,24 @@
-FROM microsoft/dotnet:2.1-aspnetcore-runtime-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
-FROM microsoft/dotnet:2.1-sdk-stretch AS build
-
-RUN mkdir -p /app
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
+COPY ["src/MyERP.Web.Host/MyERP.Web.Host.csproj", "src/MyERP.Web.Host/"]
+COPY ["src/MyERP.Web.Core/MyERP.Web.Core.csproj", "src/MyERP.Web.Core/"]
+COPY ["src/MyERP.EntityFrameworkCore/MyERP.EntityFrameworkCore.csproj", "src/MyERP.EntityFrameworkCore/"]
+COPY ["src/MyERP.Common/MyERP.Common.csproj", "src/MyERP.Common/"]
+COPY ["src/MyERP.Core/MyERP.Core.csproj", "src/MyERP.Core/"]
+COPY ["src/MyERP.Application/MyERP.Application.csproj", "src/MyERP.Application/"]
+RUN dotnet restore "src/MyERP.Web.Host/MyERP.Web.Host.csproj"
 COPY . .
-RUN dotnet restore "firstapp.csproj"
-RUN dotnet build "firstapp.csproj" -c Release -o /app
+WORKDIR "/src/src/MyERP.Web.Host"
+RUN dotnet build "MyERP.Web.Host.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "firstapp.csproj" -c Release -o /app
+RUN dotnet publish "MyERP.Web.Host.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "firstapp.dll"]
+ENTRYPOINT ["dotnet", "MyERP.Web.Host.dll"]
