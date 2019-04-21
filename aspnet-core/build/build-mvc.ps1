@@ -30,8 +30,11 @@ docker build -t abp/Host .
 
 ## DOCKER COMPOSE FILES #######################################################
 
-Copy-Item (Join-Path $slnFolder "docker/Host/*.*") $outputFolder
+Copy-Item (Join-Path $slnFolder "docker/host/*.*") $outputFolder
 
 ## FINALIZE ###################################################################
 
 Set-Location $outputFolder
+
+echo ok
+pause

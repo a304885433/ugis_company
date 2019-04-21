@@ -1,7 +1,7 @@
 <template>
   <a-card :bordered="false">
     <a-row :gutter="8">
-      <a-col :span="5" :xs="24">
+      <a-col :md="5" :sm="24">
         <s-tree :dataSource="orgTree"
                 :openKeys.sync="openKeys"
                 :search="true"
@@ -9,7 +9,7 @@
                 @add="handleAdd"
                 @titleClick="handleTitleClick"></s-tree>
       </a-col>
-      <a-col :span="19" :xs="24">
+      <a-col :md="19" :sm="24" >
         <s-table ref="table"
                  size="default"
                  :columns="columns"

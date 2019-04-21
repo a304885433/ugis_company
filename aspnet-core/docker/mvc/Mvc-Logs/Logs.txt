@@ -1782,3 +1782,226 @@ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-s
    at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
    at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
 ClientConnectionId:00000000-0000-0000-0000-000000000000
+DEBUG 2019-04-21 12:59:07,368 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-04-21 12:59:07,416 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-04-21 12:59:07,433 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Bpo.Web.Host.Startup.BpoWebHostModule, Bpo.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,436 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Bpo.BpoWebCoreModule, Bpo.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,437 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Bpo.BpoApplicationModule, Bpo.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,438 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Bpo.BpoCoreModule, Bpo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,439 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,440 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,440 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,441 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,442 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Bpo.EntityFrameworkCore.BpoEntityFrameworkModule, Bpo.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,443 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,444 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,444 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,445 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,446 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,446 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:07,450 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-04-21 12:59:07,524 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-21 12:59:07,524 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-21 12:59:07,525 [1    ] o.Configuration.LanguageManagementConfig - Converted Bpo (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-21 12:59:07,525 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-04-21 12:59:07,821 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Bpo.EntityFrameworkCore.BpoDbContext, Bpo.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-04-21 12:59:08,198 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-04-21 12:59:08,336 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-04-21 12:59:08,519 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-04-21 12:59:08,595 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Bpo
+DEBUG 2019-04-21 12:59:08,716 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-04-21 12:59:08,747 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-21 12:59:08,796 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 10 classes define auto mapping attributes
+DEBUG 2019-04-21 12:59:08,796 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-04-21 12:59:08,804 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Users.Dto.CreateUserDto
+DEBUG 2019-04-21 12:59:08,806 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Users.Dto.UserDto
+DEBUG 2019-04-21 12:59:08,807 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-04-21 12:59:08,808 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-04-21 12:59:08,809 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Roles.Dto.CreateRoleDto
+DEBUG 2019-04-21 12:59:08,810 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Roles.Dto.PermissionDto
+DEBUG 2019-04-21 12:59:08,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.Roles.Dto.RoleDto
+DEBUG 2019-04-21 12:59:08,812 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-04-21 12:59:08,813 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Bpo.MultiTenancy.Dto.TenantDto
+WARN  2019-04-21 12:59:25,169 [4    ] Abp.BackgroundJobs.BackgroundJobManager  - System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught) ---> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (00000005, 6): No such device or address
+   at System.Net.Dns.InternalGetHostByName(String hostName)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at System.Data.SqlClient.SNI.SNITCPHandle.Connect(String serverName, Int32 port, TimeSpan timeout)
+   at System.Data.SqlClient.SNI.SNITCPHandle..ctor(String serverName, Int32 port, Int64 timerExpire, Object callbackObject, Boolean parallel)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name)
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table()
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors)
+   at Castle.Proxies.Invocations.IRepository`2_GetAll_3.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`2Proxy_1.GetAll()
+   at Abp.BackgroundJobs.BackgroundJobStore.GetWaitingJobsAsync(Int32 maxResultCount)
+   at Castle.Proxies.Invocations.BackgroundJobStore_GetWaitingJobsAsync.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformAsyncUow(IInvocation invocation, UnitOfWorkOptions options)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BackgroundJobStoreProxy.GetWaitingJobsAsync(Int32 maxResultCount)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.BackgroundJobs.BackgroundJobManager.DoWork()
+   at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught) ---> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (00000005, 6): No such device or address
+   at System.Net.Dns.InternalGetHostByName(String hostName)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at System.Data.SqlClient.SNI.SNITCPHandle.Connect(String serverName, Int32 port, TimeSpan timeout)
+   at System.Data.SqlClient.SNI.SNITCPHandle..ctor(String serverName, Int32 port, Int64 timerExpire, Object callbackObject, Boolean parallel)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name)
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table()
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors)
+   at Castle.Proxies.Invocations.IRepository`2_GetAll_3.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`2Proxy_1.GetAll()
+   at Abp.BackgroundJobs.BackgroundJobStore.GetWaitingJobsAsync(Int32 maxResultCount)
+   at Castle.Proxies.Invocations.BackgroundJobStore_GetWaitingJobsAsync.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformAsyncUow(IInvocation invocation, UnitOfWorkOptions options)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BackgroundJobStoreProxy.GetWaitingJobsAsync(Int32 maxResultCount)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.BackgroundJobs.BackgroundJobManager.DoWork()
+   at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+FATAL 2019-04-21 12:59:25,174 [1    ] Abp.AbpBootstrapper                      - System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught) ---> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (00000005, 6): No such device or address
+   at System.Net.Dns.InternalGetHostByName(String hostName)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at System.Data.SqlClient.SNI.SNITCPHandle.Connect(String serverName, Int32 port, TimeSpan timeout)
+   at System.Data.SqlClient.SNI.SNITCPHandle..ctor(String serverName, Int32 port, Int64 timerExpire, Object callbackObject, Boolean parallel)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name)
+   at Bpo.EntityFrameworkCore.Seed.SeedHelper.WithDbContext[TDbContext](IIocResolver iocResolver, Action`1 contextAction) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\Seed\SeedHelper.cs:line 39
+   at Bpo.EntityFrameworkCore.Seed.SeedHelper.SeedHostDb(IIocResolver iocResolver) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\Seed\SeedHelper.cs:line 17
+   at Bpo.EntityFrameworkCore.BpoEntityFrameworkModule.PostInitialize() in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\BpoEntityFrameworkModule.cs:line 46
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught) ---> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (00000005, 6): No such device or address
+   at System.Net.Dns.InternalGetHostByName(String hostName)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at System.Data.SqlClient.SNI.SNITCPHandle.Connect(String serverName, Int32 port, TimeSpan timeout)
+   at System.Data.SqlClient.SNI.SNITCPHandle..ctor(String serverName, Int32 port, Int64 timerExpire, Object callbackObject, Boolean parallel)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name)
+   at Bpo.EntityFrameworkCore.Seed.SeedHelper.WithDbContext[TDbContext](IIocResolver iocResolver, Action`1 contextAction) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\Seed\SeedHelper.cs:line 39
+   at Bpo.EntityFrameworkCore.Seed.SeedHelper.SeedHostDb(IIocResolver iocResolver) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\Seed\SeedHelper.cs:line 17
+   at Bpo.EntityFrameworkCore.BpoEntityFrameworkModule.PostInitialize() in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\BpoEntityFrameworkModule.cs:line 46
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+FATAL 2019-04-21 12:59:25,187 [1    ] soft.AspNetCore.Hosting.Internal.WebHost - Application startup exception
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 35 - An internal exception was caught) ---> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException (00000005, 6): No such device or address
+   at System.Net.Dns.InternalGetHostByName(String hostName)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at System.Data.SqlClient.SNI.SNITCPHandle.Connect(String serverName, Int32 port, TimeSpan timeout)
+   at System.Data.SqlClient.SNI.SNITCPHandle..ctor(String serverName, Int32 port, Int64 timerExpire, Object callbackObject, Boolean parallel)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide, String name)
+   at Bpo.EntityFrameworkCore.Seed.SeedHelper.WithDbContext[TDbContext](IIocResolver iocResolver, Action`1 contextAction) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\Seed\SeedHelper.cs:line 39
+   at Bpo.EntityFrameworkCore.Seed.SeedHelper.SeedHostDb(IIocResolver iocResolver) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\Seed\SeedHelper.cs:line 17
+   at Bpo.EntityFrameworkCore.BpoEntityFrameworkModule.PostInitialize() in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.EntityFrameworkCore\EntityFrameworkCore\BpoEntityFrameworkModule.cs:line 46
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Abp.AbpBootstrapper.Initialize()
+   at Abp.AspNetCore.AbpApplicationBuilderExtensions.InitializeAbp(IApplicationBuilder app)
+   at Abp.AspNetCore.AbpApplicationBuilderExtensions.UseAbp(IApplicationBuilder app, Action`1 optionsAction)
+   at Bpo.Web.Host.Startup.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in D:\Repos\own\4.5.0\aspnet-core\src\Bpo.Web.Host\Startup\Startup.cs:line 90
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
