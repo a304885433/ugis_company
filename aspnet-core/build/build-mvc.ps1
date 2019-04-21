@@ -3,7 +3,7 @@
 $buildFolder = (Get-Item -Path "./" -Verbose).FullName
 $slnFolder = Join-Path $buildFolder "../"
 $outputFolder = Join-Path $buildFolder "outputs"
-$webMvcFolder = Join-Path $slnFolder "src/MyERP.Web.Mvc"
+$webHostFolder = Join-Path $slnFolder "src/MyERP.Web.Host"
 
 ## CLEAR ######################################################################
 
@@ -15,22 +15,22 @@ New-Item -Path $outputFolder -ItemType Directory
 Set-Location $slnFolder
 dotnet restore
 
-## PUBLISH WEB MVC PROJECT ###################################################
+## PUBLISH WEB Host PROJECT ###################################################
 
-Set-Location $webMvcFolder
-dotnet publish --output (Join-Path $outputFolder "Mvc")
+Set-Location $webHostFolder
+dotnet publish --output (Join-Path $outputFolder "Host")
 
 ## CREATE DOCKER IMAGES #######################################################
 
-# Mvc
-Set-Location (Join-Path $outputFolder "Mvc")
+# Host
+Set-Location (Join-Path $outputFolder "Host")
 
-docker rmi abp/mvc -f
-docker build -t abp/mvc .
+docker rmi abp/Host -f
+docker build -t abp/Host .
 
 ## DOCKER COMPOSE FILES #######################################################
 
-Copy-Item (Join-Path $slnFolder "docker/mvc/*.*") $outputFolder
+Copy-Item (Join-Path $slnFolder "docker/Host/*.*") $outputFolder
 
 ## FINALIZE ###################################################################
 

@@ -17,6 +17,10 @@ namespace MyERP.Web.Host.Controllers
             _notificationPublisher = notificationPublisher;
         }
 
+        /// <summary>
+        /// test
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return Redirect("/swagger");
