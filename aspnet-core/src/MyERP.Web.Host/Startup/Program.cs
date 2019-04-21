@@ -10,7 +10,6 @@ namespace MyERP.Web.Host.Startup
         {
             // BuildWebHost(args).Run();
             Console.WriteLine("server run");
-            Console.ReadKey();
         }
 
         public static IWebHost BuildWebHost(string[] args)
