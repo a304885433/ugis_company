@@ -8,8 +8,7 @@ namespace MyERP.Web.Host.Startup
     {
         public static void Main(string[] args)
         {
-            // BuildWebHost(args).Run();
-            Console.WriteLine("server run");
+             BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args)

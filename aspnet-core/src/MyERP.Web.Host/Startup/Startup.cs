@@ -79,7 +79,7 @@ namespace MyERP.Web.Host.Startup
             });
 
             // Seed
-            services.AddDbContext<MyERPDbContext>(options => options.UseSqlServer(_appConfiguration["ConnectionStrings:Default"]));
+            // services.AddDbContext<MyERPDbContext>(options => options.UseSqlServer(_appConfiguration["ConnectionStrings:Default"]));
 
             // Configure Abp and Dependency Injection
             return services.AddAbp<MyERPWebHostModule>(
@@ -92,6 +92,8 @@ namespace MyERP.Web.Host.Startup
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            return;
+
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
