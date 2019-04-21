@@ -18,6 +18,7 @@ using MyERP.Identity;
 using Abp.AspNetCore.SignalR.Hubs;
 using MyERP.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace MyERP.Web.Host.Startup
 {
@@ -90,8 +91,25 @@ namespace MyERP.Web.Host.Startup
             );
         }
 
+        public void TestSql()
+        {
+            var sqlConnection = new SqlConnection("Server=47.93.230.70; Database=cx; uid=sa;pwd=aliyunfuwuqi1650");
+            try
+            {
+                sqlConnection.Open();
+                Console.WriteLine("可以连接数据库");
+                sqlConnection.Close();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("连接数据库失败");
+            }
+
+        }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            TestSql();
             return;
 
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
