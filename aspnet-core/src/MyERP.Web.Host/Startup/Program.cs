@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using System;
 
 namespace MyERP.Web.Host.Startup
 {
@@ -7,7 +8,9 @@ namespace MyERP.Web.Host.Startup
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            // BuildWebHost(args).Run();
+            Console.WriteLine("server run");
+            Console.ReadKey();
         }
 
         public static IWebHost BuildWebHost(string[] args)
