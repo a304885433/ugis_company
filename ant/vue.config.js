@@ -36,13 +36,13 @@ module.exports = {
           new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
           new CopyWebpackPlugin([{
             from: 'node_modules/@aspnet/signalr/dist/browser/signalr.min.js',
-            to: 'dist'
+            to: 'static'
           }, {
             from: 'node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js',
-            to: 'dist'
+            to: 'static'
           }, {
             from: 'src/lib/abp.js',
-            to: 'dist'
+            to: 'static'
           }])
         ]
       }
@@ -59,7 +59,7 @@ module.exports = {
           // }, 
           {
             from: 'src/lib/abp.js',
-            to: 'dist'
+            to: 'static'
           }])
         ]
       }
