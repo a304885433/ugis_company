@@ -80,7 +80,7 @@ namespace MyERP.Web.Host.Startup
             });
 
             // Seed
-            // services.AddDbContext<MyERPDbContext>(options => options.UseSqlServer(_appConfiguration["ConnectionStrings:Default"]));
+            services.AddDbContext<MyERPDbContext>(options => options.UseSqlServer(_appConfiguration["ConnectionStrings:Default"]));
 
             // Configure Abp and Dependency Injection
             return services.AddAbp<MyERPWebHostModule>(
@@ -111,6 +111,13 @@ namespace MyERP.Web.Host.Startup
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                 name: "configuation",
+                 template: "/api/AbpUserConfiguration/{action=Index}/",
+                 defaults: new {
+                     controller = "AbpUserConfiguration",
+                 });
+
+                routes.MapRoute(
                     name: "defaultWithArea",
                     template: "{area}/{controller=Home}/{action=Index}/{id?}");
 
@@ -131,11 +138,11 @@ namespace MyERP.Web.Host.Startup
 
             if (env.IsDevelopment())
             {
-                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-                {
-                    var contenxt = serviceScope.ServiceProvider.GetService<MyERPDbContext>();
-                    new EntityFrameworkCore.Seed.SyncDesp.DBDescriptionUpdater<MyERPDbContext>(contenxt).UpdateDatabaseDescriptions();
-                }
+                //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                //{
+                //    var contenxt = serviceScope.ServiceProvider.GetService<MyERPDbContext>();
+                //    new EntityFrameworkCore.Seed.SyncDesp.DBDescriptionUpdater<MyERPDbContext>(contenxt).UpdateDatabaseDescriptions();
+                //}
             }
         }
     }

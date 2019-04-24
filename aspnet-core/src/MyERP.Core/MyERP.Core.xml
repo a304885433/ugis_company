@@ -21,14 +21,29 @@
             It's shown in the web page.
             </summary>
         </member>
+        <member name="T:MyERP.MyERPConsts">
+            <summary>
+            常量
+            </summary>
+        </member>
+        <member name="F:MyERP.MyERPConsts.LocalizationSourceName">
+            <summary>
+            语言包
+            </summary>
+        </member>
+        <member name="F:MyERP.MyERPConsts.ConnectionStringName">
+            <summary>
+            连接字符串
+            </summary>
+        </member>
+        <member name="F:MyERP.MyERPConsts.MultiTenancyEnabled">
+            <summary>
+            开启多租户
+            </summary>
+        </member>
         <member name="P:MyERP.Timing.AppTimes.StartupTime">
             <summary>
             Gets the startup time of the application.
-            </summary>
-        </member>
-        <member name="T:MyERP.UGIS.ChkPoint">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:MyERP.UGIS.ChkResult">
@@ -236,6 +251,41 @@
             字典类别
             </summary>
         </member>
+        <member name="P:MyERP.UGIS.Dic.Value">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Dic.OrderId">
+            <summary>
+            排序Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.Dic.DicTypeId">
+            <summary>
+            字段类型Id
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.DicType">
+            <summary>
+            字典类型
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.DicType.TypeName">
+            <summary>
+            字段类型
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.DicType.OrderId">
+            <summary>
+            排序Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.DicType.ConfigJson">
+            <summary>
+            配置Json信息
+            </summary>
+        </member>
         <member name="T:MyERP.UGIS.MeaureMethod">
             <summary>
             测量方法
@@ -249,26 +299,6 @@
         <member name="P:MyERP.UGIS.MeaureMethod.Steps">
             <summary>
             操作步骤
-            </summary>
-        </member>
-        <member name="T:MyERP.UGIS.MedType">
-            <summary>
-            药品信息111
-            </summary>
-        </member>
-        <member name="P:MyERP.UGIS.MedType.MedName">
-            <summary>
-            药品名称11
-            </summary>
-        </member>
-        <member name="T:MyERP.UGIS.PoluType">
-            <summary>
-            排放因子
-            </summary>
-        </member>
-        <member name="P:MyERP.UGIS.PoluType.Name">
-            <summary>
-            排放名称
             </summary>
         </member>
         <member name="T:MyERP.UGIS.Reagent">
@@ -299,11 +329,6 @@
         <member name="P:MyERP.UGIS.Reagent.Date">
             <summary>
             日期
-            </summary>
-        </member>
-        <member name="T:MyERP.UGIS.WaterType">
-            <summary>
-            药品信息
             </summary>
         </member>
         <member name="T:MyERP.Web.WebContentDirectoryFinder">

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Abp.Configuration;
 using Abp.Localization;
 using Abp.Net.Mail;
+using MyERP.Configuration;
 
 namespace MyERP.EntityFrameworkCore.Seed.Host
 {
@@ -22,7 +23,7 @@ namespace MyERP.EntityFrameworkCore.Seed.Host
             AddSettingIfNotExists(EmailSettingNames.DefaultFromDisplayName, "mydomain.com mailer");
 
             // Languages
-            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "en");
+            AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, AppSettingNames.DefaultLanguageName);
         }
 
         private void AddSettingIfNotExists(string name, string value, int? tenantId = null)

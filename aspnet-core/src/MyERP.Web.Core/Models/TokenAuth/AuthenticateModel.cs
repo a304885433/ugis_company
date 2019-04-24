@@ -7,7 +7,7 @@ namespace MyERP.Models.TokenAuth
     {
         [Required]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
-        public string UserNameOrEmailAddress { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]

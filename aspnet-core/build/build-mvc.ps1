@@ -18,6 +18,7 @@ dotnet restore
 ## PUBLISH WEB Host PROJECT ###################################################
 
 Set-Location $webHostFolder
+MKDIR Host
 dotnet publish --output (Join-Path $outputFolder "Host")
 
 ## CREATE DOCKER IMAGES #######################################################
@@ -25,13 +26,16 @@ dotnet publish --output (Join-Path $outputFolder "Host")
 # Host
 Set-Location (Join-Path $outputFolder "Host")
 
-docker rmi abp/Host -f
-docker build -t abp/Host .
+# docker rmi abp/Host -f
+# docker build -t abp/Host .
 
 ## DOCKER COMPOSE FILES #######################################################
 
-Copy-Item (Join-Path $slnFolder "docker/Host/*.*") $outputFolder
+Copy-Item (Join-Path $slnFolder "docker/host/*.*") $outputFolder
 
 ## FINALIZE ###################################################################
 
 Set-Location $outputFolder
+
+echo ok
+pause

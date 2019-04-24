@@ -53,7 +53,7 @@ namespace MyERP.Controllers
         public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
         {
             var loginResult = await GetLoginResultAsync(
-                model.UserNameOrEmailAddress,
+                model.UserName,
                 model.Password,
                 GetTenancyNameOrNull()
             );
@@ -229,5 +229,6 @@ namespace MyERP.Controllers
         {
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
         }
+
     }
 }

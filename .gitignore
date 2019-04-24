@@ -19,3 +19,4 @@ aspnet-core/build/outputs/
 **/dist
 **/node_moudles
 **/node_modules/
+/aspnet-core/docker/host/Mvc-Logs

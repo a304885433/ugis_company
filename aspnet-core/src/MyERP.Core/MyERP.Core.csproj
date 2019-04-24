@@ -12,10 +12,12 @@
     <RootNamespace>MyERP</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\code\MyERP\4.6.0\aspnet-core\src\MyERP.Core\MyERP.Core.xml</DocumentationFile>
+    <DocumentationFile>D:\code\ugis_company\aspnet-core\src\MyERP.Core\MyERP.Core.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <EmbeddedResource Include="Localization\SourceFiles\MyERP-es.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\MyERP-zh-Hans.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\MyERP.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.AutoMapper" Version="4.3.0" />
