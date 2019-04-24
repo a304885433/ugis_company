@@ -8,7 +8,8 @@
         /// <summary>
         /// 语言包
         /// </summary>
-        public const string LocalizationSourceName = "MyERP-zh-Hans.xml";
+        public const string LocalizationSourceName = "MyERP-zh-Hans";
+        //public const string LocalizationSourceName = "MyERP";
         /// <summary>
         /// 连接字符串
         /// </summary>

@@ -158,8 +158,9 @@ namespace Abp.Localization.Dictionaries
                 //Overwrite all strings from the language based on country culture
                 if (culture.Name.Contains("-"))
                 {
+                    string name1 = GetBaseCultureName(culture.Name), name2 = culture.Name == "zh-CN" ? "zh-Hans" : culture.Name;
                     ILocalizationDictionary langDictionary;
-                    if (dictionaries.TryGetValue(GetBaseCultureName(culture.Name), out langDictionary))
+                    if (dictionaries.TryGetValue(name1, out langDictionary) || dictionaries.TryGetValue(name2, out langDictionary))
                     {
                         foreach (var langString in langDictionary.GetAllStrings())
                         {
