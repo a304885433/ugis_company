@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . /app/
 EXPOSE 80
 RUN  yarn install \ 
-    && yarn build:preview  \
+    && yarn build  \
     && cp -r dist/* /usr/share/nginx/html \
     && cp -r nginx/* /etc/nginx/conf.d/ \
     && rm -rf /app
