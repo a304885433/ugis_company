@@ -67,6 +67,7 @@ export default class Login extends AbpBase {
             content:this.L('LoginPrompt'),
             duration:0
           })
+		  this.loginModel.userName = this.loginModel.userNameOrEmailAddress
           await this.$store.dispatch({
             type:'app/login',
             data:this.loginModel
