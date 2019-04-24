@@ -1,7 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
@@ -21,11 +22,48 @@ module.exports = {
     }
   },
   */
-  configureWebpack: {
-    plugins: [
-      // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
+  // configureWebpack: {
+  //   plugins: [
+  //     // Ignore all locale files of moment.js
+  //     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+  //   ]
+  // },
+
+  configureWebpack: config =>{
+    if (process.env.NODE_ENV === 'production') {
+      return {
+        plugins: [
+          new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+          new CopyWebpackPlugin([{
+            from: 'node_modules/@aspnet/signalr/dist/browser/signalr.min.js',
+            to: 'dist'
+          }, {
+            from: 'node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js',
+            to: 'dist'
+          }, {
+            from: 'src/lib/abp.js',
+            to: 'dist'
+          }])
+        ]
+      }
+    } else {
+      return {
+        plugins: [
+          new CopyWebpackPlugin([
+          //   {
+          //   from: 'node_modules/@aspnet/signalr/dist/browser/signalr.min.js',
+          //   to: 'dist'
+          // }, {
+          //   from: 'node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js',
+          //   to: 'dist'
+          // }, 
+          {
+            from: 'src/lib/abp.js',
+            to: 'dist'
+          }])
+        ]
+      }
+    }
   },
 
   chainWebpack: (config) => {
@@ -87,15 +125,21 @@ module.exports = {
 
   devServer: {
     // development server port 8000
-    port: 8000
-    // proxy: {
-    //   '/api': {
-    //     // target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
-    //     target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
-    //     ws: false,
-    //     changeOrigin: true
-    //   }
-    // }
+    port: 8000,
+    proxy: {
+      '/api': {
+        // target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
+        target: 'http://10.211.55.7:3001/',
+        ws: false,
+        changeOrigin: true,
+      },
+      '/AbpUserConfiguration': {
+        // target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
+        target: 'http://10.211.55.7:3001/',
+        ws: false,
+        changeOrigin: true,
+      }
+    }
   },
 
   // disable source map in production
