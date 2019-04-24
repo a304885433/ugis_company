@@ -10,6 +10,12 @@ $webHostFolder = Join-Path $slnFolder "src/MyERP.Web.Host"
 Remove-Item $outputFolder -Force -Recurse -ErrorAction Ignore
 New-Item -Path $outputFolder -ItemType Directory
 
+## Build Vue
+$vueFolder = Join-Path $slnFolder "../ant"
+Set-Location $vueFolder
+yarn install
+yarn build
+
 ## RESTORE NUGET PACKAGES #####################################################
 
 Set-Location $slnFolder
@@ -18,16 +24,19 @@ dotnet restore
 ## PUBLISH WEB Host PROJECT ###################################################
 
 Set-Location $webHostFolder
-MKDIR Host
-dotnet publish --output (Join-Path $outputFolder "Host")
+MKDIR host
+dotnet publish --output (Join-Path $outputFolder "host")
+
+## COPY VUE To WWW
+Copy-Item (Join-Path $vueFolder "dist/*.*") (Join-Path $outputFolder "host/wwwroot")
 
 ## CREATE DOCKER IMAGES #######################################################
 
-# Host
-Set-Location (Join-Path $outputFolder "Host")
+# host
+Set-Location (Join-Path $outputFolder "host")
 
-# docker rmi abp/Host -f
-# docker build -t abp/Host .
+# docker rmi abp/host -f
+# docker build -t abp/host .
 
 ## DOCKER COMPOSE FILES #######################################################
 
