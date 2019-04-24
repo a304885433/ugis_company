@@ -327,6 +327,22 @@ export const asyncRouterMap = [
         redirect: '/manage/check-list',
         children: [
           {
+            path: '/manage/company-list',
+            name: 'CompanyList',
+            component: () => import('@/views/func1/CompanyList'),
+            meta: {
+              title: '企业列表', keepAlive: true,
+            }
+          },
+          {
+            path: '/manage/company-edi/',
+            name: 'CompanyEdit',
+            component: () => import('@/views/func1/companyEdit/index'),
+            meta: {
+              title: '新增企业', keepAlive: true,
+            }
+          },
+          {
             path: '/manage/check-list',
             name: 'CheckList',
             hideChildrenInMenu: true,
@@ -350,23 +366,7 @@ export const asyncRouterMap = [
             meta: {
               title: '增加排查', keepAlive: true,
             }
-          }, 
-          {
-            path: '/manage/company-list',
-            name: 'CompanyList',
-            component: () => import('@/views/func1/CompanyList'),
-            meta: {
-              title: '企业列表', keepAlive: true,
-            }
           },
-          {
-            path: '/manage/company-edi/',
-            name: 'CompanyEdit',
-            component: () => import('@/views/func1/companyEdit/index'),
-            meta: {
-              title: '新增企业', keepAlive: true,
-            }
-          }
         ]
       },
       // 系统数据

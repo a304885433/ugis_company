@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import store from '@/store/'
+import Util from '../lib/util'
 import {
-  ACCESS_TOKEN,
   DEFAULT_COLOR,
   DEFAULT_THEME,
   DEFAULT_LAYOUT_MODE,
@@ -26,7 +26,7 @@ export default function Initializer () {
   store.commit('TOGGLE_WEAK', Vue.ls.get(DEFAULT_COLOR_WEAK, config.colorWeak))
   store.commit('TOGGLE_COLOR', Vue.ls.get(DEFAULT_COLOR, config.primaryColor))
   store.commit('TOGGLE_MULTI_TAB', Vue.ls.get(DEFAULT_MULTI_TAB, config.multiTab))
-  store.commit('SET_TOKEN', Vue.ls.get(ACCESS_TOKEN))
+  store.commit('SET_TOKEN', Util.abp.auth.getToken())
 
   // last step
 }

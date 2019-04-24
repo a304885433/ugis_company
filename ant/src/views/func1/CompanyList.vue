@@ -110,7 +110,7 @@ import moment from 'moment'
 import { STable } from '@/components'
 import StepByStepModal from './modules/StepByStepModal'
 import CreateForm from './modules/CreateForm'
-import { getRoleList, getServiceList } from '@/api/manage'
+import { CompanyInfo } from '@/api/index'
 
 const statusMap = {
   0: {
@@ -176,8 +176,9 @@ export default {
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
         console.log('loadData.parameter', parameter)
-        return getServiceList(Object.assign(parameter, this.queryParam))
+        return CompanyInfo.GetAll(Object.assign(parameter, this.queryParam))
           .then(res => {
+            debugger
             return res.result
           })
       },
@@ -207,7 +208,6 @@ export default {
   },
   created () {
     this.tableOption()
-    getRoleList({ t: new Date() })
   },
   methods: {
     tableOption () {
