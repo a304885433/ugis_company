@@ -36,9 +36,9 @@ namespace MyERP.UGIS
         public int OrderId { get; set; }
 
         /// <summary>
-        /// 字段类型Id
+        /// 字典类型编码
         /// </summary>
-        public int DicTypeId { get; set; }
+        public int DictTypeCode { get; set; }
 
     }
 }
