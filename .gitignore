@@ -15,8 +15,8 @@ aspnet-core/src/CloundInvest.Web.Host/App_Data/Logs/
 aspnet-core/src/CloundInvest.Web.Mvc/App_Data/Logs/
 aspnet-core/src/CloundInvest.Migrator/Logs/Logs.txt
 /aspnet-core/src/MyERP.Web.Host/App_Data/Logs
-aspnet-core/build/outputs/
 **/dist
 **/node_moudles
 **/node_modules/
 /aspnet-core/docker/host/Mvc-Logs
+/aspnet-core/docker/mvc
