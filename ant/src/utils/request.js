@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import axios from 'axios'
 import store from '@/store'
+import Util from '../lib/util'
 import {
   VueAxios
 } from './axios'
 import notification from 'ant-design-vue/es/notification'
-import {
-  ACCESS_TOKEN
-} from '@/store/mutation-types'
 
 // 创建 axios 实例
 const service = axios.create({
@@ -18,7 +16,7 @@ const service = axios.create({
 const err = (error) => {
   if (error.response) {
     const data = error.response.data
-    const token = Vue.ls.get(ACCESS_TOKEN)
+    const token = Util.abp.auth.getToken()
     if (error.response.status === 403) {
       notification.error({
         message: 'Forbidden',
@@ -44,10 +42,12 @@ const err = (error) => {
 
 // request interceptor
 service.interceptors.request.use(config => {
-  const token = Vue.ls.get(ACCESS_TOKEN)
-  if (token) {
-    config.headers['Access-Token'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
+  const token = Util.abp.auth.getToken()
+  if (!!token) {
+    config.headers.common["Authorization"] = "Bearer " + token;
   }
+  config.headers.common[".AspNetCore.Culture"] = Util.abp.utils.getCookieValue("Abp.Localization.CultureName");
+  config.headers.common["Abp.TenantId"] = Util.abp.multiTenancy.getTenantIdCookie();
   return config
 }, err)
 
@@ -58,7 +58,7 @@ service.interceptors.response.use((response) => {
 
 const installer = {
   vm: {},
-  install (Vue) {
+  install(Vue) {
     Vue.use(VueAxios, service)
   }
 }

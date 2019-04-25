@@ -6,7 +6,6 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import notification from 'ant-design-vue/es/notification'
 import { setDocumentTitle, domTitle } from '@/utils/domUtil'
-import { ACCESS_TOKEN } from '@/store/mutation-types'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
@@ -15,18 +14,19 @@ const whiteList = ['login', 'register', 'registerResult'] // no redirect whiteli
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
-  if (Vue.ls.get(ACCESS_TOKEN)) {
+  let token = abp.auth.getToken()
+  if (token) {
     /* has token */
     if (to.path === '/user/login') {
-      next({ path: '/dashboard/workplace' })
+      // next({ path: '/dashboard/workplace' })
+      next({ path: '/manage/' })
       NProgress.done()
     } else {
       if (store.getters.roles.length === 0) {
         store
           .dispatch('GetInfo')
           .then(res => {
-            const roles = res.result && res.result.role
-            store.dispatch('GenerateRoutes', { roles }).then(() => {
+            store.dispatch('GenerateRoutes').then(() => {
               // 根据roles权限生成可访问的路由表
               // 动态添加可访问路由表
               router.addRoutes(store.getters.addRouters)
