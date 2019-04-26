@@ -81,8 +81,7 @@ getValueFromEvent: normFile,
                         {rules: [{ required: true, message: '请输入企业名称', whitespace: true}]}
                       ]">
             <span slot="addonAfter"
-                  style="width: 10px">
-              吨
+                  style="width: 10px">吨
             </span>
           </a-input>
         </a-form-item>
