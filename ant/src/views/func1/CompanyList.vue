@@ -178,7 +178,6 @@ export default {
         console.log('loadData.parameter', parameter)
         return CompanyInfo.GetAll(Object.assign(parameter, this.queryParam))
           .then(res => {
-            debugger
             return res.result
           })
       },

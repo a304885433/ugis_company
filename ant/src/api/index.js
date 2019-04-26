@@ -13,3 +13,5 @@ const api = {
 export default api
 
 export const CompanyInfo = new crud('CompanyInfo')
+export const DicType = new crud('DicType')
+export const Dic = new crud('Dic')

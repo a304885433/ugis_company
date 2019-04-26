@@ -6,19 +6,19 @@ export default class {
         this.entity = entity
     }
 
-    Get(data) {
+    Get(params) {
         return axios({
             url: `/services/app/${this.entity}/Get`,
             method: 'get',
-            data
+            params
         })
     }
 
-    GetAll(data) {
+    GetAll(params) {
         return axios({
             url: `/services/app/${this.entity}/GetAll`,
             method: 'get',
-            data
+            params
         })
     }
 
@@ -38,11 +38,19 @@ export default class {
         })
     }
 
-    Delete(data) {
+    Save(data, key='id') {
+        if(data.id){
+            return this.Update(data)
+        }else{
+            return this.Create(data)
+        }
+    }
+
+    Delete(params) {
         return axios({
             url: `/services/app/${this.entity}/Delete`,
             method: 'delete',
-            data
+            params
         })
     }
 

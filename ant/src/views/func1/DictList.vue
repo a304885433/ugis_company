@@ -1,16 +1,19 @@
 <template>
   <a-card :bordered="false">
     <a-row :gutter="8">
-      <a-col :md="5" :sm="24">
-        <s-tree :dataSource="orgTree"
-                :openKeys.sync="openKeys"
+      <a-col :md="5"
+             :sm="24">
+        <s-tree :dataSource="dicTypeTree"
+                :defaultSelectedKeys="defaultSelectedKeys"
                 :search="true"
                 @click="handleClick"
                 @add="handleAdd"
                 @titleClick="handleTitleClick"></s-tree>
       </a-col>
-      <a-col :md="19" :sm="24" >
+      <a-col :md="19"
+             :sm="24">
         <s-table ref="table"
+                 :auto="false"
                  size="default"
                  :columns="columns"
                  :data="loadData"
@@ -28,14 +31,11 @@
                 <a-icon type="down" />
               </a>
               <a-menu slot="overlay">
-                <a-menu-item>
+                <!-- <a-menu-item>
                   <a href="javascript:;">详情</a>
-                </a-menu-item>
-                <a-menu-item v-if="$auth('table.disable')">
-                  <a href="javascript:;">禁用</a>
-                </a-menu-item>
+                </a-menu-item> -->
                 <a-menu-item v-if="$auth('table.delete')">
-                  <a href="javascript:;">删除</a>
+                  <a @click="handleDelete(record)">删除</a>
                 </a-menu-item>
               </a-menu>
             </a-dropdown>
@@ -43,7 +43,7 @@
         </s-table>
       </a-col>
     </a-row>
-    <org-modal ref="modal"
+    <dic-modal ref="modal"
                @ok="handleSaveOk"
                @close="handleSaveClose" />
   </a-card>
@@ -52,37 +52,21 @@
 <script>
   import STree from '@/components/Tree/Tree'
   import { STable } from '@/components'
-  import OrgModal from './modules/OrgModal'
-  import { getOrgTree, getServiceList } from '@/api/manage'
+  import DicModal from './modules/DicModal'
+  import { DicType, Dic } from '@/api/index'
 
   export default {
     name: 'DictList',
     components: {
       STable,
       STree,
-      OrgModal
+      DicModal
     },
     data() {
       return {
-        openKeys: ['key-01'],
-
-        dictType: {
-          yaopin: {
-            name: '药品',
-          },
-          paifangfangshi: {
-            name: '排放方式',
-          },
-          feishuileixing: {
-            name: '废水',
-          },
-          dianweixinxi: {
-            name: '点位',
-          },
-          yinzixinxi: {
-            name: '因子',
-          }
-        },
+        defaultSelectedKeys: [],
+        // 字段类型配置 
+        dictType: {},
 
         // 查询参数
         queryParam: {},
@@ -90,11 +74,13 @@
         columns: [
           {
             title: '#',
-            dataIndex: 'no'
+            dataIndex: 'no',
+            width: 15,
+            customRender: (text, record, index) => index + 1
           },
           {
             title: '名称',
-            dataIndex: 'description'
+            dataIndex: 'name'
           },
           {
             table: '操作',
@@ -105,25 +91,49 @@
         ],
         // 加载数据方法 必须为 Promise 对象
         loadData: parameter => {
-          return getServiceList(Object.assign(parameter, this.queryParam))
+          return Dic.GetAll(Object.assign(parameter, this.queryParam))
             .then(res => {
               return res.result
             })
         },
-        orgTree: [],
+        dicTypeTree: [],
         selectedRowKeys: [],
         selectedRows: []
       }
     },
     created() {
-      getOrgTree().then(res => {
-        this.orgTree = res.result
+      DicType.GetAll().then(res => {
+        // 默认选中第一个
+        let { items } = res.result
+        this.dicTypeTree = this.getTree(items, null)
+        this.setDicTypeConfig(items)
+        // 加载列表查询
+        this.handleClick({
+          key: items[0].typeCode
+        })
       })
     },
     methods: {
+      getTree(data, parent) {
+        if (!data) return null
+        let filterData = data.filter(t => t.parentTypeCode == parent)
+        if (filterData.length == 0) {
+          return null
+        }
+        return filterData.map(t => {
+          return {
+            key: t.typeCode,
+            title: t.typeName,
+            children: this.getTree(data, t.typeCode)
+          }
+        })
+      },
+      setDicTypeConfig(arrType) {
+        arrType.forEach(t => {
+          this.dictType[t.typeCode] = JSON.parse(t.extensionData)
+        })
+      },
       handleClick(e) {
-        console.log('handleClick', e)
-
         // 修改显示列信息
         if (this.dictType[e.key]) {
           let name = this.dictType[e.key].name
@@ -132,33 +142,44 @@
         }
 
         this.queryParam = {
-          key: e.key
+          typeCode: e.key,
+          name: e.search
         }
         this.$refs.table.refresh(true)
       },
       handleAdd(item) {
-        console.log('add button, item', item)
-        this.$message.info(`提示：你点了 ${item.key} - ${item.title} `)
         this.$refs.modal.add(item.key)
       },
       handleTitleClick(item) {
-        console.log('handleTitleClick', item)
+
       },
       titleClick(e) {
-        console.log('titleClick', e)
       },
       handleSaveOk() {
-
+        this.$refs.table.refresh(true)
       },
       handleSaveClose() {
 
       },
+      handleDelete(record) {
+        this.$confirm({
+          title: '提示',
+          content: '删除数据将不可恢复，是否继续 ?',
+          onOk: () => {
+            Dic.Delete({ id: record.id }).then(() => {
+              this.$refs.table.refresh()
+            }).catch(err => {
 
+            })
+          },
+          onCancel() {
+          }
+        })
+      },
       onSelectChange(selectedRowKeys, selectedRows) {
         this.selectedRowKeys = selectedRowKeys
         this.selectedRows = selectedRows
       },
-
     }
   }
 </script>
