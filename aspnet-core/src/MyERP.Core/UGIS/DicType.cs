@@ -9,7 +9,7 @@ namespace MyERP.UGIS
     /// <summary>
     /// 字典类型
     /// </summary>
-    public class DicType : AuditedEntity
+    public class DicType : AuditedEntity, IExtendableObject
     {
         /// <summary>
         /// 字典类型
@@ -34,6 +34,7 @@ namespace MyERP.UGIS
         /// <summary>
         /// 配置Json信息
         /// </summary>
-        public string ConfigJson { get; set; }
+        public string ExtensionData { get; set; }
+ 
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyERP.EntityFrameworkCore;
 
 namespace MyERP.Migrations
 {
     [DbContext(typeof(MyERPDbContext))]
-    partial class MyERPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190426070942_dic_rename")]
+    partial class dic_rename
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -25,10 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyERP.Common", "src\MyERP.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "md", "md", "{F7887093-7254-45CA-A123-936EFB160882}"
 	ProjectSection(SolutionItems) = preProject
-		md\Command.md = md\Command.md
-		md\developer-guide.md = md\developer-guide.md
-		md\rdc-question-answer.md = md\rdc-question-answer.md
-		md\readme.md = md\readme.md
+		md\doc1.md = md\doc1.md
+		md\doc2.md = md\doc2.md
+		md\doc3.md = md\doc3.md
+		md\doc4.md = md\doc4.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "abp", "abp", "{406448CB-2DB3-43DC-8525-B270103BDB25}"
