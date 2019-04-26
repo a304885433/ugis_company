@@ -261,7 +261,7 @@
             排序Id
             </summary>
         </member>
-        <member name="P:MyERP.UGIS.Dic.DictTypeCode">
+        <member name="P:MyERP.UGIS.Dic.TypeCode">
             <summary>
             字典类型编码
             </summary>
@@ -291,7 +291,7 @@
             排序Id
             </summary>
         </member>
-        <member name="P:MyERP.UGIS.DicType.ConfigJson">
+        <member name="P:MyERP.UGIS.DicType.ExtensionData">
             <summary>
             配置Json信息
             </summary>

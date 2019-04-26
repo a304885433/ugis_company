@@ -17134,3 +17134,133 @@ WARN  2019-04-26 23:33:41,604 [24   ] calization.RequestLocalizationMiddleware -
 WARN  2019-04-26 23:33:41,604 [24   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
 INFO  2019-04-26 23:33:41,604 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 95.2505ms 200 text/html
 INFO  2019-04-26 23:33:41,604 [24   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 95.4303ms 200 text/html
+INFO  2019-04-26 23:35:35,067 [32   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/services/app/CompanyInfo/GetAll?skipCount=0  
+INFO  2019-04-26 23:35:35,068 [32   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:35:35,157 [23   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:35:35,157 [23   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:35:35,157 [23   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:35:35,157 [23   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:35:35,162 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "CompanyInfo"}. Executing action MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application)
+INFO  2019-04-26 23:35:35,164 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application) with arguments (MyERP.UGIS.Dto.CompanyInfoGetAllDto) - Validation state: Valid
+INFO  2019-04-26 23:35:35,260 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 96.7403ms.
+INFO  2019-04-26 23:35:35,378 [32   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:35:35,378 [32   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application) in 216.0568ms
+INFO  2019-04-26 23:35:35,378 [32   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 311.3468ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:37:50,422 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/AbpUserConfiguration/GetAll  
+INFO  2019-04-26 23:37:50,422 [20   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:37:50,512 [25   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:37:50,512 [25   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:37:50,512 [25   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:37:50,512 [25   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:37:50,516 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2019-04-26 23:37:50,518 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-04-26 23:37:50,584 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 65.8451ms.
+INFO  2019-04-26 23:37:50,702 [20   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:37:50,702 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 186.1595ms
+INFO  2019-04-26 23:37:50,703 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 280.8152ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:37:50,732 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2019-04-26 23:37:50,732 [21   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:37:50,823 [25   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:37:50,823 [25   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:37:50,823 [25   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:37:50,823 [25   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:37:50,826 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application)
+INFO  2019-04-26 23:37:50,827 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application) - Validation state: Valid
+INFO  2019-04-26 23:37:50,917 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 89.7893ms.
+INFO  2019-04-26 23:37:50,947 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:37:50,947 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application) in 121.3714ms
+INFO  2019-04-26 23:37:50,947 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 215.6486ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:49:36,512 [37   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/AbpUserConfiguration/GetAll  
+INFO  2019-04-26 23:49:36,513 [37   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:49:36,602 [41   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:49:36,602 [41   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:49:36,602 [41   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:49:36,602 [41   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:49:36,608 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2019-04-26 23:49:36,609 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-04-26 23:49:36,674 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 64.3396ms.
+INFO  2019-04-26 23:49:36,794 [44   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:49:36,795 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 186.5543ms
+INFO  2019-04-26 23:49:36,795 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 282.9282ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:49:36,823 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2019-04-26 23:49:36,824 [44   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:49:36,914 [44   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:49:36,914 [44   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:49:36,914 [44   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:49:36,914 [44   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:49:36,916 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application)
+INFO  2019-04-26 23:49:36,918 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application) - Validation state: Valid
+INFO  2019-04-26 23:49:37,007 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 89.2766ms.
+INFO  2019-04-26 23:49:37,036 [44   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:49:37,037 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application) in 120.2033ms
+INFO  2019-04-26 23:49:37,037 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 214.2974ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:50:46,185 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/AbpUserConfiguration/GetAll  
+INFO  2019-04-26 23:50:46,186 [48   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:50:46,277 [48   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:50:46,277 [48   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:50:46,277 [48   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:50:46,277 [48   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:50:46,285 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2019-04-26 23:50:46,287 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-04-26 23:50:46,363 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 75.1923ms.
+INFO  2019-04-26 23:50:46,486 [49   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:50:46,487 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 201.4702ms
+INFO  2019-04-26 23:50:46,487 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 301.3809ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:50:46,839 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2019-04-26 23:50:46,840 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:50:46,929 [49   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:50:46,929 [49   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:50:46,929 [49   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:50:46,929 [49   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:50:46,932 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application)
+INFO  2019-04-26 23:50:46,934 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application) - Validation state: Valid
+INFO  2019-04-26 23:50:47,024 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 89.4115ms.
+INFO  2019-04-26 23:50:47,053 [51   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:50:47,054 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action MyERP.Sessions.SessionAppService.GetCurrentLoginInformations (MyERP.Application) in 121.2992ms
+INFO  2019-04-26 23:50:47,054 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 214.65ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:55:16,612 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/service?skipCount=0  
+INFO  2019-04-26 23:55:16,612 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/role?t=2019-04-26T15:55:16.491Z  
+INFO  2019-04-26 23:55:16,612 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-04-26 23:55:16,612 [56   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:55:16,701 [61   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:16,701 [61   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:55:16,701 [61   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:16,701 [61   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:55:16,703 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 90.8582ms 200 text/html
+WARN  2019-04-26 23:55:16,817 [61   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:16,817 [61   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:55:16,817 [61   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:16,817 [61   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:55:16,818 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 206.2469ms 200 text/html
+INFO  2019-04-26 23:55:23,135 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/services/app/CompanyInfo/GetAll?skipCount=0  
+INFO  2019-04-26 23:55:23,135 [61   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:55:23,226 [61   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,226 [61   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,226 [61   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,226 [61   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:55:23,230 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "CompanyInfo"}. Executing action MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application)
+INFO  2019-04-26 23:55:23,231 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application) with arguments (MyERP.UGIS.Dto.CompanyInfoGetAllDto) - Validation state: Valid
+INFO  2019-04-26 23:55:23,318 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 87.0006ms.
+INFO  2019-04-26 23:55:23,437 [63   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-04-26 23:55:23,437 [63   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action MyERP.UGIS.CompanyInfoAppService.GetAll (MyERP.Application) in 206.7425ms
+INFO  2019-04-26 23:55:23,437 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 302.2933ms 200 application/json; charset=utf-8
+INFO  2019-04-26 23:55:23,599 [63   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/service?skipCount=0  
+INFO  2019-04-26 23:55:23,599 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://10.211.55.7:3001/api/role?t=2019-04-26T15:55:23.525Z  
+INFO  2019-04-26 23:55:23,600 [63   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-04-26 23:55:23,600 [62   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-04-26 23:55:23,687 [62   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [62   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [62   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [56   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [62   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [56   ] calization.RequestLocalizationMiddleware - AbpUserRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [56   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-04-26 23:55:23,687 [56   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-04-26 23:55:23,688 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 88.7486ms 200 text/html
+INFO  2019-04-26 23:55:23,688 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 88.7744ms 200 text/html
+INFO  2019-04-26 23:56:51,104 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://127.0.0.1:14175/iisintegration  0
+INFO  2019-04-26 23:56:51,108 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.9164ms 202 
+DEBUG 2019-04-26 23:56:51,110 [70   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-04-26 23:56:51,117 [70   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-26 23:56:51,117 [70   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-04-26 23:56:51,117 [70   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
