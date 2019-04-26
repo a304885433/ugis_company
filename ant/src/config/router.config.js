@@ -327,20 +327,39 @@ export const asyncRouterMap = [
         redirect: '/manage/check-list',
         children: [
           {
-            path: '/manage/company-list',
+            path: '/manage/company',
             name: 'CompanyList',
-            component: () => import('@/views/func1/CompanyList'),
+            redirect: '/manage/company/list',
+            component: () => import('@/views/RouteView.vue'),
+            hideChildrenInMenu: true,
             meta: {
               title: '企业列表', keepAlive: true,
-            }
-          },
-          {
-            path: '/manage/company-edi/',
-            name: 'CompanyEdit',
-            component: () => import('@/views/func1/companyEdit/index'),
-            meta: {
-              title: '新增企业', keepAlive: true,
-            }
+            },
+            children: [
+              {
+                path: '/manage/company/list',
+                name: 'CompanyList',
+                component: () => import('@/views/func1/company/CompanyList'),
+                meta: {
+                  title: '企业列表', hidden: true, keepAlive: true,
+                },
+              },
+              {
+                path: '/account/settings/base',
+                name: 'BaseSettings',
+                component: () => import('@/views/account/settings/BaseSetting'),
+                meta: { title: '基本设置', hidden: true, permission: ['user'] }
+              },
+              {
+                path: '/manage/company/edit/',
+                name: 'CompanyEdit',
+                hidden: true,
+                component: () => import('@/views/func1/company/companyEdit/Index'),
+                meta: {
+                  title: '新增企业', hidden: true, keepAlive: true,
+                }
+              },
+            ]
           },
           {
             path: '/manage/check-list',

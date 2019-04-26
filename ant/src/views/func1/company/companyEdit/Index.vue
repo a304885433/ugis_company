@@ -3,7 +3,7 @@
     <a-card class="card"
             title="基本信息"
             :bordered="false">
-      <repository-form ref="repository"
+      <base-info ref="repository"
                        :showSubmit="false" />
     </a-card>
     <a-card class="card"
@@ -145,7 +145,7 @@
 </template>
 
 <script>
-  import RepositoryForm from './RepositoryForm'
+  import BaseInfo from './BaseInfo'
   import TaskForm from './TaskForm'
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
@@ -170,7 +170,7 @@
     mixins: [mixin, mixinDevice],
     components: {
       FooterToolBar,
-      RepositoryForm,
+      BaseInfo,
       TaskForm
     },
     data() {
