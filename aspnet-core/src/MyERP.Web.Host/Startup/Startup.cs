@@ -19,6 +19,9 @@ using Abp.AspNetCore.SignalR.Hubs;
 using MyERP.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using MyERP.Web.Host.Middleware;
 
 namespace MyERP.Web.Host.Startup
 {
@@ -113,7 +116,8 @@ namespace MyERP.Web.Host.Startup
                 routes.MapRoute(
                  name: "configuation",
                  template: "/api/AbpUserConfiguration/{action=Index}/",
-                 defaults: new {
+                 defaults: new
+                 {
                      controller = "AbpUserConfiguration",
                  });
 
@@ -124,6 +128,7 @@ namespace MyERP.Web.Host.Startup
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+ 
             });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
@@ -138,12 +143,20 @@ namespace MyERP.Web.Host.Startup
 
             if (env.IsDevelopment())
             {
-                //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-                //{
-                //    var contenxt = serviceScope.ServiceProvider.GetService<MyERPDbContext>();
-                //    new EntityFrameworkCore.Seed.SyncDesp.DBDescriptionUpdater<MyERPDbContext>(contenxt).UpdateDatabaseDescriptions();
-                //}
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                {
+                    var contenxt = serviceScope.ServiceProvider.GetService<MyERPDbContext>();
+                    // 增加数据表注释
+
+                    // new EntityFrameworkCore.Seed.SyncDesp.DBDescriptionUpdater<MyERPDbContext>(contenxt).UpdateDatabaseDescriptions();
+                }
             }
+
+            app.Run(async (context) =>
+            {
+                context.Response.ContentType = "text/html";
+                await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
+            });
         }
     }
 }

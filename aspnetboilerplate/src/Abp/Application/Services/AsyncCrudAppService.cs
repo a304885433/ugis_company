@@ -96,7 +96,7 @@ namespace Abp.Application.Services
         public IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
 
         protected AsyncCrudAppService(IRepository<TEntity, TPrimaryKey> repository)
-            :base(repository)
+            : base(repository)
         {
             AsyncQueryableExecuter = NullAsyncQueryableExecuter.Instance;
         }
@@ -120,12 +120,21 @@ namespace Abp.Application.Services
             query = ApplySorting(query, input);
             query = ApplyPaging(query, input);
 
-            var entities = await AsyncQueryableExecuter.ToListAsync(query);
+            try
+            {
 
-            return new PagedResultDto<TEntityDto>(
-                totalCount,
-                entities.Select(MapToEntityDto).ToList()
-            );
+                var entities = await AsyncQueryableExecuter.ToListAsync(query);
+                return new PagedResultDto<TEntityDto>(
+              totalCount,
+              entities.Select(MapToEntityDto).ToList()
+          );
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
         public virtual async Task<TEntityDto> Create(TCreateInput input)

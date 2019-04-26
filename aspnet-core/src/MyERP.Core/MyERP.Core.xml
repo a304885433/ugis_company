@@ -261,9 +261,9 @@
             排序Id
             </summary>
         </member>
-        <member name="P:MyERP.UGIS.Dic.DicTypeId">
+        <member name="P:MyERP.UGIS.Dic.DictTypeCode">
             <summary>
-            字段类型Id
+            字典类型编码
             </summary>
         </member>
         <member name="T:MyERP.UGIS.DicType">
@@ -273,7 +273,17 @@
         </member>
         <member name="P:MyERP.UGIS.DicType.TypeName">
             <summary>
-            字段类型
+            字典类型
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.DicType.TypeCode">
+            <summary>
+            字典类型编码
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.DicType.ParentTypeCode">
+            <summary>
+            父级字典类型编码
             </summary>
         </member>
         <member name="P:MyERP.UGIS.DicType.OrderId">

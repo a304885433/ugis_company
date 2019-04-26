@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MyERP.Core": {
+      "commandName": "Project",
+      "workingDirectory": "/swagger/"
+    }
+  }
+}

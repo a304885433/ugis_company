@@ -12,9 +12,19 @@ namespace MyERP.UGIS
     public class DicType : AuditedEntity
     {
         /// <summary>
-        /// 字段类型
+        /// 字典类型
         /// </summary>
         public string TypeName { get; set; }
+
+        /// <summary>
+        /// 字典类型编码
+        /// </summary>
+        public string TypeCode { get; set; }
+
+        /// <summary>
+        /// 父级字典类型编码
+        /// </summary>
+        public string ParentTypeCode { get; set; }
 
         /// <summary>
         /// 排序Id
