@@ -7,9 +7,8 @@
            @cancel="handleCancel">
     <a-spin :spinning="confirmLoading">
       <a-form :form="form">
-
         <a-form-item :label="name">
-          <a-input v-decorator="['description', {}]" />
+          <a-input v-decorator="['name', {}]" />
         </a-form-item>
       </a-form>
     </a-spin>
@@ -17,8 +16,9 @@
 </template>
 
 <script>
+  import { Dic } from '@/api/'
   export default {
-    name: 'OrgModal',
+    name: 'DicModal',
     data() {
       return {
         name: '',
@@ -36,8 +36,9 @@
       }
     },
     beforeCreate() {
-      this.form = this.$form.createForm(this)
-      console.log('form::', this.form)
+      this.form = this.$form.createForm(this, {
+        props: ['name', 'typeCode']
+      })
     },
     created() {
 
@@ -46,8 +47,9 @@
       setName(name) {
         this.name = name + '名称'
       },
-      add(id) {
-        this.edit({ parentId: id })
+      add(typeCode) {
+        this.form.resetFields()
+        this.edit({ typeCode })
       },
       edit(record) {
         this.mdl = Object.assign({}, record)
@@ -61,28 +63,30 @@
         this.visible = false
       },
       handleOk() {
-        const _this = this
         // 触发表单验证
         this.form.validateFields((err, values) => {
           // 验证表单没错误
-          if (!err) {
-            console.log('form values', values)
-
-            _this.confirmLoading = true
-            // 模拟后端请求 2000 毫秒延迟
-            new Promise((resolve) => {
-              setTimeout(() => resolve(), 2000)
-            }).then(() => {
-              // Do something
-              _this.$message.success('保存成功')
-              _this.$emit('ok')
-            }).catch(() => {
-              // Do something
-            }).finally(() => {
-              _this.confirmLoading = false
-              _this.close()
-            })
+          if (err) {
+            return
           }
+          this.confirmLoading = true
+          // 模拟后端请求 2000 毫秒延迟
+          // new Promise((resolve) => {
+          //   // setTimeout(() => resolve(), 2000)
+          // })
+          Dic.Save(Object.assign(this.mdl, values)).then((res) => {
+            if (res.success) {
+              this.$message.success('保存成功')
+              this.$emit('ok')
+              this.close()
+            } else {
+              this.$message.error(res.error.message)
+            }
+          }).catch(() => {
+            // Do something
+          }).finally(() => {
+            this.confirmLoading = false
+          })
         })
       },
       handleCancel() {

@@ -3,18 +3,18 @@
     <a-card class="card"
             title="基本信息"
             :bordered="false">
-      <repository-form ref="repository"
+      <base-info ref="repository"
                        :showSubmit="false" />
     </a-card>
     <a-card class="card"
             title="排污信息"
             :bordered="false">
-      <task-form ref="task"
+      <water-info ref="task"
                  :showSubmit="false" />
     </a-card>
 
     <!-- table -->
-    <a-card>
+    <a-card title="排查点位">
       <a-table :columns="columns"
                :dataSource="data"
                :pagination="false"
@@ -64,8 +64,8 @@
     </a-card>
 
     <!-- table -->
-    <a-card>
-      <a-table :columns="columns"
+    <a-card title="药品及污染源购置台账">
+      <a-table :columns="yaoColumns"
                :dataSource="data"
                :pagination="false"
                :loading="memberLoading">
@@ -145,8 +145,8 @@
 </template>
 
 <script>
-  import RepositoryForm from './RepositoryForm'
-  import TaskForm from './TaskForm'
+  import BaseInfo from './BaseInfo'
+  import WaterInfo from './WaterInfo'
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
 
@@ -170,8 +170,8 @@
     mixins: [mixin, mixinDevice],
     components: {
       FooterToolBar,
-      RepositoryForm,
-      TaskForm
+      BaseInfo,
+      WaterInfo
     },
     data() {
       return {
@@ -190,6 +190,13 @@
           },
           {
             title: '排放限值(单位）',
+            dataIndex: 'workId',
+            key: 'workId',
+            width: '20%',
+            scopedSlots: { customRender: 'workId' }
+          },
+          {
+            title: '排放标准名称(单位）',
             dataIndex: 'workId',
             key: 'workId',
             width: '20%',
@@ -225,7 +232,32 @@
           }
         ],
 
-        errors: []
+        errors: [],
+        // 药品信息
+        yaoColumns: [
+          {
+            title: '药品',
+            dataIndex: 'name',
+            key: 'name',
+            width: '20%',
+            scopedSlots: { customRender: 'name' }
+          },
+          {
+            title: '月购置量',
+            dataIndex: 'workId',
+            key: 'workId',
+            width: '30%',
+            scopedSlots: { customRender: 'workId' }
+          },
+          {
+            title: '操作',
+            key: 'action',
+            scopedSlots: { customRender: 'operation' }
+          }
+        ],
+        yaoData: [
+          { name: '药品1'}
+        ]
       }
     },
     methods: {

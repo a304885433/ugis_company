@@ -62,7 +62,9 @@
     </div>
 
     <div class="table-operator">
-      <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
+      <router-link :to="{name: 'CompanyEdit'}">
+          <a-button type="primary" icon="plus">新建</a-button>
+      </router-link>
       <!-- <a-button type="dashed" @click="tableOption">{{ optionAlertShow && '关闭' || '开启' }} alert</a-button> -->
       <a-dropdown v-action:edit v-if="selectedRowKeys.length > 0">
         <a-menu slot="overlay">
@@ -100,16 +102,12 @@
         </template>
       </span>
     </s-table>
-    <create-form ref="createModal" @ok="handleOk" />
-    <step-by-step-modal ref="modal" @ok="handleOk"/>
   </a-card>
 </template>
 
 <script>
 import moment from 'moment'
 import { STable } from '@/components'
-import StepByStepModal from './modules/StepByStepModal'
-import CreateForm from './modules/CreateForm'
 import { CompanyInfo } from '@/api/index'
 
 const statusMap = {
@@ -135,8 +133,6 @@ export default {
   name: 'CompanyList',
   components: {
     STable,
-    CreateForm,
-    StepByStepModal
   },
   data () {
     return {
@@ -178,7 +174,6 @@ export default {
         console.log('loadData.parameter', parameter)
         return CompanyInfo.GetAll(Object.assign(parameter, this.queryParam))
           .then(res => {
-            debugger
             return res.result
           })
       },
