@@ -1,15 +1,17 @@
 ﻿
 #### Add-Migration
 新增、修改实体，使用Add-Migration命令来得到Migration
+MyERP.EntityFrameworkCore 下运行
+
 > 命令示例
-- Add-Migration
+- EntityFrameworkCore\Add-Migration
 - Add-Migration AddItem -Verbos
 - Add-Migration AddItem -Verbos -ConnectionString "Data Source=.;Initial Catalog=TestDb;Integrated Security=False;User ID=sa;Password=***;MultipleActiveResultSets=True" ConnectionProviderName "System.Data.SqlClient"
 
 ### Update-Database 
 将Migration同步到数据库
 >命令示例
-- Update-Database 
+- EntityFrameworkCore\Update-Database 
 - Update-Database -Verbos
 - Update-Database -Script -Verbos （同步的同时返回Sql）
 - Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: AddPostAbstract
@@ -26,7 +28,7 @@
 - Enable-Migrations -ContextTypeName SmartSnsPublisher.Web.Models.SiteDbContext
 
 ### 删除最近一次迁移
-- remove-migration
+- EntityFrameworkCore\remove-migration
 
 
 

@@ -16,7 +16,6 @@ namespace MyERP.Web.Host.Startup
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseIISIntegration()
-                .UseUrls("http://*:21021")
                 .Build();
         }
     }

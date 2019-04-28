@@ -38,7 +38,7 @@ namespace MyERP.UGIS
         /// <summary>
         /// 字典类型编码
         /// </summary>
-        public int DictTypeCode { get; set; }
+        public string TypeCode { get; set; }
 
     }
 }

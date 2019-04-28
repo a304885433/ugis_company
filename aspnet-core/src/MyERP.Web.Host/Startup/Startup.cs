@@ -96,7 +96,8 @@ namespace MyERP.Web.Host.Startup
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
+            app.UseAbp(options => { options.UseAbpRequestLocalization = false;
+            }); // Initializes ABP framework.
 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
@@ -128,7 +129,7 @@ namespace MyERP.Web.Host.Startup
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
- 
+
             });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
@@ -147,7 +148,6 @@ namespace MyERP.Web.Host.Startup
                 {
                     var contenxt = serviceScope.ServiceProvider.GetService<MyERPDbContext>();
                     // 增加数据表注释
-
                     // new EntityFrameworkCore.Seed.SyncDesp.DBDescriptionUpdater<MyERPDbContext>(contenxt).UpdateDatabaseDescriptions();
                 }
             }

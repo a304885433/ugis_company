@@ -6,8 +6,8 @@ using System.Text;
 
 namespace MyERP.UGIS.Dto
 {
-    [AutoMapTo(typeof(DicType))]
-    public class DicDto : DicType, IEntityDto
+    [AutoMapTo(typeof(Dic))]
+    public class DicDto : Dic, IEntityDto
     {
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyERP.EntityFrameworkCore;
 
 namespace MyERP.Migrations
 {
     [DbContext(typeof(MyERPDbContext))]
-    partial class MyERPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190425115711_DicType")]
+    partial class DicType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1237,6 +1239,8 @@ namespace MyERP.Migrations
 
                     b.Property<long?>("CreatorUserId");
 
+                    b.Property<int>("DictTypeCode");
+
                     b.Property<DateTime?>("LastModificationTime");
 
                     b.Property<long?>("LastModifierUserId");
@@ -1246,8 +1250,6 @@ namespace MyERP.Migrations
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ParentId");
-
-                    b.Property<string>("TypeCode");
 
                     b.Property<string>("Value");
 

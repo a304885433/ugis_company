@@ -12,6 +12,7 @@ using Abp.Zero.Configuration;
 using MyERP.Authentication.JwtBearer;
 using MyERP.Configuration;
 using MyERP.EntityFrameworkCore;
+using Abp.Configuration.Startup;
 
 namespace MyERP
 {
@@ -40,6 +41,8 @@ namespace MyERP
 
             // Use database for language management
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
+
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
 
             Configuration.Modules.AbpAspNetCore()
                  .CreateControllersForAppServices(
