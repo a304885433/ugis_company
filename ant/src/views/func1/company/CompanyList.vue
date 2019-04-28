@@ -5,46 +5,24 @@
         <a-row :gutter="48">
           <a-col :md="8" :sm="24">
             <a-form-item label="企业名称">
-              <a-input v-model="queryParam.id" placeholder=""/>
+              <a-input v-model="queryParam.name" placeholder=""/>
             </a-form-item>
           </a-col>
           <a-col :md="8" :sm="24">
-            <a-form-item label="使用状态">
-              <a-select v-model="queryParam.status" placeholder="请选择" default-value="0">
-                <a-select-option value="0">全部</a-select-option>
-                <a-select-option value="1">关闭</a-select-option>
-                <a-select-option value="2">运行中</a-select-option>
-              </a-select>
+            <a-form-item label="企业地址">
+                <a-input v-model="queryParam.address" placeholder=""/>
             </a-form-item>
           </a-col>
           <template v-if="advanced">
             <a-col :md="8" :sm="24">
-              <a-form-item label="调用次数">
-                <a-input-number v-model="queryParam.callNo" style="width: 100%"/>
+              <a-form-item label="联系人">
+                <a-input-number v-model="queryParam.contact" style="width: 100%"/>
               </a-form-item>
             </a-col>
             <a-col :md="8" :sm="24">
-              <a-form-item label="更新日期">
-                <a-date-picker v-model="queryParam.date" style="width: 100%" placeholder="请输入更新日期"/>
-              </a-form-item>
-            </a-col>
-            <a-col :md="8" :sm="24">
-              <a-form-item label="使用状态">
-                <a-select v-model="queryParam.useStatus" placeholder="请选择" default-value="0">
-                  <a-select-option value="0">全部</a-select-option>
-                  <a-select-option value="1">关闭</a-select-option>
-                  <a-select-option value="2">运行中</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-            <a-col :md="8" :sm="24">
-              <a-form-item label="使用状态">
-                <a-select placeholder="请选择" default-value="0">
-                  <a-select-option value="0">全部</a-select-option>
-                  <a-select-option value="1">关闭</a-select-option>
-                  <a-select-option value="2">运行中</a-select-option>
-                </a-select>
-              </a-form-item>
+                <a-form-item label="电话">
+                    <a-input-number v-model="queryParam.tel" style="width: 100%"/>
+                  </a-form-item>
             </a-col>
           </template>
           <a-col :md="!advanced && 8 || 24" :sm="24">
@@ -96,7 +74,7 @@
 
       <span slot="action" slot-scope="text, record">
         <template>
-          <a @click="handleEdit(record)">配置</a>
+          <a @click="handleEdit(record)">编辑</a>
           <a-divider type="vertical" />
           <a @click="handleSub(record)">订阅报警</a>
         </template>
@@ -149,18 +127,18 @@ export default {
         },
         {
           title: '企业名称',
-          dataIndex: 'no'
+          dataIndex: 'name'
         },
         {
           title: '企业地址',
-          dataIndex: 'description'
+          dataIndex: 'address'
         },
         {
           title: '企业联系人',
-          dataIndex: 'callNo',
+          dataIndex: 'contact',
           sorter: true,
           needTotal: true,
-          customRender: (text) => text + ' 次'
+          // customRender: (text) => text + ' 次'
         },
         {
           title: '操作',
@@ -171,7 +149,6 @@ export default {
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        console.log('loadData.parameter', parameter)
         return CompanyInfo.GetAll(Object.assign(parameter, this.queryParam))
           .then(res => {
             return res.result
@@ -225,8 +202,7 @@ export default {
     },
 
     handleEdit (record) {
-      console.log(record)
-      this.$refs.modal.edit(record)
+      this.$router.push({ name: 'CompanyEdit', query: { id: record.id } })
     },
     handleSub (record) {
       if (record.status !== 0) {

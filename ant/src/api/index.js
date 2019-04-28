@@ -1,4 +1,5 @@
 import crud from './crud';
+import * as companyInfoService from './companyInfo'
 const api = {
   Login: '/auth/login',
   Logout: '/auth/logout',
@@ -12,6 +13,6 @@ const api = {
 }
 export default api
 
-export const CompanyInfo = new crud('CompanyInfo')
+export const CompanyInfo = Object.assign(new crud('CompanyInfo'), companyInfoService)
 export const DicType = new crud('DicType')
 export const Dic = new crud('Dic')

@@ -328,7 +328,7 @@ export const asyncRouterMap = [
         children: [
           {
             path: '/manage/company',
-            name: 'CompanyList',
+            name: 'CompanyListIndex',
             redirect: '/manage/company/list',
             component: () => import('@/views/RouteView.vue'),
             hideChildrenInMenu: true,
@@ -343,12 +343,6 @@ export const asyncRouterMap = [
                 meta: {
                   title: '企业列表', hidden: true, keepAlive: true,
                 },
-              },
-              {
-                path: '/account/settings/base',
-                name: 'BaseSettings',
-                component: () => import('@/views/account/settings/BaseSetting'),
-                meta: { title: '基本设置', hidden: true, permission: ['user'] }
               },
               {
                 path: '/manage/company/edit/',
