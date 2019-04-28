@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using MyERP.Base;
+using Abp.Linq.Extensions;
 
 namespace MyERP.UGIS
 {
@@ -28,6 +30,16 @@ namespace MyERP.UGIS
             this.companyMedcineTypeRepository = companyMedcineTypeRepository;
         }
 
+        protected override IQueryable<CompanyInfo> CreateFilteredQuery(CompanyInfoGetAllDto input)
+        {
+            return base.CreateFilteredQuery(input)
+                .WhereIf(!string.IsNullOrEmpty(input.Address), t => t.Address.Contains(input.Address))
+                .WhereIf(!string.IsNullOrEmpty(input.Contact), t => t.Contact.Contains(input.Contact))
+                .WhereIf(!string.IsNullOrEmpty(input.Tel), t => t.Tel.Contains(input.Tel))
+                .WhereIf(!string.IsNullOrEmpty(input.Name), t => t.Name.Contains(input.Name))
+;
+        }
+
 
         /// <summary>
         /// 保存企业信息
@@ -43,8 +55,8 @@ namespace MyERP.UGIS
             if (id != 0)
             {
                 // 更新实体
-                var entity = input.CompanyInfo.MapTo<CompanyInfo>();
-                await Repository.UpdateAsync(input.CompanyInfo);
+                var entity = await GetEntityByIdAsync(id);
+                MapToEntity(input.CompanyInfo, entity);
             }
             else
             {
@@ -52,20 +64,33 @@ namespace MyERP.UGIS
                 id = await Repository.InsertAndGetIdAsync(input.CompanyInfo);
             }
 
-            // 保存子实体
-            await companyMedcineTypeRepository.DeleteAsync(t => t.CompanyId == id);
-            input.CompanyMedcineTypeList.ForEach(async t =>
+            // 更新子实体外键
+            if (input.CompanyMedcineTypeList != null)
             {
-                var entity = t.MapTo<CompanyMedcineType>();
-                await companyMedcineTypeRepository.InsertAsync(entity);
-            });
+                input.CompanyMedcineTypeList.ForEach(t =>
+                {
+                    t.CompanyId = id;
+                });
+                var idList = input.CompanyMedcineTypeList.Where(t => t.Id != 0).Select(t => t.Id);
+                // 删除不存在的实体
+                await companyMedcineTypeRepository.DeleteAsync(t => t.CompanyId == id && !idList.Contains(t.Id));
+                // 保存变更的实体
+                var changed = input.CompanyMedcineTypeList.MapTo<List<CompanyMedcineType>>();
+                await companyMedcineTypeRepository.InsertOrUpdateAsync(changed);
+            }
 
-            await companyPoluTypeRepository.DeleteAsync(t => t.CompanyId == id);
-            input.CompanyPoluTypeList.ForEach(async t =>
+            if (input.CompanyPoluTypeList != null)
             {
-                var entity = t.MapTo<CompanyPoluType>();
-                await companyPoluTypeRepository.InsertAsync(entity);
-            });
+                input.CompanyPoluTypeList.ForEach(t =>
+                {
+                    t.CompanyId = id;
+                });
+                var idList = input.CompanyPoluTypeList.Where(t => t.Id != 0).Select(t => t.Id);
+                // 删除不存在的实体
+                await companyPoluTypeRepository.DeleteAsync(t => t.CompanyId == id && !idList.Contains(t.Id));
+                var changed = input.CompanyPoluTypeList.MapTo<List<CompanyPoluType>>();
+                await companyPoluTypeRepository.InsertOrUpdateAsync(changed);
+            }
 
             return id;
         }

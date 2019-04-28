@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyERP.Core\MyERP.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Basic\" />
+  </ItemGroup>
 </Project>

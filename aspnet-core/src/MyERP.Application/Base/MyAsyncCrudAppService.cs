@@ -235,6 +235,18 @@ namespace Abp.Application.Services
 
         }
 
+        public virtual async Task<List<TEntityDto>> SaveChanges(List<TSaveInput> inputs)
+        {
+            var list = new List<TEntityDto>();
+            foreach (var input in inputs)
+            {
+                var entity = await Save(input);
+                list.Add(entity);
+            }
+            return list;
+        }
+
+
         public virtual Task Delete(TDeleteInput input)
         {
             CheckDeletePermission();

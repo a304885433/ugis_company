@@ -58,6 +58,12 @@ namespace MyERP.UGIS
                         ExtensionData = JsonConvert.SerializeObject(new { name= "因子" }),
                         OrderId = 5,
                         TypeName = "因子信息"
+                    },
+                    new DicType(){
+                        TypeCode = "shoujifangshi",
+                        ExtensionData = JsonConvert.SerializeObject(new { name= "收集方式" }),
+                        OrderId = 5,
+                        TypeName = "收集方式"
                     }
                 };
             list.ForEach(t =>

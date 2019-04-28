@@ -104,13 +104,6 @@ namespace MyERP.UGIS
         /// 自流方式Id
         /// </summary>
         public int CollTypeID { get; set; }
-        
-
-        /// <summary>
-        /// 排查点位Id
-        /// </summary>
-        public string CheckPointIdList { get; set; }
-
 
     }
 }

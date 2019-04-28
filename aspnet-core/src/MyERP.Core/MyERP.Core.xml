@@ -181,11 +181,6 @@
             自流方式Id
             </summary>
         </member>
-        <member name="P:MyERP.UGIS.CompanyInfo.CheckPointIdList">
-            <summary>
-            排查点位Id
-            </summary>
-        </member>
         <member name="T:MyERP.UGIS.CompanyMedcineType">
             <summary>
             企业药品信息
