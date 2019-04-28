@@ -7,7 +7,7 @@ using System.Text;
 namespace MyERP.UGIS.Dto
 {
     [AutoMapTo(typeof(CompanyInfo))]
-    public class CompanyInfoDto : EntityDto
+    public class CompanyInfoDto : CompanyInfo, IEntityDto
     {
     }
 }

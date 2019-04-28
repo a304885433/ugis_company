@@ -12,7 +12,7 @@ namespace MyERP.UGIS
     /// <summary>
     /// 字典类型应用服务
     /// </summary>
-    public class DicAppService : AsyncCrudAppService<Dic, DicDto, int, GetAllDicInput>
+    public class DicAppService : MyAsyncCrudAppService<Dic, DicDto, int, GetAllDicInput>
     {
         public DicAppService(IRepository<Dic, int> repository) : base(repository)
         {
