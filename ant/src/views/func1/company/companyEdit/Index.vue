@@ -3,114 +3,31 @@
     <a-card class="card"
             title="基本信息"
             :bordered="false">
-      <base-info ref="repository"
-                       :showSubmit="false" />
+      <base-info ref="baseInfoForm"
+                 :showSubmit="false"
+                 :waterDicArr="waterDicArr" />
     </a-card>
+
     <a-card class="card"
             title="排污信息"
             :bordered="false">
-      <water-info ref="task"
-                 :showSubmit="false" />
+      <water-info ref="waterInfoForm"
+                  :showSubmit="false"
+                  :paifangDicArr="paifangDicArr"
+                  :shoujiDicArr="shoujiDicArr" />
     </a-card>
 
     <!-- table -->
     <a-card title="排查点位">
-      <a-table :columns="columns"
-               :dataSource="data"
-               :pagination="false"
-               :loading="memberLoading">
-        <template v-for="(col, i) in ['name', 'workId', 'department']"
-                  :slot="col"
-                  slot-scope="text, record">
-          <a-input :key="col"
-                   v-if="record.editable"
-                   style="margin: -5px 0"
-                   :value="text"
-                   :placeholder="columns[i].title"
-                   @change="e => handleChange(e.target.value, record.key, col)" />
-          <template v-else>{{ text }}</template>
-        </template>
-        <template slot="operation"
-                  slot-scope="text, record">
-          <template v-if="record.editable">
-            <span v-if="record.isNew">
-              <a @click="saveRow(record)">添加</a>
-              <a-divider type="vertical" />
-              <a-popconfirm title="是否要删除此行？"
-                            @confirm="remove(record.key)">
-                <a>删除</a>
-              </a-popconfirm>
-            </span>
-            <span v-else>
-              <a @click="saveRow(record)">保存</a>
-              <a-divider type="vertical" />
-              <a @click="cancel(record.key)">取消</a>
-            </span>
-          </template>
-          <span v-else>
-            <a @click="toggle(record.key)">编辑</a>
-            <a-divider type="vertical" />
-            <a-popconfirm title="是否要删除此行？"
-                          @confirm="remove(record.key)">
-              <a>删除</a>
-            </a-popconfirm>
-          </span>
-        </template>
-      </a-table>
-      <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px"
-                type="dashed"
-                icon="plus"
-                @click="newMember">新增</a-button>
+      <polu-type ref="poluTypeTable"
+                 :yinziDicArr="yinziDicArr"></polu-type>
     </a-card>
 
     <!-- table -->
     <a-card title="药品及污染源购置台账">
-      <a-table :columns="yaoColumns"
-               :dataSource="data"
-               :pagination="false"
-               :loading="memberLoading">
-        <template v-for="(col, i) in ['name', 'workId', 'department']"
-                  :slot="col"
-                  slot-scope="text, record">
-          <a-input :key="col"
-                   v-if="record.editable"
-                   style="margin: -5px 0"
-                   :value="text"
-                   :placeholder="columns[i].title"
-                   @change="e => handleChange(e.target.value, record.key, col)" />
-          <template v-else>{{ text }}</template>
-        </template>
-        <template slot="operation"
-                  slot-scope="text, record">
-          <template v-if="record.editable">
-            <span v-if="record.isNew">
-              <a @click="saveRow(record)">添加</a>
-              <a-divider type="vertical" />
-              <a-popconfirm title="是否要删除此行？"
-                            @confirm="remove(record.key)">
-                <a>删除</a>
-              </a-popconfirm>
-            </span>
-            <span v-else>
-              <a @click="saveRow(record)">保存</a>
-              <a-divider type="vertical" />
-              <a @click="cancel(record.key)">取消</a>
-            </span>
-          </template>
-          <span v-else>
-            <a @click="toggle(record.key)">编辑</a>
-            <a-divider type="vertical" />
-            <a-popconfirm title="是否要删除此行？"
-                          @confirm="remove(record.key)">
-              <a>删除</a>
-            </a-popconfirm>
-          </span>
-        </template>
-      </a-table>
-      <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px"
-                type="dashed"
-                icon="plus"
-                @click="newMember">新增</a-button>
+      <!-- <test ref="yaopinTable" :yaopinDicArr="yaopinDicArr"></test> -->
+      <yao-pin ref="yaopinTable"
+               :yaopinDicArr="yaopinDicArr"></yao-pin>
     </a-card>
 
     <!-- fixed footer toolbar -->
@@ -139,7 +56,10 @@
       </span>
       <a-button type="primary"
                 @click="validate"
+                style="margin-right: 10px;"
                 :loading="loading">提交</a-button>
+      <a-button type="default"
+                @click="$router.go(-1)">取消</a-button>
     </footer-tool-bar>
   </div>
 </template>
@@ -147,8 +67,13 @@
 <script>
   import BaseInfo from './BaseInfo'
   import WaterInfo from './WaterInfo'
+  import YaoPin from './YaoPin'
+  import PoluType from './PoluType'
+  import Test from './Test3'
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
+  import { Dic, CompanyInfo } from '@/api/'
+  import moment from 'moment'
 
   const fieldLabels = {
     name: '仓库名',
@@ -166,12 +91,15 @@
   }
 
   export default {
-    name: 'AdvancedForm',
+    name: 'CompanyEditIndex',
     mixins: [mixin, mixinDevice],
     components: {
       FooterToolBar,
       BaseInfo,
-      WaterInfo
+      WaterInfo,
+      YaoPin,
+      PoluType,
+      Test
     },
     data() {
       return {
@@ -179,137 +107,65 @@
         loading: false,
         memberLoading: false,
 
-        // table
-        columns: [
-          {
-            title: '污染因子',
-            dataIndex: 'name',
-            key: 'name',
-            width: '20%',
-            scopedSlots: { customRender: 'name' }
-          },
-          {
-            title: '排放限值(单位）',
-            dataIndex: 'workId',
-            key: 'workId',
-            width: '20%',
-            scopedSlots: { customRender: 'workId' }
-          },
-          {
-            title: '排放标准名称(单位）',
-            dataIndex: 'workId',
-            key: 'workId',
-            width: '20%',
-            scopedSlots: { customRender: 'workId' }
-          },
-          {
-            title: '操作',
-            key: 'action',
-            scopedSlots: { customRender: 'operation' }
-          }
-        ],
-        data: [
-          {
-            key: '1',
-            name: '小明',
-            workId: '001',
-            editable: false,
-            department: '行政部'
-          },
-          {
-            key: '2',
-            name: '李莉',
-            workId: '002',
-            editable: false,
-            department: 'IT部'
-          },
-          {
-            key: '3',
-            name: '王小帅',
-            workId: '003',
-            editable: false,
-            department: '财务部'
-          }
-        ],
-
         errors: [],
-        // 药品信息
-        yaoColumns: [
-          {
-            title: '药品',
-            dataIndex: 'name',
-            key: 'name',
-            width: '20%',
-            scopedSlots: { customRender: 'name' }
-          },
-          {
-            title: '月购置量',
-            dataIndex: 'workId',
-            key: 'workId',
-            width: '30%',
-            scopedSlots: { customRender: 'workId' }
-          },
-          {
-            title: '操作',
-            key: 'action',
-            scopedSlots: { customRender: 'operation' }
-          }
-        ],
-        yaoData: [
-          { name: '药品1'}
-        ]
+        dicArr: [],
+        yaopinDicArr: [],
+        yinziDicArr: [],
+        waterDicArr: [],
+        paifangDicArr: [],
+        shoujiDicArr: [],
+        mdl: {},
       }
     },
+    watch: {
+      '$route'(to, from) { //监听路由是否变化
+        if (to.query.id != from.query.id) {
+          this.getData()
+        }
+      }
+    },
+    created() {
+      this.getDic()
+      this.getData()
+    },
     methods: {
-      handleSubmit(e) {
-        e.preventDefault()
-      },
-      newMember() {
-        const length = this.data.length
-        this.data.push({
-          key: length === 0 ? '1' : (parseInt(this.data[length - 1].key) + 1).toString(),
-          name: '',
-          workId: '',
-          department: '',
-          editable: true,
-          isNew: true
-        })
-      },
-      remove(key) {
-        const newData = this.data.filter(item => item.key !== key)
-        this.data = newData
-      },
-      saveRow(record) {
-        this.memberLoading = true
-        const { key, name, workId, department } = record
-        if (!name || !workId || !department) {
-          this.memberLoading = false
-          this.$message.error('请填写完整成员信息。')
+      // 加载数据
+      getData() {
+        let id = this.$route.query.id
+        if (!id) {
+          this.clearData()
           return
         }
-        // 模拟网络请求、卡顿 800ms
-        new Promise((resolve) => {
-          setTimeout(() => {
-            resolve({ loop: false })
-          }, 800)
-        }).then(() => {
-          const target = this.data.filter(item => item.key === key)[0]
-          target.editable = false
-          target.isNew = false
-          this.memberLoading = false
+        CompanyInfo.GetForEdit(id).then((res) => {
+          this.mdl = res.result
+          if(this.mdl.companyInfo.dischargeDate) {
+            this.mdl.companyInfo.dischargeDate = moment(this.mdl.companyInfo.dischargeDate)
+          }
+          this.$refs.baseInfoForm.edit(this.mdl.companyInfo)
+          this.$refs.waterInfoForm.edit(this.mdl.companyInfo)
+          this.$refs.yaopinTable.edit(this.mdl.companyMedcineTypeList)
+          this.$refs.poluTypeTable.edit(this.mdl.companyPoluTypeList)
         })
       },
-      toggle(key) {
-        const target = this.data.filter(item => item.key === key)[0]
-        target.editable = !target.editable
+      clearData(){
+        this.$refs.baseInfoForm.form.resetFields()
+        this.$refs.waterInfoForm.form.resetFields()
+        this.$refs.yaopinTable.edit([])
+        this.$refs.poluTypeTable.edit([])
       },
-      getRowByKey(key, newData) {
-        const data = this.data
-        return (newData || data).filter(item => item.key === key)[0]
+      // 加载字典数据
+      getDic() {
+        Dic.GetAllItem().then(res => {
+          this.dicArr = res.result
+          this.yaopinDicArr = this.dicArr.filter(t => t.typeCode == 'yaopin')
+          this.yinziDicArr = this.dicArr.filter(t => t.typeCode == 'yinzixinxi')
+          this.waterDicArr = this.dicArr.filter(t => t.typeCode == 'feishuileixing')
+          this.shoujiDicArr = this.dicArr.filter(t => t.typeCode == 'shoujifangshi')
+          this.paifangDicArr = this.dicArr.filter(t => t.typeCode == 'paifangfangshi')
+        })
       },
-      cancel(key) {
-        const target = this.data.filter(item => item.key === key)[0]
-        target.editable = false
+      handleSubmit(e) {
+        e.preventDefault()
       },
       handleChange(value, key, column) {
         const newData = [...this.data]
@@ -320,40 +176,76 @@
         }
       },
 
+      // 检查表格数据是否完成
+      checkTableData(rows, fieldName, message) {
+        if (!rows || !rows.length) return true
+        for (let row of rows) {
+          if (row[fieldName] === '' || row[fieldName] === null || row[fieldName] === undefined) {
+            this.$notification.warn({
+              message: '提示',
+              description: message
+            })
+            return false
+          }
+        }
+        return true
+      },
+
+      // 读取文件
+      getUploadFile(fileList) {
+        if (!fileList || !fileList.length) return null
+        var res = fileList.map((file) => file.response ? file.response.result : file)
+        return JSON.stringify(res)
+      },
+
       // 最终全页面提交
       validate() {
-        const { $refs: { repository, task }, $notification } = this
-        const repositoryForm = new Promise((resolve, reject) => {
-          repository.form.validateFields((err, values) => {
-            if (err) {
-              reject(err)
-              return
-            }
-            resolve(values)
-          })
-        })
-        const taskForm = new Promise((resolve, reject) => {
-          task.form.validateFields((err, values) => {
-            if (err) {
-              reject(err)
-              return
-            }
-            resolve(values)
-          })
-        })
+        const { $refs: { baseInfoForm, waterInfoForm, yaopinTable, poluTypeTable }, $notification } = this
 
-        // clean this.errors
-        this.errors = []
-        Promise.all([repositoryForm, taskForm]).then(values => {
-          $notification['error']({
-            message: 'Received values of form:',
-            description: JSON.stringify(values)
+        let poluTypeData = poluTypeTable.data
+        let yaopinData = yaopinTable.data
+
+        // 验证表单通过
+        baseInfoForm.form.validateFields((err, values) => {
+          values.licenseFile = this.getUploadFile(values.licenseFile)
+          values.craftFile = this.getUploadFile(values.craftFile)
+          values.pipeFile = this.getUploadFile(values.pipeFile)
+          values.issSheetFile = this.getUploadFile(values.issSheetFile)
+          if (err) {
+            const errors = Object.assign({}, baseInfoForm.form.getFieldsError())
+            const tmp = { ...errors }
+            this.errorList(tmp)
+            return
+          }
+
+          waterInfoForm.form.validateFields((waterErr, waterValues) => {
+            if (waterErr) {
+              const errors = Object.assign({}, waterInfoForm.form.getFieldsError())
+              const tmp = { ...errors }
+              this.errorList(tmp)
+              return
+            }
+            if (!this.checkTableData(poluTypeData, 'poluTypeId', '排查点位因子数据不完整，请调整！')) {
+              return
+            }
+            if (!this.checkTableData(yaopinData, 'medTypeId', '药品数据不完整，请调整！')) {
+              return
+            }
+            let data = {
+              companyInfo: Object.assign(this.mdl.companyInfo, values, waterValues),
+              companyPoluTypeList: poluTypeData,
+              companyMedcineTypeList: yaopinData
+            }
+            return CompanyInfo.SaveForEdit(data).then((res) => {
+              this.$message.info(`保存成功`)
+              this.$router.go(-1)
+            }).catch(err => {
+              $notification.error({
+                message: '保存失败，请稍后重试！',
+                description: err.message
+              })
+            })
           })
-        }).catch(() => {
-          const errors = Object.assign({}, repository.form.getFieldsError(), task.form.getFieldsError())
-          const tmp = { ...errors }
-          this.errorList(tmp)
-          console.log(tmp)
         })
       },
       errorList(errors) {

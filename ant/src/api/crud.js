@@ -22,6 +22,14 @@ export default class {
         })
     }
 
+    GetAllItem(params) {
+        return axios({
+            url: `/services/app/${this.entity}/GetAllItem`,
+            method: 'get',
+            params
+        })
+    }
+
     Create(data) {
         return axios({
             url: `/services/app/${this.entity}/Create`,
@@ -38,12 +46,12 @@ export default class {
         })
     }
 
-    Save(data, key='id') {
-        if(data.id){
-            return this.Update(data)
-        }else{
-            return this.Create(data)
-        }
+    Save(data) {
+        return axios({
+            url: `/services/app/${this.entity}/Save`,
+            method: 'post',
+            data
+        })
     }
 
     Delete(params) {

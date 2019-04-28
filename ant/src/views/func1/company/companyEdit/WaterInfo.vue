@@ -7,22 +7,24 @@
       <a-col :md="6"
              :sm="24">
         <a-form-item label="记录日期">
-          <a-input placeholder="请输入任务名称"
-                   v-decorator="[ 'name2', {rules: [{ required: true, message: '请输入任务名称', whitespace: true}]} ]" />
+          <a-date-picker style="width: 100%"
+                         placeholder="请输入记录日期"
+                         v-decorator="[ 'dischargeDate', {rules: [{ required: true, message: '请输入记录日期'}]} ]" />
         </a-form-item>
       </a-col>
       <a-col :md="6"
              :sm="24">
         <a-form-item label="污水排放频次(每月)">
-          <a-input placeholder="请输入任务名称"
-                   v-decorator="[ 'name2', {rules: [{ required: true, message: '请输入任务名称', whitespace: true}]} ]" />
+          <a-input-number placeholder="请输入污水排放频次"
+                          style="width: 100%"
+                          v-decorator="[ 'monthResTimes', {rules: [{ required: true, message: '请输入污水排放频次' }]} ]" />
         </a-form-item>
       </a-col>
       <a-col :md="6"
              :sm="24">
         <a-form-item label="单次排放量">
-          <a-input placeholder="请输入任务描述"
-                   v-decorator="[ 'url2', {rules: [{ required: true, message: '请输入任务描述', whitespace: true}]} ]">
+          <a-input placeholder="请输入单次排放量"
+                   v-decorator="[ 'monthResAmount', {rules: [{ required: true, message: '请输入单次排放量'}]} ]">
             <span slot="addonAfter"
                   style="width: 10px">吨
             </span>
@@ -32,8 +34,8 @@
       <a-col :md="6"
              :sm="24">
         <a-form-item label="月排放量">
-          <a-input placeholder="请输入任务描述"
-                   v-decorator="[ 'url2', {rules: [{ required: true, message: '请输入任务描述', whitespace: true}]} ]">
+          <a-input placeholder="请输入月排放量"
+                   v-decorator="[ 'monthTotalAmount', {rules: [{ required: true, message: '请输入月排放量'}]} ]">
             <span slot="addonAfter"
                   style="width: 10px">吨
             </span>
@@ -47,12 +49,12 @@
              :sm="24">
         <a-form-item label="排放方式">
           <a-select placeholder="请选择排放方式"
-                    v-decorator="[
-              'approver2',
-              {rules: [{ required: true, message: '请选择责任人'}]}
-            ]">
-            <a-select-option value="王伟">王伟</a-select-option>
-            <a-select-option value="李红军">李红军</a-select-option>
+                    v-decorator="['emissionTypeID',
+                                {rules: [{ required: true, message: '请选择排放方式'}]}
+                              ]">
+            <a-select-option v-for="dic in paifangDicArr"
+                             :key="dic.id"
+                             :value="dic.id">{{dic.name}}</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -60,19 +62,16 @@
              :sm="24">
         <a-form-item label="收集方式">
           <a-select placeholder="请选择收集方式"
-                    v-decorator="[
-       'approver2',
-       {rules: [{ required: true, message: '请选择责任人'}]}
-     ]">
-            <a-select-option value="王伟">王伟</a-select-option>
-            <a-select-option value="李红军">李红军</a-select-option>
+                    v-decorator="[ 'collTypeID',
+                    {rules: [{ required: true, message: '请选择责任人'}]}
+                  ]">
+            <a-select-option v-for="dic in shoujiDicArr"
+                             :key="dic.id"
+                             :value="dic.id">{{dic.name}}</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
     </a-row>
-    <a-form-item v-if="showSubmit">
-      <a-button htmlType="submit">Submit</a-button>
-    </a-form-item>
   </a-form>
 </template>
 
@@ -83,6 +82,12 @@
       showSubmit: {
         type: Boolean,
         default: false
+      },
+      paifangDicArr: {
+        type: Array
+      },
+      shoujiDicArr: {
+        type: Array
       }
     },
     data() {
@@ -93,15 +98,13 @@
     methods: {
       handleSubmit(e) {
         e.preventDefault()
-        this.form.validateFields((err, values) => {
-          if (!err) {
-            this.$notification['error']({
-              message: 'Received values of form:',
-              description: values
-            })
-          }
-        })
-      }
+      },
+      edit(record) {
+        this.form.resetFields()
+        setTimeout(() => {
+          this.form.setFieldsValue({ ...record })
+        }, 50);
+      },
     }
   }
 </script>

@@ -15,18 +15,18 @@
       <a-input placeholder="请输入企业地址"
                v-decorator="[
                           'address',
-                          {rules: [{ required: true, message: '请输入企业名称', whitespace: true}]}
+                          {rules: [{ required: true, message: '请输入企业地址', whitespace: true}]}
                         ]" />
     </a-form-item>
 
     <a-row :gutter="8">
       <a-col :md="12"
              :sm="24">
-        <a-form-item label="仓库联系人">
+        <a-form-item label="企业联系人">
           <a-input placeholder="请输入"
                    v-decorator="[
                     'contact',
-                    {rules: [{ required: true, message: '请输入企业联系人', whitespace: true}, {validator: validate}]}
+                    {rules: [{ required: true, message: '请输入企业联系人', whitespace: true}]}
                   ]" />
         </a-form-item>
       </a-col>
@@ -36,7 +36,7 @@
           <a-input placeholder="请输入联系电话"
                    v-decorator="[
              'tel',
-             {rules: [{ required: true, message: '请输入企业联系人', whitespace: true}, {validator: validate}]}
+             {rules: [{ required: true, message: '请输入联系电话', whitespace: true}]}
            ]" />
         </a-form-item>
       </a-col>
@@ -45,12 +45,12 @@
     <a-form-item v-bind="formItemLayout"
                  style="text-align: left;"
                  label="排污许可证">
-      <a-upload v-decorator="['upload', {
+      <a-upload v-decorator="['licenseFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
 }]"
-                name="logo"
-                action="/upload.do"
+                name="files"
+                action="/api/File/Upload"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -65,20 +65,21 @@ getValueFromEvent: normFile,
           <a-select placeholder="请选择废水类型"
                     v-decorator="[
                     'waterTypeID',
-                    {rules: [{ required: true, message: '请选择执行人'}]}
+                    {rules: [{ required: true, message: '请选择废水类型'}]}
                   ]">
-            <a-select-option value="1">废水1</a-select-option>
-            <a-select-option value="2">废水2</a-select-option>
+            <a-select-option v-for="dic in waterDicArr"
+                             :key="dic.id"
+                             :value="dic.id">{{dic.name}}</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
       <a-col :xs="24"
              :md="12">
-        <a-form-item label=" 废水月处理量">
-          <a-input placeholder="请输入企业地址"
+        <a-form-item label="废水月处理量">
+          <a-input placeholder="请输入废水月处理量"
                    v-decorator="[
-                        'address',
-                        {rules: [{ required: true, message: '请输入企业名称', whitespace: true}]}
+                        'waterAmount',
+                        {rules: [{ required: true, message: '请输入废水月处理量'}]}
                       ]">
             <span slot="addonAfter"
                   style="width: 10px">吨
@@ -92,12 +93,12 @@ getValueFromEvent: normFile,
                  style="text-align: left;"
                  label="污水处理工艺流程图"
                  extra="">
-      <a-upload v-decorator="['upload', {
+      <a-upload v-decorator="['craftFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
 }]"
-                name="logo"
-                action="/upload.do"
+                name="files"
+                action="/api/File/Upload"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -108,8 +109,7 @@ getValueFromEvent: normFile,
     <a-form-item label="工艺流程说明（要说明污水分流情况）">
       <a-textarea placeholder=""
                   v-decorator="[
-                      'address',
-                      {rules: [{ required: true, message: '请输入企业名称', whitespace: true}]}
+                      'craftDes'
                     ]">
       </a-textarea>
     </a-form-item>
@@ -118,12 +118,12 @@ getValueFromEvent: normFile,
                  style="text-align: left;"
                  label="污水管网图"
                  extra="">
-      <a-upload v-decorator="['upload', {
+      <a-upload v-decorator="['pipeFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
 }]"
-                name="logo"
-                action="/upload.do"
+                name="files"
+                action="/api/File/Upload"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -135,12 +135,12 @@ getValueFromEvent: normFile,
                  style="text-align: left;"
                  label="环境污染险保单复印件"
                  extra="">
-      <a-upload v-decorator="['upload', {
+      <a-upload v-decorator="['issSheetFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
 }]"
-                name="logo"
-                action="/upload.do"
+                name="files"
+                action="/api/File/Upload"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -148,15 +148,15 @@ getValueFromEvent: normFile,
       </a-upload>
     </a-form-item>
 
-    <a-row gutter="8">
+    <a-row :gutter="8">
       <a-col :md="12"
              :xs="24">
         <a-form-item label="环评公司名称"
                      extra="">
           <a-input placeholder="请输入环评公司名称"
                    v-decorator="[
-               'address',
-               {rules: [{ required: true, message: '请输入企业名称', whitespace: true}]}
+               'envCompany',
+               {rules: [{ required: true, message: '请输入环评公司名称', whitespace: true}]}
              ]">
           </a-input>
         </a-form-item>
@@ -166,8 +166,8 @@ getValueFromEvent: normFile,
         <a-form-item label="企业危险评级">
           <a-select placeholder="请选择企业危险评级"
                     v-decorator="[
-                     'waterTypeID',
-                     {rules: [{ required: true, message: '请选择执行人'}]}
+                     'riskBand',
+                     {rules: [{ required: true, message: '请选择企业危险评级'}]}
                    ]">
             <a-select-option value="1">1</a-select-option>
             <a-select-option value="2">2</a-select-option>
@@ -189,11 +189,14 @@ getValueFromEvent: normFile,
 
 <script>
   export default {
-    name: 'RepositoryForm',
+    name: 'BaseInfo',
     props: {
       showSubmit: {
         type: Boolean,
         default: false
+      },
+      waterDicArr: {
+        type: Array,
       }
     },
     data() {
@@ -203,7 +206,17 @@ getValueFromEvent: normFile,
           labelCol: { md: 2, align: 'left', xs: 24 },
           wrapperCol: { md: 14, offset: 2, xs: 24 },
         },
+        dicArr: [],
+        fileList: [{
+          uid: '-1',
+          name: 'xxx.png',
+          status: 'done',
+          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        }]
       }
+    },
+    created() {
+      this.form.getFieldDecorator('licenseFileArr', { initialValue: [], preserve: true });
     },
     methods: {
       handleSubmit(e) {
@@ -230,6 +243,25 @@ getValueFromEvent: normFile,
           return e;
         }
         return e && e.fileList;
+      },
+      parseFile(fileJSON) {
+        if (!fileJSON) return []
+        let filelist = JSON.parse(fileJSON)
+        return filelist.map(t => {
+          t.status = 'done'
+          t.url = `http://${location.host}/api/file/download?id=${t.uid}&name=${t.name}`
+          return t;
+        })
+      },
+      edit(record) {
+        this.form.resetFields()
+        record.licenseFile = this.parseFile(record.licenseFile)
+        record.craftFile = this.parseFile(record.craftFile)
+        record.pipeFile = this.parseFile(record.pipeFile)
+        record.issSheetFile = this.parseFile(record.issSheetFile)
+        setTimeout(() => {
+          this.form.setFieldsValue({ ...record })
+        }, 50);
       },
     }
   }
