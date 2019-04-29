@@ -58,7 +58,7 @@
                         dataIndex: 'poluTypeId',
                         width: '20%',
                         scopedSlots: { customRender: 'poluTypeId' }
-                    },
+                    }, 
                     {
                         title: '浓度',
                         dataIndex: 'concentration',
