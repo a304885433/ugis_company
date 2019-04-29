@@ -1,7 +1,7 @@
 <template>
   <a-locale-provider :locale="locale">
     <div id="app">
-      <router-view/>
+      <router-view :key="key"/>
     </div>
   </a-locale-provider>
 </template>
@@ -15,6 +15,11 @@ export default {
   data () {
     return {
       locale: zhCN
+    }
+  },
+  computed: {
+    key() {
+      return this.$route.name !== undefined ? this.$route.name + +new Date() : $route.path
     }
   },
   mounted () {

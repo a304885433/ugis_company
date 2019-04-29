@@ -324,17 +324,15 @@ export const asyncRouterMap = [
         name: 'manage',
         component: PageView,
         meta: { title: '业务数据', icon: 'slack', permission: ['dashboard'] },
-        redirect: '/manage/check-list',
+        redirect: '/manage/company',
         children: [
           {
             path: '/manage/company',
             name: 'CompanyListIndex',
             redirect: '/manage/company/list',
-            component: () => import('@/views/RouteView.vue'),
+            component: () => import('@/views/RouteView'),
             hideChildrenInMenu: true,
-            meta: {
-              title: '企业列表', keepAlive: true,
-            },
+            meta: { title: '企业列表' },
             children: [
               {
                 path: '/manage/company/list',
@@ -356,29 +354,32 @@ export const asyncRouterMap = [
             ]
           },
           {
-            path: '/manage/check-list',
-            name: 'CheckList',
+            path: '/manage/check/list',
+            name: 'CheckIndex',
             hideChildrenInMenu: true,
-            component: () => import('@/views/func1/CheckList'),
-            meta: {
-              title: '现场排查', keepAlive: true,
-              children: [
-                {
-                  path: '/manage/check-list/wizard-check',
-                  name: 'WizardCheck',
-                  component: () => import('@/views/func1/stepForm/WizardCheck'),
-                  meta: { title: '现场排查', hidden: true, permission: ['user'] }
-                }
-              ]
-            }
-          },
-          {
-            path: '/manage/wizard-check',
-            name: 'WizardCheck',
-            component: () => import('@/views/func1/stepForm/WizardCheck'),
-            meta: {
-              title: '增加排查', keepAlive: true,
-            }
+            redirect: '/manage/check/list',
+            component: () => import('@/views/RouteView.vue'),
+            meta: { title: '现场排查', },
+            children: [
+              {
+                path: '/manage/check/list',
+                name: 'CheckList',
+                component: () => import('@/views/func1/chkResult/CheckList'),
+                meta: { title: '', hidden: true, permission: ['user'] }
+              },
+              {
+                path: '/manage/check/wizard',
+                name: 'CheckWizard',
+                component: () => import('@/views/func1/chkResult/CheckWizard/Index'),
+                meta: { title: '增加排查', hidden: true, permission: ['user'] }
+              },
+              {
+                path: '/manage/check/edit',
+                name: 'CheckEdit',
+                component: () => import('@/views/func1/chkResult/CheckEdit/Index'),
+                meta: { title: '增加排查', hidden: true, permission: ['user'] }
+              },
+            ]
           },
         ]
       },
@@ -388,12 +389,12 @@ export const asyncRouterMap = [
         name: 'system',
         component: PageView,
         meta: { title: '系统设置', icon: 'slack', permission: ['dashboard'] },
-        redirect: '/other/icon-selector',
+        redirect: '/system/dict-list',
         children: [
           {
             path: '/system/dict-list',
             name: 'DictList',
-            component: () => import('@/views/func1/DictList'),
+            component: () => import('@/views/func1/dic/DictList'),
             // component: () => import('@/views/other/RoleList'),
             meta: { title: '字典数据', keepAlive: true }
           }

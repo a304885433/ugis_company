@@ -16,3 +16,12 @@ export function hasAnyOfPermissions(...argus) {
 export function hasAllOfPermissions(...argus) {
     return window.abp.auth.hasAllOfPermissions(...argus);
 }
+
+// 在数组中查找对象，用于转换名称
+export function showContent(value, arr, key_field, value_field) {
+    if (value == null) return null
+    if (!arr || !arr.length) return null
+    let item = _.find(arr, item => item[key_field] == value)
+    if (!item) return null
+    return item[value_field]
+}

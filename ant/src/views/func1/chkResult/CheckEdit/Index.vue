@@ -1,34 +1,14 @@
 <template>
   <div>
     <a-card class="card"
-            title="基本信息"
+            title=""
             :bordered="false">
-      <base-info ref="baseInfoForm"
-                 :showSubmit="false"
-                 :waterDicArr="waterDicArr" />
-    </a-card>
-
-    <a-card class="card"
-            title="排污信息"
-            :bordered="false">
-      <water-info ref="waterInfoForm"
-                  :showSubmit="false"
-                  :paifangDicArr="paifangDicArr"
-                  :shoujiDicArr="shoujiDicArr"
-                  :dianweiDicArr="dianweiDicArr" />
+      <check-info ref="checkInfoForm" />
     </a-card>
 
     <!-- table -->
-    <a-card title="污染因子">
-      <polu-type ref="poluTypeTable"
-                 :yinziDicArr="yinziDicArr"></polu-type>
-    </a-card>
-
-    <!-- table -->
-    <a-card title="药品及污染源购置台账">
-      <!-- <test ref="yaopinTable" :yaopinDicArr="yaopinDicArr"></test> -->
-      <yao-pin ref="yaopinTable"
-               :yaopinDicArr="yaopinDicArr"></yao-pin>
+    <a-card title="">
+      <check-item ref="checkItemTable" />
     </a-card>
 
     <!-- fixed footer toolbar -->
@@ -66,45 +46,24 @@
 </template>
 
 <script>
-  import BaseInfo from './BaseInfo'
-  import WaterInfo from './WaterInfo'
-  import YaoPin from './YaoPin'
-  import PoluType from './PoluType'
-  import Test from './Test3'
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
   import { Dic, CompanyInfo } from '@/api/'
   import moment from 'moment'
-
-  const fieldLabels = {
-    name: '仓库名',
-    url: '仓库域名',
-    owner: '仓库管理员',
-    approver: '审批人',
-    dateRange: '生效日期',
-    type: '仓库类型',
-    name2: '任务名',
-    url2: '任务描述',
-    owner2: '执行人',
-    approver2: '责任人',
-    dateRange2: '生效日期',
-    type2: '任务类型'
-  }
+  import CheckItem from './CheckItem'
+  import CheckInfo from './CheckInfo'
 
   export default {
     name: 'CompanyEditIndex',
     mixins: [mixin, mixinDevice],
     components: {
       FooterToolBar,
-      BaseInfo,
-      WaterInfo,
-      YaoPin,
-      PoluType,
-      Test
+      CheckItem,
+      CheckInfo
     },
     data() {
       return {
-        description: '录入企业相关的所有信息',
+        description: '录入排查数据',
         loading: false,
         memberLoading: false,
 
@@ -115,16 +74,12 @@
         waterDicArr: [],
         paifangDicArr: [],
         shoujiDicArr: [],
-        dianweiDicArr: [],
         mdl: {},
       }
     },
     watch: {
       '$route'(to, from) { //监听路由是否变化
-        if (to.query.id != from.query.id) {
-          // this.getData()
-          console.log(to, from)
-        }
+
       }
     },
     created() {
@@ -144,9 +99,6 @@
           if (this.mdl.companyInfo.dischargeDate) {
             this.mdl.companyInfo.dischargeDate = moment(this.mdl.companyInfo.dischargeDate)
           }
-          if(this.mdl.companyInfo.chkPointIdList){
-            this.mdl.companyInfo.chkPointIdList = this.mdl.companyInfo.chkPointIdList.split(',').map(t=> parseInt(t))
-          }
           this.$refs.baseInfoForm.edit(this.mdl.companyInfo)
           this.$refs.waterInfoForm.edit(this.mdl.companyInfo)
           this.$refs.yaopinTable.edit(this.mdl.companyMedcineTypeList)
@@ -155,10 +107,6 @@
       },
       clearData() {
         this.$nextTick(() => {
-          this.$refs.baseInfoForm.form.resetFields()
-          this.$refs.waterInfoForm.form.resetFields()
-          this.$refs.yaopinTable.edit([])
-          this.$refs.poluTypeTable.edit([])
         })
       },
       // 加载字典数据
@@ -170,7 +118,6 @@
           this.waterDicArr = this.dicArr.filter(t => t.typeCode == 'feishuileixing')
           this.shoujiDicArr = this.dicArr.filter(t => t.typeCode == 'shoujifangshi')
           this.paifangDicArr = this.dicArr.filter(t => t.typeCode == 'paifangfangshi')
-          this.dianweiDicArr = this.dicArr.filter(t => t.typeCode == 'dianweixinxi')
         })
       },
       handleSubmit(e) {
@@ -240,7 +187,6 @@
             if (!this.checkTableData(yaopinData, 'medTypeId', '药品数据不完整，请调整！')) {
               return
             }
-            waterValues.chkPointIdList = waterValues.chkPointIdList.join(',')
             let data = {
               companyInfo: Object.assign(this.mdl.companyInfo, values, waterValues),
               companyPoluTypeList: poluTypeData,
@@ -270,7 +216,6 @@
           return {
             key: key,
             message: errors[key][0],
-            fieldLabel: fieldLabels[key]
           }
         })
       },
