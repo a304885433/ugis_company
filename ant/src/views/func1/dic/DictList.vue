@@ -52,7 +52,7 @@
 <script>
   import STree from '@/components/Tree/Tree'
   import { STable } from '@/components'
-  import DicModal from './modules/DicModal'
+  import DicModal from './DicModal'
   import { DicType, Dic } from '@/api/index'
 
   export default {

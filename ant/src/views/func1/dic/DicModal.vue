@@ -10,6 +10,9 @@
         <a-form-item :label="name">
           <a-input v-decorator="['name', {}]" />
         </a-form-item>
+        <a-form-item label="排序值">
+            <a-input-number v-decorator="['orderId', {}]" />
+          </a-form-item>
       </a-form>
     </a-spin>
   </a-modal>
@@ -52,6 +55,7 @@
         this.edit({ typeCode })
       },
       edit(record) {
+        this.form.resetFields()
         this.mdl = Object.assign({}, record)
         this.visible = true
         this.$nextTick(() => {

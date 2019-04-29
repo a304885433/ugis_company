@@ -1,48 +1,33 @@
 <template>
-    <div>
+    <a-form @submit="handleSubmit"
+            :form="form"
+            class="form">
+
         <a-table :columns="columns"
                  :dataSource="data"
                  :pagination="false"
                  :loading="memberLoading">
-            <template v-for="(col, i) in ['name', 'workId', 'department']"
-                      :slot="col"
-                      slot-scope="text, record">
-                <a-input :key="col"
-                         v-if="record.editable"
-                         style="margin: -5px 0"
-                         :value="text"
-                         :placeholder="columns[i].title"
-                         @change="e => handleChange(e.target.value, record.key, col)" />
-                <template v-else>{{ text }}</template>
-            </template>
+
             <template slot="poluTypeId"
-                      slot-scope="text, record">
-                <a-select placeholder="请选择因子"
-                          style="width: 100%"
-                          v-model="record.poluTypeId"
-                          v-decorator="[
-                            'poluTypeId',
-                            {rules: [{ required: true, message: '请选择废水类型'}]}
-                          ]">
-                    <a-select-option v-for="dic in yinziDicArr"
+                      slot-scope="text, record,index">
+                <a-select style="width: 100%"
+                          v-model="record.poluTypeId">
+                    <a-select-option v-for="dic in yaopinDicArr"
                                      :key="dic.id"
                                      :value="dic.id">{{dic.name}}</a-select-option>
                 </a-select>
             </template>
-            <template slot="unit"
+            <template slot="concentration"
                       slot-scope="text, record, index">
-                <a-input v-model="record.unit"
-                         style="width: 100%" />
-            </template>
-            <template slot="emissionStdType"
-                      slot-scope="text, record">
-                <a-input v-model="record.emissionStdType"
-                         style="width: 100%" />
+                <a-input-number style="width: 100%"
+                                :precision="2"
+                                :step="1"
+                                v-model="record.concentration" />
             </template>
             <template slot="operation"
                       slot-scope="text, record">
                 <a-popconfirm title="是否要删除此行？"
-                              @confirm="remove(index)">
+                              @confirm="remove(record.key)">
                     <a>删除</a>
                 </a-popconfirm>
             </template>
@@ -52,38 +37,33 @@
                   icon="plus"
                   @click="handleAdd">新增</a-button>
         </a-card>
-    </div>
+    </a-form>
 </template>
 
 <script>
     export default {
-        name: 'PpluType',
+        name: 'CheckItem',
         props: {
-            yinziDicArr: Array
+            yaopinDicArr: Array
         },
         components: {
         },
         data() {
             return {
-                loading: false,
+                form: null,
                 memberLoading: false,
                 columns: [
                     {
-                        title: '污染因子',
+                        title: '因子',
                         dataIndex: 'poluTypeId',
                         width: '20%',
                         scopedSlots: { customRender: 'poluTypeId' }
                     },
                     {
-                        title: '排放限值(单位）',
-                        dataIndex: 'unit',
-                        width: '20%',
-                        scopedSlots: { customRender: 'unit' }
-                    },
-                    {
-                        title: '排放标准名称(单位）',
-                        dataIndex: 'emissionStdType',
-                        scopedSlots: { customRender: 'emissionStdType' }
+                        title: '浓度',
+                        dataIndex: 'concentration',
+                        width: '30%',
+                        scopedSlots: { customRender: 'concentration' }
                     },
                     {
                         title: '操作',
@@ -94,6 +74,9 @@
                 data: [],
                 errors: []
             }
+        },
+        created() {
+            this.form = this.$form.createForm(this);
         },
         methods: {
             edit(data) {
@@ -110,12 +93,9 @@
                 })
             },
             handleAdd() {
-                const length = this.data.length
                 this.data.push({
-                    key: length === 0 ? '1' : (parseInt(this.data[length - 1].key) + 1).toString(),
-                    poluTypeId: null,
-                    unit: null,
-                    emissionStdType: null,
+                    medTypeId: null,
+                    monthAmmount: null,
                 })
             },
             remove(index) {

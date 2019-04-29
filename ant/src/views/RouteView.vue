@@ -14,7 +14,6 @@
         },
         data() {
             return {
-
             }
         },
         created() {

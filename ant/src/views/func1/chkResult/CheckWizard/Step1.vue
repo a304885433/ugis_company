@@ -2,12 +2,12 @@
   <div>
     <a-form style="max-width: 500px; margin: 40px auto 0;">
       <a-form-item
-        label="企业信息"
+        label="企业"
         :labelCol="labelCol"
         :wrapperCol="wrapperCol"
       >
         <a-select value="1" placeholder="ant-design@alipay.com">
-          <a-select-option value="1">ant-design@alipay.com</a-select-option>
+          <a-select-option value="1">企业信息</a-select-option>
         </a-select>
       </a-form-item>
       <a-form-item :wrapperCol="{span: 19, offset: 5}">
