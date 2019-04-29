@@ -21,11 +21,6 @@ namespace MyERP.UGIS
         public string Name { get; set; }
 
         /// <summary>
-        /// 字典类别
-        /// </summary>
-        public string Category { get; set; }
-
-        /// <summary>
         /// 数据
         /// </summary>
         public string Value { get; set; }

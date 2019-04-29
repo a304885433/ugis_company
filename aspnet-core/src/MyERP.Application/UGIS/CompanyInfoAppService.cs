@@ -15,7 +15,7 @@ namespace MyERP.UGIS
     /// <summary>
     /// 企业信息应用服务
     /// </summary>
-    public class CompanyInfoAppService : AsyncCrudAppService<CompanyInfo,
+    public class CompanyInfoAppService : MyAsyncCrudAppService<CompanyInfo,
         CompanyInfoDto, int, CompanyInfoGetAllDto>
     {
         IRepository<CompanyPoluType, int> companyPoluTypeRepository;

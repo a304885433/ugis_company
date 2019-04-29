@@ -105,5 +105,9 @@ namespace MyERP.UGIS
         /// </summary>
         public int CollTypeID { get; set; }
 
+        /// <summary>
+        /// 排查点位信息
+        /// </summary>
+        public string ChkPointIdList { get; set; }
     }
 }
