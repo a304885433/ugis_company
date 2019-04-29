@@ -181,6 +181,11 @@
             自流方式Id
             </summary>
         </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.ChkPointIdList">
+            <summary>
+            排查点位信息
+            </summary>
+        </member>
         <member name="T:MyERP.UGIS.CompanyMedcineType">
             <summary>
             企业药品信息
@@ -239,11 +244,6 @@
         <member name="P:MyERP.UGIS.Dic.Name">
             <summary>
             名称
-            </summary>
-        </member>
-        <member name="P:MyERP.UGIS.Dic.Category">
-            <summary>
-            字典类别
             </summary>
         </member>
         <member name="P:MyERP.UGIS.Dic.Value">
