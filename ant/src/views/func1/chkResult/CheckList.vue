@@ -6,12 +6,13 @@
           <a-col :md="8"
                  :sm="24">
             <a-form-item label="企业名称">
-              <a-select v-model="queryParam.compnayId"
+              <a-select v-model="queryParam.companyId"
                         placeholder="请选择"
                         :allowClear="true"
-                        default-value="0">
+                        @change="handleCompanyChange">
                 <a-select-option v-for="item in companyArr"
-                                 :value="item.name"
+                                 :value="item.id"
+                                 :chkPointId="item.chkPointIdList"
                                  :key="item.id">{{ item.name }}</a-select-option>
               </a-select>
             </a-form-item>
@@ -24,8 +25,8 @@
                         :allowClear="true"
                         default-value="0">
                 <a-select-option v-for="item in chkPointArr"
-                                 :value="item.name"
-                                 :key="item.id">{{ item.id }}</a-select-option>
+                                 :value="item.id"
+                                 :key="item.id">{{ item.name }}</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -38,8 +39,8 @@
                           :allowClear="true"
                           default-value="0">
                   <a-select-option v-for="item in poluTypeArr"
-                                   :value="item.name"
-                                   :key="item.id">{{ item.id }}</a-select-option>
+                                   :value="item.id"
+                                   :key="item.id">{{ item.name }}</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
@@ -48,6 +49,7 @@
               <a-form-item label="排查日期">
                 <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
                   <a-date-picker v-model="queryParam.startChkDate"
+                  format="YYYY-MM-DD HH:mm:ss"
                                  style="width: 100%" />
                 </a-form-item>
                 <span :style="{ display: 'inline-block', width: '24px', textAlign: 'center' }">
@@ -55,7 +57,8 @@
                 </span>
                 <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
                   <a-date-picker v-model="queryParam.endChkDate"
-                                 style="width: 100%" />
+                  format="YYYY-MM-DD HH:mm:ss"
+                  style="width: 100%" />
                 </a-form-item>
               </a-form-item>
             </a-col>
@@ -164,7 +167,15 @@
         // 高级搜索 展开/关闭
         advanced: false,
         // 查询参数
-        queryParam: {},
+        queryParam: {
+          chkPointId: null,
+          poluTypeId: null,
+          startChkDate: null,
+          endChkDate: null,
+          startConcentration: null,
+          endConcentration: null,
+          chkBatch: null,
+        },
         // 表头
         columns: [
           {
@@ -194,23 +205,26 @@
           {
             title: '排查时间',
             dataIndex: 'chkDate',
+            customRender: (date) => moment( date ).format('YYYY-MM-DD HH:mm:ss')
           },
-          {
-            title: '操作',
-            dataIndex: 'action',
-            width: '150px',
-            scopedSlots: { customRender: 'action' }
-          }
+          // {
+          //   title: '操作',
+          //   dataIndex: 'action',
+          //   width: '150px',
+          //   scopedSlots: { customRender: 'action' }
+          // }
         ],
         // 加载数据方法 必须为 Promise 对象
         loadData: parameter => {
-          return ChkResult.GetAll(Object.assign(parameter, this.queryParam))
+          let param = Object.assign(parameter, this.queryParam)
+          if(param.startChkDate) {
+            param.startChkDate = moment(param.startChkDate).format('YYYY-MM-DD HH:mm:ss')
+          }
+          if(param.endChkDate) {
+            param.endChkDate = moment(param.endChkDate).format('YYYY-MM-DD HH:mm:ss')
+          }
+          return ChkResult.GetCustomAll(param)
             .then(res => {
-              for (let r of res.result.items) {
-                r.companyName = this.showContent(r.companyId, this.companyArr, 'id', 'name')
-                r.poluTypeName = this.showContent(r.poluTypeId, this.poluTypeArr, 'id', 'name')
-                r.chkPointName = this.showContent(r.chkPointId, this.chkPointArr, 'id', 'name')
-              }
               return res.result
             })
         },
@@ -239,12 +253,15 @@
       CompanyInfo.GetAllItem().then(res => {
         this.companyArr = res.result
       })
-      Dic.GetAllItem().then(res => {
-        this.chkPointArr = res.result.filter(t => t.typeCode == 'yinzixinxi')
-        this.poluTypeArr = res.result.filter(t => t.typeCode == 'dianweixinxi')
-      })
     },
     methods: {
+      handleCompanyChange(companyId, node) {
+        var ids = node.data.attrs.chkPointId || '0'
+        this.queryParam.poluTypeId = null
+        this.queryParam.chkPointId = null
+        this.getChkPoint(ids)
+        this.getPoluType(companyId)
+      },
       handleAdd(record) {
         this.$router.push({ name: 'CheckEdit', params: { companyArr: this.companyArr, chkPointArr: this.chkPointArr, poluTypeArr: this.chkPointArr } })
       },
@@ -254,9 +271,17 @@
       handleOk() {
         this.$refs.table.refresh()
       },
-      onSelectChange(selectedRowKeys, selectedRows) {
-        this.selectedRowKeys = selectedRowKeys
-        this.selectedRows = selectedRows
+      getChkPoint(ids) {
+        Dic.GetAllItem({
+          idList: ids
+        }).then(res => {
+          this.chkPointArr = res.result.filter(t => t.typeCode == 'dianweixinxi')
+        })
+      },
+      getPoluType(id){
+        CompanyInfo.GetPoluType({id}).then(res=>{
+          this.poluTypeArr = res.result
+        })
       },
       toggleAdvanced() {
         this.advanced = !this.advanced

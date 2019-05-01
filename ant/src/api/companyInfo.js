@@ -17,3 +17,11 @@ export function SaveForEdit(data) {
         data
     })
 }
+
+export function GetPoluType(params) {
+    return axios({
+        url: `/services/app/CompanyInfo/GetPoluType`,
+        method: 'get',
+        params
+    })
+}

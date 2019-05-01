@@ -2,8 +2,9 @@ import { axios } from '@/utils/request'
 
 export default class {
 
-    constructor(entity) {
+    constructor(entity, extendMethod) {
         this.entity = entity
+        Object.assign(this, extendMethod)
     }
 
     Get(params) {

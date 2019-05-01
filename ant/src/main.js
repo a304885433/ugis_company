@@ -7,8 +7,6 @@ import router from './router'
 import store from './store/'
 import { VueAxios, axios } from './utils/request'
 
-// mock
-// import './mock'
 import Util from './lib/util';
 
 import bootstrap from './core/bootstrap'
