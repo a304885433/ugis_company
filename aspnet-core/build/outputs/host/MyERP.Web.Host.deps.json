@@ -4063,6 +4063,7 @@
       },
       "MyERP.Application/1.0.0": {
         "dependencies": {
+          "MyERP.Common": "1.0.0",
           "MyERP.Core": "1.0.0"
         },
         "runtime": {

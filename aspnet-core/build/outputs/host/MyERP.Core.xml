@@ -81,6 +81,11 @@
             浓度
             </summary>
         </member>
+        <member name="P:MyERP.UGIS.ChkResult.ChkUserName">
+            <summary>
+            排查人
+            </summary>
+        </member>
         <member name="T:MyERP.UGIS.CompanyInfo">
             <summary>
             企业信息
