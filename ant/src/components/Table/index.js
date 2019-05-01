@@ -166,6 +166,10 @@ export default {
           (!this.showPagination || !r.totalCount && this.showPagination === 'auto') && (this.localPagination.hideOnSinglePage = true)
           this.localDataSource = r.items // 返回结果中的数组数据
           this.localLoading = false
+        }).catch(err => {
+          let res = err.response.data
+          this.$message.error(`数据加载失败 ${res.error.message}`)
+          this.localLoading = false
         })
       }
     },

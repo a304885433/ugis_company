@@ -3,7 +3,9 @@
     <a-card class="card"
             title=""
             :bordered="false">
-      <check-info ref="checkInfoForm" />
+      <check-info :companyArr="companyArr"
+                  :dianweiDicArr="dianweiDicArr"
+                  ref="checkInfoForm" />
     </a-card>
 
     <!-- table -->
@@ -48,7 +50,7 @@
 <script>
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
-  import { Dic, CompanyInfo } from '@/api/'
+  import { Dic, CompanyInfo, ChkResult } from '@/api/'
   import moment from 'moment'
   import CheckItem from './CheckItem'
   import CheckInfo from './CheckInfo'
@@ -69,55 +71,23 @@
 
         errors: [],
         dicArr: [],
-        yaopinDicArr: [],
-        yinziDicArr: [],
-        waterDicArr: [],
-        paifangDicArr: [],
-        shoujiDicArr: [],
-        mdl: {},
-      }
-    },
-    watch: {
-      '$route'(to, from) { //监听路由是否变化
-
+        dianweiDicArr: [],
+        companyArr: []
       }
     },
     created() {
-      this.getDic()
-      this.getData()
+      this.getCompanyInfo()
     },
     methods: {
-      // 加载数据
-      getData() {
-        let id = this.$route.query.id
-        if (!id) {
-          this.clearData()
-          return
-        }
-        CompanyInfo.GetForEdit(id).then((res) => {
-          this.mdl = res.result
-          if (this.mdl.companyInfo.dischargeDate) {
-            this.mdl.companyInfo.dischargeDate = moment(this.mdl.companyInfo.dischargeDate)
-          }
-          this.$refs.baseInfoForm.edit(this.mdl.companyInfo)
-          this.$refs.waterInfoForm.edit(this.mdl.companyInfo)
-          this.$refs.yaopinTable.edit(this.mdl.companyMedcineTypeList)
-          this.$refs.poluTypeTable.edit(this.mdl.companyPoluTypeList)
-        })
-      },
       clearData() {
         this.$nextTick(() => {
         })
       },
-      // 加载字典数据
-      getDic() {
-        Dic.GetAllItem().then(res => {
-          this.dicArr = res.result
-          this.yaopinDicArr = this.dicArr.filter(t => t.typeCode == 'yaopin')
-          this.yinziDicArr = this.dicArr.filter(t => t.typeCode == 'yinzixinxi')
-          this.waterDicArr = this.dicArr.filter(t => t.typeCode == 'feishuileixing')
-          this.shoujiDicArr = this.dicArr.filter(t => t.typeCode == 'shoujifangshi')
-          this.paifangDicArr = this.dicArr.filter(t => t.typeCode == 'paifangfangshi')
+      // 加载公司数据
+      getCompanyInfo() {
+        // 获取公司信息
+        return CompanyInfo.GetAllItem().then(res => {
+          this.companyArr = res.result
         })
       },
       handleSubmit(e) {
@@ -156,50 +126,39 @@
 
       // 最终全页面提交
       validate() {
-        const { $refs: { baseInfoForm, waterInfoForm, yaopinTable, poluTypeTable }, $notification } = this
+        const { $refs: { checkInfoForm, checkItemTable }, $notification } = this
 
-        let poluTypeData = poluTypeTable.data
-        let yaopinData = yaopinTable.data
+        let data = checkItemTable.data
 
         // 验证表单通过
-        baseInfoForm.form.validateFields((err, values) => {
-          values.licenseFile = this.getUploadFile(values.licenseFile)
-          values.craftFile = this.getUploadFile(values.craftFile)
-          values.pipeFile = this.getUploadFile(values.pipeFile)
-          values.issSheetFile = this.getUploadFile(values.issSheetFile)
+        checkInfoForm.form.validateFields((err, values) => {
+
           if (err) {
-            const errors = Object.assign({}, baseInfoForm.form.getFieldsError())
+            const errors = Object.assign({}, checkInfoForm.form.getFieldsError())
             const tmp = { ...errors }
             this.errorList(tmp)
             return
           }
 
-          waterInfoForm.form.validateFields((waterErr, waterValues) => {
-            if (waterErr) {
-              const errors = Object.assign({}, waterInfoForm.form.getFieldsError())
-              const tmp = { ...errors }
-              this.errorList(tmp)
-              return
-            }
-            if (!this.checkTableData(poluTypeData, 'poluTypeId', '排查点位因子数据不完整，请调整！')) {
-              return
-            }
-            if (!this.checkTableData(yaopinData, 'medTypeId', '药品数据不完整，请调整！')) {
-              return
-            }
-            let data = {
-              companyInfo: Object.assign(this.mdl.companyInfo, values, waterValues),
-              companyPoluTypeList: poluTypeData,
-              companyMedcineTypeList: yaopinData
-            }
-            return CompanyInfo.SaveForEdit(data).then((res) => {
-              this.$message.info(`保存成功`)
-              this.$router.go(-1)
-            }).catch(err => {
-              $notification.error({
-                message: '保存失败，请稍后重试！',
-                description: err.message
-              })
+          if (data.length == 0) {
+            this.$notification.warn({
+              message: '未填写因子排查数据',
+            })
+          }
+
+          if (!this.checkTableData(data, 'poluTypeId', '因子数据不完整，请调整！')) {
+            return
+          }
+
+          values.poluTypeList = data
+
+          return ChkResult.SaveForEdit(values).then((res) => {
+            this.$message.info(`保存成功`)
+            this.$router.go(-1)
+          }).catch(err => {
+            $notification.error({
+              message: '保存失败，请稍后重试！',
+              description: err.message
             })
           })
         })

@@ -128,13 +128,11 @@ module.exports = {
     port: 8000,
     proxy: {
       '/api': {
-        // target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
         target: 'http://10.211.55.7:3001/',
         ws: false,
         changeOrigin: true,
       },
       '/AbpUserConfiguration': {
-        // target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
         target: 'http://10.211.55.7:3001/',
         ws: false,
         changeOrigin: true,
