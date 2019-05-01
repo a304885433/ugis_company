@@ -22,6 +22,7 @@ using System.Data.SqlClient;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using MyERP.Web.Host.Middleware;
+using MyERP.Base;
 
 namespace MyERP.Web.Host.Startup
 {

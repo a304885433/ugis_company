@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Abp.Linq.Extensions;
+using MyERP.Common.Extend;
+using Castle.Core.Internal;
 
 namespace MyERP.UGIS
 {
@@ -22,8 +24,9 @@ namespace MyERP.UGIS
         protected override IQueryable<Dic> CreateFilteredQuery(GetAllDicInput input)
         {
             return base.CreateFilteredQuery(input)
-                .WhereIf(!string.IsNullOrEmpty(input.TypeCode), t => t.TypeCode == input.TypeCode)
-                .WhereIf(!string.IsNullOrEmpty(input.Name), t => t.Name.Contains(input.Name));
+                .WhereIf(input.IdList != null, t => input.IdList.AsIntList().Contains(t.Id))
+                .WhereIf(!input.TypeCode.IsNullOrEmpty(), t => t.TypeCode == input.TypeCode)
+                .WhereIf(!input.Name.IsNullOrEmpty(), t => t.Name.Contains(input.Name));
 
         }
     }

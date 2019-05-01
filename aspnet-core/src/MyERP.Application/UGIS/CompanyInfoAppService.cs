@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using MyERP.Base;
 using Abp.Linq.Extensions;
+using Abp.Application.Services.Dto;
+using MyERP.Common.Extend;
 
 namespace MyERP.UGIS
 {
@@ -20,14 +22,17 @@ namespace MyERP.UGIS
     {
         IRepository<CompanyPoluType, int> companyPoluTypeRepository;
         IRepository<CompanyMedcineType, int> companyMedcineTypeRepository;
+        IRepository<Dic, int> dicRepository;
 
         public CompanyInfoAppService(IRepository<CompanyInfo, int> repository,
             IRepository<CompanyPoluType, int> companyPoluTypeRepository,
-            IRepository<CompanyMedcineType, int> companyMedcineTypeRepository) : base(repository)
+            IRepository<CompanyMedcineType, int> companyMedcineTypeRepository,
+             IRepository<Dic, int> dicRepository) : base(repository)
         {
             LocalizationSourceName = MyERPConsts.LocalizationSourceName;
             this.companyPoluTypeRepository = companyPoluTypeRepository;
             this.companyMedcineTypeRepository = companyMedcineTypeRepository;
+            this.dicRepository = dicRepository;
         }
 
         protected override IQueryable<CompanyInfo> CreateFilteredQuery(CompanyInfoGetAllDto input)
@@ -115,7 +120,25 @@ namespace MyERP.UGIS
                 CompanyPoluTypeList = poluTypeList.MapTo<List<CompanyPoluTypeDto>>(),
             };
 
+        }
 
+        /// <summary>
+        /// 读取企业因子
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public virtual List<DicDto> GetPoluType(NullableIdDto dto)
+        {
+            // 获取公司信息
+            var query = from company in Repository.GetAll()
+                        join poluType in companyPoluTypeRepository.GetAll() on company.Id equals poluType.CompanyId
+                        join dic in dicRepository.GetAll() on poluType.PoluTypeId equals dic.Id
+                        where company.Id == dto.Id
+                        select dic;
+
+            var list = query.OrderBy(t => t.OrderId).MapTo<List<DicDto>>();
+
+            return list;
         }
 
     }

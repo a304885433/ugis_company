@@ -11,6 +11,7 @@
     <RootNamespace>MyERP</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyERP.Common\MyERP.Common.csproj" />
     <ProjectReference Include="..\MyERP.Core\MyERP.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

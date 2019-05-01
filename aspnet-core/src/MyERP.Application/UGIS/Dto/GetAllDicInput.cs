@@ -25,5 +25,10 @@ namespace MyERP.UGIS.Dto
         /// </summary>
         public string Sorting { get; set; } = "OrderId ASC";
 
+        /// <summary>
+        /// 多个Id
+        /// </summary>
+        public string IdList { get; set; }
+
     }
 }
