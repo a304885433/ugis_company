@@ -80,7 +80,7 @@ const user = {
           })
           commit('SET_INFO', result)
 
-          commit('SET_NAME', { name: result.user.username, welcome: welcome() })
+          commit('SET_NAME', { name: result.user.userName, welcome: welcome() })
           commit('SET_AVATAR', result.avatar)
 
           resolve(response)
@@ -96,6 +96,7 @@ const user = {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
         Util.abp.auth.clearToken()
+        resolve()
       })
     }
 

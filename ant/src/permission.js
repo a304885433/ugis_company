@@ -19,7 +19,7 @@ router.beforeEach((to, from, next) => {
     /* has token */
     if (to.path === '/user/login') {
       // next({ path: '/dashboard/workplace' })
-      next({ path: '/manage/' })
+      next({ path: '/manage/company/' })
       NProgress.done()
     } else {
       if (store.getters.roles.length === 0) {
