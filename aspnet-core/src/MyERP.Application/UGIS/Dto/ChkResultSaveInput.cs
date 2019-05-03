@@ -1,14 +1,12 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyERP.UGIS
+namespace MyERP.UGIS.Dto
 {
-    /// <summary>
-    /// 排查结果
-    /// </summary>
-    public class ChkResult : AuditedEntity
+    [AutoMapTo(typeof(ChkResult))]
+    public class ChkResultSaveInput
     {
         /// <summary>
         /// 企业Id
@@ -21,29 +19,25 @@ namespace MyERP.UGIS
         public int ChkPointId { get; set; }
 
         /// <summary>
-        /// 排放因子
+        /// 记录员
         /// </summary>
-        public int PoluTypeId { get; set; }
+        public string ChkUserName { get; set; }
 
         /// <summary>
-        /// 排查日期
+        /// 检查日期
         /// </summary>
         public DateTime ChkDate { get; set; }
 
         /// <summary>
-        /// 排查批次
+        /// 检查批次
         /// </summary>
         public string ChkBatch { get; set; }
 
-        /// <summary>
-        /// 浓度
-        /// </summary>
-        public decimal Concentration { get; set; }
 
         /// <summary>
-        /// 排查人
+        /// 排查因子数据
         /// </summary>
-        public string ChkUserName { get; set; }
+        public List<ChkResultSavePoluTypeInput> PoluTypeList { get; set; }
 
     }
 }
