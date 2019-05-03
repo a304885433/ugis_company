@@ -17,7 +17,7 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/system/dict-list',
         component: RouteView,
-        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: ['dashboard'] },
+        meta: { title: '仪表盘', icon: bxAnaalyse, permission: ['dashboard'] },
       },
       //   children: [
       //     {
@@ -36,7 +36,7 @@ export const asyncRouterMap = [
       //       path: '/dashboard/workplace',
       //       name: 'Workplace',
       //       component: () => import('@/views/dashboard/Workplace'),
-      //       meta: { title: '工作台', keepAlive: true, permission: ['dashboard'] }
+      //       meta: { title: '工作台', permission: ['dashboard'] }
       //     }
       //   ]
       // },
@@ -52,19 +52,19 @@ export const asyncRouterMap = [
       //       path: '/form/base-form',
       //       name: 'BaseForm',
       //       component: () => import('@/views/form/BasicForm'),
-      //       meta: { title: '基础表单', keepAlive: true, permission: ['form'] }
+      //       meta: { title: '基础表单', permission: ['form'] }
       //     },
       //     {
       //       path: '/form/step-form',
       //       name: 'StepForm',
       //       component: () => import('@/views/form/stepForm/StepForm'),
-      //       meta: { title: '分步表单', keepAlive: true, permission: ['form'] }
+      //       meta: { title: '分步表单', permission: ['form'] }
       //     },
       //     {
       //       path: '/form/advanced-form',
       //       name: 'AdvanceForm',
       //       component: () => import('@/views/form/advancedForm/AdvancedForm'),
-      //       meta: { title: '高级表单', keepAlive: true, permission: ['form'] }
+      //       meta: { title: '高级表单', permission: ['form'] }
       //     }
       //   ]
       // },
@@ -82,26 +82,26 @@ export const asyncRouterMap = [
       //       name: 'TableListWrapper',
       //       hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
       //       component: () => import('@/views/list/TableList'),
-      //       meta: { title: '查询表格', keepAlive: true, permission: ['table'] }
+      //       meta: { title: '查询表格', permission: ['table'] }
       //     },
       //     {
       //       path: '/list/basic-list',
       //       name: 'BasicList',
       //       component: () => import('@/views/list/StandardList'),
-      //       meta: { title: '标准列表', keepAlive: true, permission: ['table'] }
+      //       meta: { title: '标准列表', permission: ['table'] }
       //     },
       //     {
       //       path: '/list/card',
       //       name: 'CardList',
       //       component: () => import('@/views/list/CardList'),
-      //       meta: { title: '卡片列表', keepAlive: true, permission: ['table'] }
+      //       meta: { title: '卡片列表', permission: ['table'] }
       //     },
       //     {
       //       path: '/list/search',
       //       name: 'SearchList',
       //       component: () => import('@/views/list/search/SearchLayout'),
       //       redirect: '/list/search/article',
-      //       meta: { title: '搜索列表', keepAlive: true, permission: ['table'] },
+      //       meta: { title: '搜索列表', permission: ['table'] },
       //       children: [
       //         {
       //           path: '/list/search/article',
@@ -207,13 +207,13 @@ export const asyncRouterMap = [
       //   component: RouteView,
       //   redirect: '/account/center',
       //   name: 'account',
-      //   meta: { title: '个人页', icon: 'user', keepAlive: true, permission: ['user'] },
+      //   meta: { title: '个人页', icon: 'user', permission: ['user'] },
       //   children: [
       //     {
       //       path: '/account/center',
       //       name: 'center',
       //       component: () => import('@/views/account/center/Index'),
-      //       meta: { title: '个人中心', keepAlive: true, permission: ['user'] }
+      //       meta: { title: '个人中心', permission: ['user'] }
       //     },
       //     {
       //       path: '/account/settings',
@@ -233,25 +233,25 @@ export const asyncRouterMap = [
       //           path: '/account/settings/security',
       //           name: 'SecuritySettings',
       //           component: () => import('@/views/account/settings/Security'),
-      //           meta: { title: '安全设置', hidden: true, keepAlive: true, permission: ['user'] }
+      //           meta: { title: '安全设置', hidden: true, permission: ['user'] }
       //         },
       //         {
       //           path: '/account/settings/custom',
       //           name: 'CustomSettings',
       //           component: () => import('@/views/account/settings/Custom'),
-      //           meta: { title: '个性化设置', hidden: true, keepAlive: true, permission: ['user'] }
+      //           meta: { title: '个性化设置', hidden: true, permission: ['user'] }
       //         },
       //         {
       //           path: '/account/settings/binding',
       //           name: 'BindingSettings',
       //           component: () => import('@/views/account/settings/Binding'),
-      //           meta: { title: '账户绑定', hidden: true, keepAlive: true, permission: ['user'] }
+      //           meta: { title: '账户绑定', hidden: true, permission: ['user'] }
       //         },
       //         {
       //           path: '/account/settings/notification',
       //           name: 'NotificationSettings',
       //           component: () => import('@/views/account/settings/Notification'),
-      //           meta: { title: '新消息通知', hidden: true, keepAlive: true, permission: ['user'] }
+      //           meta: { title: '新消息通知', hidden: true, permission: ['user'] }
       //         }
       //       ]
       //     }
@@ -270,7 +270,7 @@ export const asyncRouterMap = [
           //   path: '/other/icon-selector',
           //   name: 'TestIconSelect',
           //   component: () => import('@/views/other/IconSelectorView'),
-          //   meta: { title: 'IconSelector', icon: 'tool', keepAlive: true, permission: ['dashboard'] }
+          //   meta: { title: 'IconSelector', icon: 'tool', permission: ['dashboard'] }
           // },
           {
             path: '/other/list',
@@ -282,37 +282,37 @@ export const asyncRouterMap = [
               //   path: '/other/list/tree-list',
               //   name: 'TreeList',
               //   component: () => import('@/views/other/TreeList'),
-              //   meta: { title: '树目录表格', keepAlive: true }
+              //   meta: { title: '树目录表格' }
               // },
               // {
               //   path: '/other/list/edit-table',
               //   name: 'EditList',
               //   component: () => import('@/views/other/TableInnerEditList'),
-              //   meta: { title: '内联编辑表格', keepAlive: true }
+              //   meta: { title: '内联编辑表格' }
               // },
               {
                 path: '/other/list/user-list',
                 name: 'UserList',
                 component: () => import('@/views/other/UserList'),
-                meta: { title: '用户列表', keepAlive: true }
+                meta: { title: '用户列表' }
               },
               {
                 path: '/other/list/role-list',
                 name: 'RoleList',
                 component: () => import('@/views/other/RoleList'),
-                meta: { title: '角色列表', keepAlive: true }
+                meta: { title: '角色列表' }
               },
               {
                 path: '/other/list/system-role',
                 name: 'SystemRole',
                 component: () => import('@/views/role/RoleList'),
-                meta: { title: '角色列表2', keepAlive: true }
+                meta: { title: '角色列表2' }
               },
               {
                 path: '/other/list/permission-list',
                 name: 'PermissionList',
                 component: () => import('@/views/other/PermissionList'),
-                meta: { title: '权限列表', keepAlive: true }
+                meta: { title: '权限列表' }
               }
             ]
           }
@@ -339,7 +339,7 @@ export const asyncRouterMap = [
                 name: 'CompanyList',
                 component: () => import('@/views/func1/company/CompanyList'),
                 meta: {
-                  title: '企业列表', hidden: true, keepAlive: true,
+                  title: '企业列表', hidden: true,
                 },
               },
               {
@@ -348,7 +348,7 @@ export const asyncRouterMap = [
                 hidden: true,
                 component: () => import('@/views/func1/company/companyEdit/Index'),
                 meta: {
-                  title: '新增企业', hidden: true, keepAlive: true,
+                  title: '新增企业', hidden: true,
                 }
               },
             ]
@@ -385,6 +385,51 @@ export const asyncRouterMap = [
       },
       // 系统数据
       {
+        path: '/report',
+        name: 'Report',
+        component: PageView,
+        meta: { title: '输出报表', icon: 'slack', permission: ['report'] },
+        redirect: '/report/report1',
+        children: [
+          {
+            path: '/report/report1',
+            name: 'Report1',
+            component: () => import('@/views/func1/report/Report1'),
+            // component: () => import('@/views/other/RoleList'),
+            meta: { title: '企业排查统计' }
+          },
+          {
+            path: '/report/report2',
+            name: 'Report2',
+            component: () => import('@/views/func1/report/Report2'),
+            // component: () => import('@/views/other/RoleList'),
+            meta: { title: '企业因子统计' }
+          },
+          {
+            path: '/report/report3',
+            name: 'Report3',
+            component: () => import('@/views/func1/report/Report3'),
+            // component: () => import('@/views/other/RoleList'),
+            meta: { title: '所有因子统计' }
+          },
+          {
+            path: '/report/report4',
+            name: 'Report4',
+            component: () => import('@/views/func1/report/Report4'),
+            // component: () => import('@/views/other/RoleList'),
+            meta: { title: '企业点位统计' }
+          },
+          {
+            path: '/report/report5',
+            name: 'Report5',
+            component: () => import('@/views/func1/report/Report5'),
+            // component: () => import('@/views/other/RoleList'),
+            meta: { title: '所有点位统计' }
+          }
+        ]
+      },
+      // 系统数据
+      {
         path: '/system',
         name: 'system',
         component: PageView,
@@ -396,7 +441,7 @@ export const asyncRouterMap = [
             name: 'DictList',
             component: () => import('@/views/func1/dic/DictList'),
             // component: () => import('@/views/other/RoleList'),
-            meta: { title: '字典数据', keepAlive: true }
+            meta: { title: '字典数据' }
           }
         ]
       }
