@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyERP.Base;
 using MyERP.Models;
 using MyERP.Models.Files;
 using MyERP.Net.MimeTypes;
@@ -129,7 +130,7 @@ namespace MyERP.Controllers
             if (System.IO.File.Exists(filePath))
             {
                 var by = await System.IO.File.ReadAllBytesAsync(filePath);
-                return File(by, MimeTypeNames.ApplicationOctetStream, input.Name);
+                return File(by, MimeTypeNamesHelper.GetMimeType(ext), input.Name);
             }
             return null;
         }

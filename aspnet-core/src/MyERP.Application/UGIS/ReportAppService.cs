@@ -77,7 +77,7 @@ namespace MyERP.UGIS
                             foreach (var poluType in poluTypeList)
                             {
                                 var currData = t.Where(c => c.PoluTypeId == poluType.Id).ToList();
-                                var val = currData.Count > 0 ? currData.Average(c => c.Concentration) : 0;
+                                var val = currData.Count > 0 ? currData.Average(c => c.Concentration).Round() : 0;
                                 dic[$"col{poluType.Id}"] = val;
                             }
                             return dic;
@@ -110,7 +110,7 @@ namespace MyERP.UGIS
               {
                   var dic = new Dictionary<string, object>();
                   dic["time"] = t.Key.ToString("yyyy-MM-dd");
-                  dic["val"] = t.Average(c => c.Concentration);
+                  dic["val"] = t.Average(c => c.Concentration).Round();
                   return dic;
               }).ToList();
             return report;
@@ -147,7 +147,7 @@ namespace MyERP.UGIS
             {
                 var dic = new Dictionary<string, object>();
                 dic["name"] = t.First().Name;
-                dic["val"] = t.Average(c => c.val);
+                dic["val"] = t.Average(c => c.val).Round();
                 return dic;
             }).ToList();
 
@@ -191,7 +191,7 @@ namespace MyERP.UGIS
                         var dic = new Dictionary<string, object>();
                         dic["name"] = poluType.Name;
                         var currData = t.Where(c => c.PoluTypeId == poluType.Id);
-                        dic[colId] = currData.Any() ? currData.Average(c => c.Concentration) : 0;
+                        dic[colId] = currData.Any() ? currData.Average(c => c.Concentration).Round() : 0;
                         return dic;
                     }).ToList();
                 }).ToList();
@@ -230,7 +230,7 @@ namespace MyERP.UGIS
                 poluTypeOrderList.ForEach(poluType =>
                 {
                     var currData = chkResultList.Where(c => c.CompanyId == t.Id && c.PoluTypeId == poluType.Id).ToList();
-                    dic[$"col{poluType.Id}"] = currData.Count == 0 ? 0 : currData.Average(c => c.Concentration);
+                    dic[$"col{poluType.Id}"] = currData.Count == 0 ? 0 : currData.Average(c => c.Concentration).Round();
                 });
 
                 return dic;

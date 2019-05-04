@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using MyERP.Web.Host.Middleware;
 using MyERP.Base;
+using Abp.Timing;
 
 namespace MyERP.Web.Host.Startup
 {
@@ -99,6 +100,8 @@ namespace MyERP.Web.Host.Startup
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false;
             }); // Initializes ABP framework.
+
+            Clock.Provider = ClockProviders.Local;
 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
