@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class="links">
+    <!-- <div class="links">
       <a
         href="#"
         target="_blank"
@@ -17,7 +17,7 @@
     <div class="copyright">
       Copyright
       <a-icon type="copyright" /> 2018 <span>白鹭学园技术组出品</span>
-    </div>
+    </div> -->
   </div>
 </template>
 

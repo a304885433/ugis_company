@@ -1,4 +1,8 @@
 import appconst from '../lib/appconst'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn')
+
 export function L(value, source, ...argus) {
     console.log(appconst)
     if (source) {
@@ -26,3 +30,14 @@ export function showContent(value, arr, key_field, value_field) {
     return item[value_field]
 }
 
+export function numberFormat(value) {
+    if (!value) {
+        return '0'
+    }
+    const intPartFormat = value.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') // 将整数部分逢三一断
+    return intPartFormat
+}
+
+export function dateFormat(dataStr, pattern = 'YYYY-MM-DD') {
+    return moment(dataStr).format(pattern)
+}

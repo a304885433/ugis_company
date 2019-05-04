@@ -9,13 +9,13 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: '首页' },
-    redirect: '/dashboard/workplace',
+    redirect: '/manage/check/list',
     children: [
       // dashboard
       {
         path: '/dashboard',
         name: 'dashboard',
-        redirect: '/system/dict-list',
+        redirect: '/manage/check/list',
         component: RouteView,
         meta: { title: '仪表盘', icon: bxAnaalyse, permission: ['dashboard'] },
       },
@@ -290,12 +290,12 @@ export const asyncRouterMap = [
               //   component: () => import('@/views/other/TableInnerEditList'),
               //   meta: { title: '内联编辑表格' }
               // },
-              {
-                path: '/other/list/user-list',
-                name: 'UserList',
-                component: () => import('@/views/other/UserList'),
-                meta: { title: '用户列表' }
-              },
+              // {
+              //   path: '/other/list/user-list',
+              //   name: 'UserList',
+              //   component: () => import('@/views/other/UserList'),
+              //   meta: { title: '用户列表' }
+              // },
               {
                 path: '/other/list/role-list',
                 name: 'RoleList',
@@ -440,8 +440,25 @@ export const asyncRouterMap = [
             path: '/system/dict-list',
             name: 'DictList',
             component: () => import('@/views/func1/dic/DictList'),
-            // component: () => import('@/views/other/RoleList'),
-            meta: { title: '字典数据' }
+            meta: { title: '基础数据' }
+          },
+          {
+            path: '/system/user/list',
+            name: 'UserList',
+            component: () => import('@/views/func1/user/UserList'),
+            meta: { title: '用户列表' }
+          },
+          {
+            path: '/system/user/edit',
+            name: 'UserEdit',
+            component: () => import('@/views/func1/user/UserEdit'),
+            meta: { title: '用户编辑' }
+          },
+          {
+            path: '/system/user/password',
+            name: 'ChangePassword',
+            component: () => import('@/views/func1/user/ChangePassword'),
+            meta: { title: '修改密码' }
           }
         ]
       }

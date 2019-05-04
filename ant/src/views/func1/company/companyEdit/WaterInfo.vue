@@ -71,18 +71,19 @@
           </a-select>
         </a-form-item>
       </a-col>
-      <a-form-item label="排查点位">
-        <a-select placeholder="排查点位"
-                  mode="multiple"
-                  v-decorator="[ 'chkPointIdList',
+    </a-row>
+    <a-form-item label="排查点位">
+      <a-select placeholder="排查点位"
+                mode="multiple"
+                v-decorator="[ 'chkPointIdList',
                     {rules: [{ required: true, message: '请选择排查点位'}]}
                   ]">
-          <a-select-option v-for="dic in dianweiDicArr"
-                           :key="dic.id"
-                           :value="dic.id">{{dic.name}}</a-select-option>
-        </a-select>
-      </a-form-item>
-    </a-row>
+        <a-select-option v-for="dic in dianweiDicArr"
+                         :key="dic.id"
+                         :value="dic.id">{{dic.name}}</a-select-option>
+      </a-select>
+    </a-form-item>
+
   </a-form>
 </template>
 

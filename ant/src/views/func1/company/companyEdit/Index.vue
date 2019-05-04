@@ -128,6 +128,7 @@
       }
     },
     created() {
+      this.mdl = null
       this.getDic()
       this.getData()
     },
@@ -144,8 +145,8 @@
           if (this.mdl.companyInfo.dischargeDate) {
             this.mdl.companyInfo.dischargeDate = moment(this.mdl.companyInfo.dischargeDate)
           }
-          if(this.mdl.companyInfo.chkPointIdList){
-            this.mdl.companyInfo.chkPointIdList = this.mdl.companyInfo.chkPointIdList.split(',').map(t=> parseInt(t))
+          if (this.mdl.companyInfo.chkPointIdList) {
+            this.mdl.companyInfo.chkPointIdList = this.mdl.companyInfo.chkPointIdList.split(',').map(t => parseInt(t))
           }
           this.$refs.baseInfoForm.edit(this.mdl.companyInfo)
           this.$refs.waterInfoForm.edit(this.mdl.companyInfo)
@@ -241,14 +242,17 @@
               return
             }
             waterValues.chkPointIdList = waterValues.chkPointIdList.join(',')
+            let mdlCompanyInfo = this.mdl ? this.mdl.companyInfo : {}
             let data = {
-              companyInfo: Object.assign(this.mdl.companyInfo, values, waterValues),
+              companyInfo: Object.assign(mdlCompanyInfo, values, waterValues),
               companyPoluTypeList: poluTypeData,
               companyMedcineTypeList: yaopinData
             }
             return CompanyInfo.SaveForEdit(data).then((res) => {
               this.$message.info(`保存成功`)
-              this.$router.go(-1)
+              if (!this.$route.query.id) {
+                this.$router.push({ path: '/manage/company/edit', query: { id: res.result } })
+              }
             }).catch(err => {
               $notification.error({
                 message: '保存失败，请稍后重试！',
@@ -266,7 +270,6 @@
           if (!errors[key]) {
             return null
           }
-
           return {
             key: key,
             message: errors[key][0],
