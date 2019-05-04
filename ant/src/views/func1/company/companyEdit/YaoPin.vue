@@ -9,7 +9,7 @@
                  :loading="memberLoading">
 
             <template slot="medTypeId"
-                      slot-scope="text, record,index">
+                      slot-scope="text, record, index">
                 <a-select style="width: 100%"
                           v-model="record.medTypeId">
                     <a-select-option v-for="dic in yaopinDicArr"
@@ -25,9 +25,9 @@
                                 v-model="record.monthAmmount" />
             </template>
             <template slot="operation"
-                      slot-scope="text, record">
+                      slot-scope="text, record, index">
                 <a-popconfirm title="是否要删除此行？"
-                              @confirm="remove(record.key)">
+                              @confirm="remove(index)">
                     <a>删除</a>
                 </a-popconfirm>
             </template>

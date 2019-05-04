@@ -50,10 +50,10 @@
                 -
               </span>
               <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }"
-              :colon="false">
-                  <a-date-picker format="YYYY-MM-DD"
-                             style="width: 100%"
-                             v-decorator="[
+                           :colon="false">
+                <a-date-picker format="YYYY-MM-DD"
+                               style="width: 100%"
+                               v-decorator="[
                               'endTime',
                             ]" />
               </a-form-item>
@@ -73,12 +73,38 @@
       </a-form>
     </div>
 
-    <a-table ref="table"
-             size="default"
-             rowKey="id"
-             :dataSource="data"
-             :columns="columns">
-    </a-table>
+    <div class="table-operator">
+      <a-radio-group :value="view"
+                     @change="handleViewChange">
+        <a-radio-button value="table">表格</a-radio-button>
+        <a-radio-button value="chart">图形</a-radio-button>
+      </a-radio-group>
+    </div>
+
+    <div>
+      <a-table v-show="view=='table'"
+               ref="table"
+               size="default"
+               :rowKey="newid"
+               :dataSource="data"
+               :pagination="false"
+               :columns="columns">
+      </a-table>
+      <v-chart ref="chart"
+               v-show="view=='chart'"
+               :force-fit="true"
+               :width="width"
+               :height="height"
+               :data="dataSource"
+               :scale="scale"
+               :padding="['auto', 'auto', '40', '60']">
+        <v-tooltip />
+        <v-axis />
+        <v-smooth-line position="x*y"
+                       :size="2" />
+        <v-smooth-area position="x*y" />
+      </v-chart>
+    </div>
   </a-card>
 </template>
 
@@ -100,14 +126,11 @@
         companyArr: [],
         chkPointArr: [],
         loading: false,
-      }
-    },
-    filters: {
-      statusFilter(type) {
-        return statusMap[type].text
-      },
-      statusTypeFilter(type) {
-        return statusMap[type].status
+        view: 'table',
+        width: 100,
+        height: 100,
+        dataSource: [],
+        scale: []
       }
     },
     created() {
@@ -141,10 +164,10 @@
       loadData(queryParam) {
         let param = Object.assign({}, queryParam)
         if (param.startTime) {
-          param.startTime = moment(param.startTime).format('YYYY-MM-DD HH:mm:ss')
+          param.startTime = moment(param.startTime).format('YYYY-MM-DD')
         }
         if (param.endTime) {
-          param.endTime = moment(param.endTime).format('YYYY-MM-DD HH:mm:ss')
+          param.endTime = moment(param.endTime).format('YYYY-MM-DD')
         }
         this.loading = true
         return Report.GetReport2(param)
@@ -156,6 +179,7 @@
               }
             })
             this.data = res.result.data
+            this.reloadChart()
           }).catch(err => {
             let res = err.response.data
             this.$message.error(res.error.message)
@@ -166,11 +190,36 @@
       handleCompanyChange(companyId, node) {
         this.getPoluType(companyId)
       },
-      getPoluType(id){
-        CompanyInfo.GetPoluType({id}).then(res=>{
+      getPoluType(id) {
+        CompanyInfo.GetPoluType({ id }).then(res => {
           this.poluTypeArr = res.result
         })
       },
+      handleViewChange(e) {
+        this.view = e.target.value
+        this.reloadChart()
+      },
+      reloadChart() {
+        this.width = Math.max(this.width, 500, this.$refs.table.$el.clientWidth)
+        this.height = Math.max( this.height ,500, this.$refs.table.$el.clientHeight)
+        if(this.view != 'chart') {
+          return 
+        }
+        this.scale = [{
+          dataKey: 'x',
+          alias: '时间'
+        },
+        {
+          dataKey: 'y',
+          alias: '浓度',
+        }]
+        this.dataSource = this.data.map(t => {
+          return {
+            x: t.time,
+            y: t.val
+          }
+        })
+      }
     }
   }
 </script>

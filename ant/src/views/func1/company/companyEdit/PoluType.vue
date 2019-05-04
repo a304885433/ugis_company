@@ -40,7 +40,7 @@
                          style="width: 100%" />
             </template>
             <template slot="operation"
-                      slot-scope="text, record">
+                      slot-scope="text, record, index">
                 <a-popconfirm title="是否要删除此行？"
                               @confirm="remove(index)">
                     <a>删除</a>

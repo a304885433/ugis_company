@@ -25,3 +25,4 @@ export function showContent(value, arr, key_field, value_field) {
     if (!item) return null
     return item[value_field]
 }
+

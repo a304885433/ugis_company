@@ -119,10 +119,10 @@
       loadData(queryParam) {
         let param = Object.assign({}, queryParam)
         if (param.startTime) {
-          param.startTime = moment(param.startTime).format('YYYY-MM-DD HH:mm:ss')
+          param.startTime = moment(param.startTime).format('YYYY-MM-DD')
         }
         if (param.endTime) {
-          param.endTime = moment(param.endTime).format('YYYY-MM-DD HH:mm:ss')
+          param.endTime = moment(param.endTime).format('YYYY-MM-DD')
         }
         this.loading = true
         return Report.GetReport5(param)

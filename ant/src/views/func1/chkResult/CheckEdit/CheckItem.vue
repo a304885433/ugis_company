@@ -25,9 +25,9 @@
                                 v-model="record.concentration" />
             </template>
             <template slot="operation"
-                      slot-scope="text, record">
+                      slot-scope="text, record, index">
                 <a-popconfirm title="是否要删除此行？"
-                              @confirm="remove(record.key)">
+                              @confirm="remove(index)">
                     <a>删除</a>
                 </a-popconfirm>
             </template>
@@ -54,7 +54,7 @@
                         dataIndex: 'poluTypeId',
                         width: '20%',
                         scopedSlots: { customRender: 'poluTypeId' }
-                    }, 
+                    },
                     {
                         title: '浓度',
                         dataIndex: 'concentration',
@@ -73,10 +73,10 @@
         },
         created() {
             this.form = this.$form.createForm(this)
-            Bus.$on('GetCompanyPoluType', (data)=> {
-                this.poluTypeArr = data 
+            Bus.$on('GetCompanyPoluType', (data) => {
+                this.poluTypeArr = data
                 // 清空已有的数据
-                for(let d of this.data){
+                for (let d of this.data) {
                     d.poluTypeId = null
                 }
             })
@@ -84,7 +84,7 @@
         methods: {
             edit(data) {
                 this.data = data.map((val, index) => {
-                    val.key = index
+                    val.key = new Date().getTime()
                     return val
                 })
             },
@@ -97,13 +97,12 @@
             },
             handleAdd() {
                 this.data.push({
-                    key: this.data.length,
+                    key: new Date().getTime(),
                     poluTypeId: null,
                     concentration: null,
                 })
             },
             remove(index) {
-                debugger
                 this.data.splice(index, 1)
             },
         }
