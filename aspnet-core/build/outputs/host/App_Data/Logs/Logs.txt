@@ -19434,3 +19434,9 @@ INFO  2019-05-04 18:55:50,852 [112  ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-04 18:55:50,968 [112  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-05-04 18:55:50,968 [112  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action MyERP.UGIS.ReportAppService.GetReport3 (MyERP.Application) in 178.0217ms
 INFO  2019-05-04 18:55:50,969 [112  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1921.2436ms 200 application/json; charset=utf-8
+INFO  2019-05-04 18:57:26,196 [121  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://127.0.0.1:8424/iisintegration  0
+INFO  2019-05-04 18:57:26,200 [121  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.7598ms 202 
+DEBUG 2019-05-04 18:57:26,201 [122  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-04 18:57:26,202 [122  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-04 18:57:26,203 [122  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-04 18:57:26,203 [122  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
