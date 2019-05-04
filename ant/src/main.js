@@ -31,6 +31,10 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
   Vue.prototype[key] = filters[key]
 })
+import * as prototypes from './filters/prototype' // global filters
+Object.keys(prototypes).forEach(key => {
+  Vue.prototype[key] = prototypes[key]
+})
 
 // 读取默认设置
 axios.get('/AbpUserConfiguration/GetAll').then(response => {
