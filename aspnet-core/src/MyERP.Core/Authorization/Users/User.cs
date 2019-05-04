@@ -7,7 +7,9 @@ namespace MyERP.Authorization.Users
 {
     public class User : AbpUser<User>
     {
-        public const string DefaultPassword = "123qwe";
+        public string PhoneNumber { get; set; }
+
+        public const string DefaultPassword = "123456";
 
         public static string CreateRandomPassword()
         {
