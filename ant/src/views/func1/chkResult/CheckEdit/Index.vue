@@ -154,7 +154,7 @@
 
           return ChkResult.SaveForEdit(values).then((res) => {
             this.$message.info(`保存成功`)
-            this.$router.go(-1)
+            checkItemTable.edit([])
           }).catch(err => {
             $notification.error({
               message: '保存失败，请稍后重试！',
