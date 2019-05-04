@@ -103,7 +103,7 @@ namespace MyERP.Common.Extend
         /// <returns></returns>
         public static List<int> AsIntList(this string str, string sep)
         {
-            return str.Split(sep).Select(t => t.AsInt()).ToList();
+            return str?.Split(sep).Select(t => t.AsInt()).ToList() ?? new List<int>();
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace MyERP.Common.Extend
         /// <returns></returns>
         public static List<Guid> AsGuidList(this string str, string sep)
         {
-            return str.Split(sep).Select(t => t.AsGUID()).ToList();
+            return str?.Split(sep).Select(t => t.AsGUID()).ToList() ?? new List<Guid>();
         }
     }
 }
