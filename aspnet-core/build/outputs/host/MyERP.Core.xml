@@ -21,6 +21,76 @@
             It's shown in the web page.
             </summary>
         </member>
+        <member name="T:MyERP.Authorization.PermissionNames">
+            <summary>
+            权限定义
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Tenants">
+            <summary>
+            租户列表页面
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Users">
+            <summary>
+            用户列表页面
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Roles">
+            <summary>
+            角色列表页面
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Company">
+            <summary>
+            企业列表页面
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_CompanyEdit">
+            <summary>
+            企业编辑编辑
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Check">
+            <summary>
+            现场排查列表
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_CheckEdit">
+            <summary>
+            现场排查编辑
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Report1">
+            <summary>
+            报表1
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Report2">
+            <summary>
+            报表2
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Report3">
+            <summary>
+            报表3
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Report4">
+            <summary>
+            报表4
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_Report5">
+            <summary>
+            报表5
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.Pages_BaseData">
+            <summary>
+            基础数据
+            </summary>
+        </member>
         <member name="T:MyERP.MyERPConsts">
             <summary>
             常量

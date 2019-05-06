@@ -31,7 +31,7 @@ namespace MyERP.Controllers
         /// <param name="fileName"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        //[RequestFormSizeLimit(valueCountLimit: 2147483647)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 1024 * 1024 * 10)]
         [HttpPost]
         public async Task<FileUploadDto> Upload(FileUploadInput input)
         {
