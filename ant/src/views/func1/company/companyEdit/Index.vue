@@ -204,7 +204,12 @@
       // 读取文件
       getUploadFile(fileList) {
         if (!fileList || !fileList.length) return null
-        var res = fileList.map((file) => file.response ? file.response.result : file)
+        let res = fileList.map((file) => {
+          if (file.status != 'done') {
+            throw new Error('存在未成功上传的文件，请检查！')
+          }
+          return file.response ? file.response.result : file
+        })
         return JSON.stringify(res)
       },
 
@@ -217,10 +222,16 @@
 
         // 验证表单通过
         baseInfoForm.form.validateFields((err, values) => {
-          values.licenseFile = this.getUploadFile(values.licenseFile)
-          values.craftFile = this.getUploadFile(values.craftFile)
-          values.pipeFile = this.getUploadFile(values.pipeFile)
-          values.issSheetFile = this.getUploadFile(values.issSheetFile)
+          try {
+            values.licenseFile = this.getUploadFile(values.licenseFile)
+            values.craftFile = this.getUploadFile(values.craftFile)
+            values.pipeFile = this.getUploadFile(values.pipeFile)
+            values.issSheetFile = this.getUploadFile(values.issSheetFile)
+          } catch (e) {
+            this.$message.warn(e.message)
+            return
+          }
+
           if (err) {
             const errors = Object.assign({}, baseInfoForm.form.getFieldsError())
             const tmp = { ...errors }
@@ -248,6 +259,7 @@
               companyPoluTypeList: poluTypeData,
               companyMedcineTypeList: yaopinData
             }
+            this.loading = true
             return CompanyInfo.SaveForEdit(data).then((res) => {
               this.$message.info(`保存成功`)
               if (!this.$route.query.id) {
@@ -258,6 +270,8 @@
                 message: '保存失败，请稍后重试！',
                 description: err.message
               })
+            }).finally(() => {
+              this.loading = false
             })
           })
         })

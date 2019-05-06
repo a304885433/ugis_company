@@ -366,12 +366,12 @@ export const asyncRouterMap = [
                 component: () => import('@/views/func1/chkResult/CheckList'),
                 meta: { title: '', hidden: true, permission: ['user'] }
               },
-              {
-                path: '/manage/check/wizard',
-                name: 'CheckWizard',
-                component: () => import('@/views/func1/chkResult/CheckWizard/Index'),
-                meta: { title: '增加排查', hidden: true, permission: ['user'] }
-              },
+              // {
+              //   path: '/manage/check/wizard',
+              //   name: 'CheckWizard',
+              //   component: () => import('@/views/func1/chkResult/CheckWizard/Index'),
+              //   meta: { title: '增加排查', hidden: true, permission: ['user'] }
+              // },
               {
                 path: '/manage/check/edit',
                 name: 'CheckEdit',

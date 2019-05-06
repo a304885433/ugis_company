@@ -48,6 +48,7 @@
       <a-upload v-decorator="['licenseFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
+rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
@@ -96,6 +97,7 @@ getValueFromEvent: normFile,
       <a-upload v-decorator="['craftFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
+rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
@@ -121,6 +123,7 @@ getValueFromEvent: normFile,
       <a-upload v-decorator="['pipeFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
+rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
@@ -138,6 +141,7 @@ getValueFromEvent: normFile,
       <a-upload v-decorator="['issSheetFile', {
 valuePropName: 'fileList',
 getValueFromEvent: normFile,
+rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
@@ -207,12 +211,7 @@ getValueFromEvent: normFile,
           wrapperCol: { md: 14, offset: 2, xs: 24 },
         },
         dicArr: [],
-        fileList: [{
-          uid: '-1',
-          name: 'xxx.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        }]
+        fileList: []
       }
     },
     created() {
@@ -247,7 +246,7 @@ getValueFromEvent: normFile,
       parseFile(fileJSON) {
         if (!fileJSON) return []
         let filelist = JSON.parse(fileJSON)
-        return filelist.map(t => {
+        return filelist.filter(t => t != null).map(t => {
           t.status = 'done'
           t.url = `http://${location.host}/api/file/download?id=${t.uid}&name=${t.name}`
           return t;
@@ -263,6 +262,25 @@ getValueFromEvent: normFile,
           this.form.setFieldsValue({ ...record })
         }, 50);
       },
+      validateFile(rule, value, callback) {
+        for (let file of value) {
+          if (file.status == 'error') {
+            const lt10M = file.size / 1024 / 1024 < 10
+            if (!lt10M) {
+              callback(new Error(`${file.name} 不能超过 10M `))
+              return
+            } else {
+              callback(new Error(`${file.name} 上传失败 `))
+            }
+          }
+          if (file.percent < 100) {
+            callback(new Error('上传中...'))
+            return
+          }
+        }
+        // Note: 必须总是返回一个 callback，否则 validateFieldsAndScroll 无法响应
+        callback()
+      }
     }
   }
 </script>
