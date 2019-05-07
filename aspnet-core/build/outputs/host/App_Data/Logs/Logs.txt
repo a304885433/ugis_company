@@ -1,0 +1,216 @@
+DEBUG 2019-05-06 15:52:23,425 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-06 15:52:23,444 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-05-06 15:52:23,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.Web.Host.Startup.MyERPWebHostModule, MyERP.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,466 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.MyERPWebCoreModule, MyERP.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,466 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.MyERPApplicationModule, MyERP.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,467 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.MyERPCoreModule, MyERP.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,467 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,467 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.EntityFrameworkCore.MyERPEntityFrameworkModule, MyERP.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:23,473 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-05-06 15:52:23,536 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-06 15:52:23,536 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-06 15:52:23,536 [1    ] o.Configuration.LanguageManagementConfig - Converted MyERP-zh-Hans (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-06 15:52:23,536 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-06 15:52:23,831 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: MyERP.EntityFrameworkCore.MyERPDbContext, MyERP.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-06 15:52:24,293 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-06 15:52:24,347 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-06 15:52:24,387 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-06 15:52:24,392 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: MyERP-zh-Hans
+DEBUG 2019-05-06 15:52:24,418 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-06 15:52:24,447 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-06 15:52:24,499 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 19 classes define auto mapping attributes
+DEBUG 2019-05-06 15:52:24,499 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-06 15:52:24,505 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Users.Dto.CreateUserDto
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Users.Dto.UserDto
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.ChkResultDto
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.ChkResultSaveInput
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.ChkResultSavePoluTypeInput
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyInfoDto
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyInfoGetAllDto
+DEBUG 2019-05-06 15:52:24,506 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyMedcineTypeDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyPoluTypeDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.DicDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.DicTypeDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Roles.Dto.PermissionDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Roles.Dto.RoleDto
+DEBUG 2019-05-06 15:52:24,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-06 15:52:24,508 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.MultiTenancy.Dto.TenantDto
+INFO  2019-05-06 15:52:28,899 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/  
+INFO  2019-05-06 15:52:29,330 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 436.0662ms 200 text/html
+INFO  2019-05-06 15:52:29,347 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/chunk-vendors.aad04c03.css  
+INFO  2019-05-06 15:52:29,347 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/app.7f0b980a.css  
+INFO  2019-05-06 15:52:29,348 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/app.3b3aefeb.js  
+INFO  2019-05-06 15:52:29,348 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/static/signalr.min.js  
+INFO  2019-05-06 15:52:29,348 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-vendors.de6f1a4c.js  
+INFO  2019-05-06 15:52:29,391 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/static/abp.js  
+INFO  2019-05-06 15:52:29,394 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/static/abp.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\static\abp.js'
+INFO  2019-05-06 15:52:29,398 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/static/signalr.min.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\static\signalr.min.js'
+INFO  2019-05-06 15:52:29,398 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 49.5739ms 200 application/javascript
+INFO  2019-05-06 15:52:29,398 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.7789ms 200 application/javascript
+INFO  2019-05-06 15:52:29,399 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/app.3b3aefeb.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\app.3b3aefeb.js'
+INFO  2019-05-06 15:52:29,399 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.6121ms 200 application/javascript
+INFO  2019-05-06 15:52:29,399 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/app.7f0b980a.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\app.7f0b980a.css'
+INFO  2019-05-06 15:52:29,399 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 52.4191ms 200 text/css
+INFO  2019-05-06 15:52:29,400 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/chunk-vendors.aad04c03.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\chunk-vendors.aad04c03.css'
+INFO  2019-05-06 15:52:29,400 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 53.1415ms 200 text/css
+INFO  2019-05-06 15:52:29,415 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-vendors.de6f1a4c.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-vendors.de6f1a4c.js'
+INFO  2019-05-06 15:52:29,415 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 67.0463ms 200 application/javascript
+INFO  2019-05-06 15:52:29,442 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/chunk-35f209d1.8859bdc3.css  
+INFO  2019-05-06 15:52:29,443 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/chunk-35f209d1.8859bdc3.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\chunk-35f209d1.8859bdc3.css'
+INFO  2019-05-06 15:52:29,443 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8041ms 200 text/css
+INFO  2019-05-06 15:52:29,444 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/chunk-00b51f89.580ff761.css  
+INFO  2019-05-06 15:52:29,444 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/chunk-00b51f89.580ff761.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\chunk-00b51f89.580ff761.css'
+INFO  2019-05-06 15:52:29,444 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3398ms 200 text/css
+INFO  2019-05-06 15:52:29,459 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/chunk-4e721d14.83503da7.css  
+INFO  2019-05-06 15:52:29,459 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/chunk-6b8f53ec.c1e552eb.css  
+INFO  2019-05-06 15:52:29,459 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/chunk-4e721d14.83503da7.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\chunk-4e721d14.83503da7.css'
+INFO  2019-05-06 15:52:29,459 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4886ms 200 text/css
+INFO  2019-05-06 15:52:29,459 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/chunk-6b8f53ec.c1e552eb.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\chunk-6b8f53ec.c1e552eb.css'
+INFO  2019-05-06 15:52:29,460 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3781ms 200 text/css
+INFO  2019-05-06 15:52:29,476 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-00b51f89.45fdb459.js  
+INFO  2019-05-06 15:52:29,477 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/css/user.887a0ff4.css  
+INFO  2019-05-06 15:52:29,477 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-00b51f89.45fdb459.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-00b51f89.45fdb459.js'
+INFO  2019-05-06 15:52:29,477 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/user.887a0ff4.css'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\css\user.887a0ff4.css'
+INFO  2019-05-06 15:52:29,477 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4169ms 200 application/javascript
+INFO  2019-05-06 15:52:29,477 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3642ms 200 text/css
+INFO  2019-05-06 15:52:29,486 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0a3e31.d4b135e2.js  
+INFO  2019-05-06 15:52:29,487 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0a3e31.d4b135e2.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0a3e31.d4b135e2.js'
+INFO  2019-05-06 15:52:29,487 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3903ms 200 application/javascript
+INFO  2019-05-06 15:52:29,493 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0aaf77.70881997.js  
+INFO  2019-05-06 15:52:29,493 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0aaf77.70881997.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0aaf77.70881997.js'
+INFO  2019-05-06 15:52:29,493 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4463ms 200 application/javascript
+INFO  2019-05-06 15:52:29,496 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0ab6cc.cfbb981e.js  
+INFO  2019-05-06 15:52:29,496 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0ab109.53d4fc6f.js  
+INFO  2019-05-06 15:52:29,496 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0ab109.53d4fc6f.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0ab109.53d4fc6f.js'
+INFO  2019-05-06 15:52:29,496 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4436ms 200 application/javascript
+INFO  2019-05-06 15:52:29,496 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0ab6cc.cfbb981e.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0ab6cc.cfbb981e.js'
+INFO  2019-05-06 15:52:29,496 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5726ms 200 application/javascript
+INFO  2019-05-06 15:52:29,503 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0bd559.e454513b.js  
+INFO  2019-05-06 15:52:29,504 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0bd559.e454513b.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0bd559.e454513b.js'
+INFO  2019-05-06 15:52:29,504 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4637ms 200 application/javascript
+INFO  2019-05-06 15:52:29,508 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0e275e.1fa4ab27.js  
+INFO  2019-05-06 15:52:29,509 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0e275e.1fa4ab27.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0e275e.1fa4ab27.js'
+INFO  2019-05-06 15:52:29,509 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.2174ms 200 application/javascript
+INFO  2019-05-06 15:52:29,509 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0d67cb.ad95c231.js  
+INFO  2019-05-06 15:52:29,510 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d0e4a5d.7ac58884.js  
+INFO  2019-05-06 15:52:29,510 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0d67cb.ad95c231.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0d67cb.ad95c231.js'
+INFO  2019-05-06 15:52:29,510 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6425ms 200 application/javascript
+INFO  2019-05-06 15:52:29,511 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d0e4a5d.7ac58884.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d0e4a5d.7ac58884.js'
+INFO  2019-05-06 15:52:29,511 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0647ms 200 application/javascript
+INFO  2019-05-06 15:52:29,518 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d208fb9.ae35ff21.js  
+INFO  2019-05-06 15:52:29,518 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d21aeba.145b659f.js  
+INFO  2019-05-06 15:52:29,518 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d208fb9.ae35ff21.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d208fb9.ae35ff21.js'
+INFO  2019-05-06 15:52:29,519 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5667ms 200 application/javascript
+INFO  2019-05-06 15:52:29,519 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d21aeba.145b659f.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d21aeba.145b659f.js'
+INFO  2019-05-06 15:52:29,519 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7009ms 200 application/javascript
+INFO  2019-05-06 15:52:29,525 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-2d2315c8.7bf84e03.js  
+INFO  2019-05-06 15:52:29,526 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-2d2315c8.7bf84e03.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-2d2315c8.7bf84e03.js'
+INFO  2019-05-06 15:52:29,526 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7023ms 200 application/javascript
+INFO  2019-05-06 15:52:29,530 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-35f209d1.6632be00.js  
+INFO  2019-05-06 15:52:29,530 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-35f209d1.6632be00.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-35f209d1.6632be00.js'
+INFO  2019-05-06 15:52:29,530 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6547ms 200 application/javascript
+INFO  2019-05-06 15:52:29,532 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-4e721d14.37d3b071.js  
+INFO  2019-05-06 15:52:29,532 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-4e721d14.37d3b071.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-4e721d14.37d3b071.js'
+INFO  2019-05-06 15:52:29,532 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4289ms 200 application/javascript
+INFO  2019-05-06 15:52:29,536 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/chunk-6b8f53ec.b2ec0a0e.js  
+INFO  2019-05-06 15:52:29,537 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/chunk-6b8f53ec.b2ec0a0e.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\chunk-6b8f53ec.b2ec0a0e.js'
+INFO  2019-05-06 15:52:29,537 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5412ms 200 application/javascript
+INFO  2019-05-06 15:52:29,537 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/fail.9b9a3491.js  
+INFO  2019-05-06 15:52:29,538 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/fail.9b9a3491.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\fail.9b9a3491.js'
+INFO  2019-05-06 15:52:29,538 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5832ms 200 application/javascript
+INFO  2019-05-06 15:52:29,544 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/js/user.0875643a.js  
+INFO  2019-05-06 15:52:29,545 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/user.0875643a.js'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\js\user.0875643a.js'
+INFO  2019-05-06 15:52:29,545 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7762ms 200 application/javascript
+INFO  2019-05-06 15:52:30,063 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/api/AbpUserConfiguration/GetAll  
+WARN  2019-05-06 15:52:30,069 [11   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN'.
+WARN  2019-05-06 15:52:30,069 [11   ] calization.RequestLocalizationMiddleware - AbpLocalizationHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN'.
+INFO  2019-05-06 15:52:30,069 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/logo.png  
+INFO  2019-05-06 15:52:30,070 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/logo.png'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\logo.png'
+INFO  2019-05-06 15:52:30,070 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4695ms 200 image/png
+INFO  2019-05-06 15:52:30,937 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2019-05-06 15:52:31,007 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-06 15:52:31,274 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 264.8948ms.
+INFO  2019-05-06 15:52:31,353 [14   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-06 15:52:31,424 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 483.8533ms
+INFO  2019-05-06 15:52:31,428 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1365.017ms 200 application/json; charset=utf-8
+INFO  2019-05-06 15:52:31,505 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/assets/background.a568162c.svg  
+INFO  2019-05-06 15:52:31,506 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/assets/background.a568162c.svg'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\assets\background.a568162c.svg'
+INFO  2019-05-06 15:52:31,506 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4346ms 200 image/svg+xml
+INFO  2019-05-06 15:52:31,582 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/assets/logo.2f0b911d.svg  
+INFO  2019-05-06 15:52:31,583 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/assets/logo.2f0b911d.svg'. Physical path: 'D:\code\ugis_company\aspnet-core\build\outputs\Host\wwwroot\assets\logo.2f0b911d.svg'
+INFO  2019-05-06 15:52:31,583 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.1996ms 200 image/svg+xml
+INFO  2019-05-06 16:13:21,634 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://127.0.0.1:15876/iisintegration  0
+INFO  2019-05-06 16:13:21,638 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.7727ms 202 
+DEBUG 2019-05-06 16:13:21,641 [69   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-06 16:13:21,643 [69   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-06 16:13:21,643 [69   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-06 16:13:21,643 [69   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-05-08 07:26:57,571 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-08 07:26:57,690 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-05-08 07:26:57,708 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.Web.Host.Startup.MyERPWebHostModule, MyERP.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,710 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.MyERPWebCoreModule, MyERP.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.MyERPApplicationModule, MyERP.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.MyERPCoreModule, MyERP.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,713 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyERP.EntityFrameworkCore.MyERPEntityFrameworkModule, MyERP.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,715 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,715 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:57,718 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-05-08 07:26:57,799 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 07:26:57,799 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 07:26:57,799 [1    ] o.Configuration.LanguageManagementConfig - Converted MyERP-zh-Hans (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 07:26:57,799 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 07:26:58,188 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: MyERP.EntityFrameworkCore.MyERPDbContext, MyERP.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 07:26:58,628 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-08 07:26:58,688 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-08 07:26:58,730 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-08 07:26:58,735 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: MyERP-zh-Hans
+DEBUG 2019-05-08 07:26:58,766 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-08 07:26:58,798 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 07:26:58,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 19 classes define auto mapping attributes
+DEBUG 2019-05-08 07:26:58,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-08 07:26:58,859 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Users.Dto.CreateUserDto
+DEBUG 2019-05-08 07:26:58,860 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Users.Dto.UserDto
+DEBUG 2019-05-08 07:26:58,861 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.ChkResultDto
+DEBUG 2019-05-08 07:26:58,861 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.ChkResultSaveInput
+DEBUG 2019-05-08 07:26:58,861 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.ChkResultSavePoluTypeInput
+DEBUG 2019-05-08 07:26:58,861 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyInfoDto
+DEBUG 2019-05-08 07:26:58,861 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyInfoGetAllDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyMedcineTypeDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.CompanyPoluTypeDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.DicDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.UGIS.Dto.DicTypeDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Roles.Dto.PermissionDto
+DEBUG 2019-05-08 07:26:58,862 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.Roles.Dto.RoleDto
+DEBUG 2019-05-08 07:26:58,863 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-08 07:26:58,864 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyERP.MultiTenancy.Dto.TenantDto
+INFO  2019-05-08 07:27:03,311 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:3001/  
+INFO  2019-05-08 07:27:04,333 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1025.2189ms 200 text/html
+INFO  2019-05-08 07:27:49,172 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://127.0.0.1:31805/iisintegration  0
+INFO  2019-05-08 07:27:49,178 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.2595ms 202 
+DEBUG 2019-05-08 07:27:49,178 [13   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-08 07:27:49,180 [13   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 07:27:49,181 [13   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 07:27:49,181 [13   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
