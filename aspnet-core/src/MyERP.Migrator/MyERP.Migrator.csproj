@@ -15,9 +15,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.Castle.Log4Net" Version="4.3.0" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\aspnetboilerplate\src\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj" />
     <ProjectReference Include="..\MyERP.Core\MyERP.Core.csproj" />
     <ProjectReference Include="..\MyERP.EntityFrameworkCore\MyERP.EntityFrameworkCore.csproj" />
   </ItemGroup>

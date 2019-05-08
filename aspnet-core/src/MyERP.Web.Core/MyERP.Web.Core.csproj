@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -16,9 +16,8 @@
     <RootNamespace>MyERP</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\aspnetboilerplate\src\Abp.AspNetCore.SignalR\Abp.AspNetCore.SignalR.csproj" />
-    <ProjectReference Include="..\..\..\aspnetboilerplate\src\Abp.AspNetCore\Abp.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\..\aspnetboilerplate\src\Abp.ZeroCore\Abp.ZeroCore.csproj" />
+    <ProjectReference Include="..\..\aspnetboilerplate\src\Abp.AspNetCore.SignalR\Abp.AspNetCore.SignalR.csproj" />
+    <ProjectReference Include="..\..\aspnetboilerplate\src\Abp.AspNetCore\Abp.AspNetCore.csproj" />
     <ProjectReference Include="..\MyERP.Application\MyERP.Application.csproj" />
     <ProjectReference Include="..\MyERP.EntityFrameworkCore\MyERP.EntityFrameworkCore.csproj" />
   </ItemGroup>
