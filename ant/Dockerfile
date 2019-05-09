@@ -5,6 +5,6 @@ EXPOSE 80
 RUN  yarn install \ 
     && yarn build  \
     && cp -r dist/* /usr/share/nginx/html \
-    && cp -r nginx/* /etc/nginx/conf.d/ \
     && rm -rf /app
+#&& cp -r nginx/* /etc/nginx/conf.d/ \
 CMD ["nginx","-g","daemon off;"]

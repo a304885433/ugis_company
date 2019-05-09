@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+
+    ant:    # 服务的名称
+        build:
+            context: ../ant
+            dockerfile: Dockerfile
+        restart: always
+        networks:   # 定义网络
+            mynet:  # 加入的网络的名称
+                aliases:    # 计算机名
+                   - ant
+        ports:      # 端口 宿主:docker
+            - "9001:80"
+        volumes:    # 文件夹映射
+            - ./conf/nginx.conf:/etc/nginx/conf.d/
+
+    abp:
+        build:
+            context: ../aspnet-core
+            dockerfile: Dockerfile
+        restart: always
+        networks:
+            mynet:
+                aliases:
+                   - aspnetcore # 计算机名称，用来做反向代理
+        ports:
+            - "9002:80"
+
+networks: ##定义网络组
+  mynet: ## 网络组名称
