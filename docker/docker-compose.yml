@@ -3,9 +3,6 @@ version: '3.7'
 services:
 
     ant:    # 服务的名称
-        build:
-            context: ../ant # 工程文件夹
-            dockerfile: Dockerfile
         image: a304885433/me:feature_ant
         restart: always
         networks:   # 定义网络
@@ -18,9 +15,6 @@ services:
             - ./conf/nginx.conf:/etc/nginx/conf.d/
 
     abp:
-        build:
-            context: ../aspnet-core
-            dockerfile: Dockerfile
         image: a304885433/me:feature_abp
         restart: always
         networks:
