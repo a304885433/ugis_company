@@ -6,7 +6,7 @@ services:
         build:
             context: ../ant # 工程文件夹
             dockerfile: Dockerfile
-        image: a304885433/me
+        image: a304885433/me:ant
         restart: always
         networks:   # 定义网络
             mynet:  # 加入的网络的名称
@@ -21,7 +21,7 @@ services:
         build:
             context: ../aspnet-core
             dockerfile: Dockerfile
-        image: a304885433/me
+        image: a304885433/me:abp
         restart: always
         networks:
             mynet:
