@@ -17,7 +17,7 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/manage/check/list',
         component: RouteView,
-        meta: { title: '仪表盘', icon: bxAnaalyse, permission: ['dashboard'] },
+        meta: { title: '仪表盘', icon: bxAnaalyse },
       },
       //   children: [
       //     {
@@ -323,7 +323,7 @@ export const asyncRouterMap = [
         path: '/manage',
         name: 'manage',
         component: PageView,
-        meta: { title: '业务数据', icon: 'slack', permission: ['dashboard'] },
+        meta: { title: '信息录入', icon: 'slack' },
         children: [
           {
             path: '/manage/company',
@@ -331,14 +331,14 @@ export const asyncRouterMap = [
             redirect: '/manage/company/list',
             component: () => import('@/views/RouteView'),
             hideChildrenInMenu: true,
-            meta: { title: '企业列表' },
+            meta: { title: '企业信息', permission: ['CompanyManager'] },
             children: [
               {
                 path: '/manage/company/list',
                 name: 'CompanyList',
                 component: () => import('@/views/func1/company/CompanyList'),
                 meta: {
-                  title: '企业列表', hidden: true,
+                  title: '企业信息', hidden: true, permission: ['CompanyManager']
                 },
               },
               {
@@ -347,7 +347,7 @@ export const asyncRouterMap = [
                 hidden: true,
                 component: () => import('@/views/func1/company/companyEdit/Index'),
                 meta: {
-                  title: '新增企业', hidden: true,
+                  title: '新增企业', hidden: true, permission: ['CompanyManager']
                 }
               },
             ]
@@ -358,13 +358,13 @@ export const asyncRouterMap = [
             hideChildrenInMenu: true,
             redirect: '/manage/check/list',
             component: () => import('@/views/RouteView.vue'),
-            meta: { title: '现场排查', },
+            meta: { title: '检测数据', },
             children: [
               {
                 path: '/manage/check/list',
                 name: 'CheckList',
                 component: () => import('@/views/func1/chkResult/CheckList'),
-                meta: { title: '', hidden: true, permission: ['user'] }
+                meta: { title: '', hidden: true, permission: ['CheckManager'] }
               },
               // {
               //   path: '/manage/check/wizard',
@@ -376,7 +376,7 @@ export const asyncRouterMap = [
                 path: '/manage/check/edit',
                 name: 'CheckEdit',
                 component: () => import('@/views/func1/chkResult/CheckEdit/Index'),
-                meta: { title: '增加排查', hidden: true, permission: ['user'] }
+                meta: { title: '新增检测数据', hidden: true, permission: ['CheckManager'] }
               },
             ]
           },
@@ -387,7 +387,7 @@ export const asyncRouterMap = [
         path: '/report',
         name: 'Report',
         component: PageView,
-        meta: { title: '输出报表', icon: 'slack', permission: ['report'] },
+        meta: { title: '数据调用', icon: 'slack', },
         redirect: '/report/report1',
         children: [
           {
@@ -395,35 +395,35 @@ export const asyncRouterMap = [
             name: 'Report1',
             component: () => import('@/views/func1/report/Report1'),
             // component: () => import('@/views/other/RoleList'),
-            meta: { title: '企业排查统计' }
+            meta: { title: '企业排查统计', permission: ['Report1'] }
           },
           {
             path: '/report/report2',
             name: 'Report2',
             component: () => import('@/views/func1/report/Report2'),
             // component: () => import('@/views/other/RoleList'),
-            meta: { title: '企业因子统计' }
+            meta: { title: '企业因子统计', permission: ['Report2'] }
           },
           {
             path: '/report/report3',
             name: 'Report3',
             component: () => import('@/views/func1/report/Report3'),
             // component: () => import('@/views/other/RoleList'),
-            meta: { title: '所有因子统计' }
+            meta: { title: '所有因子统计', permission: ['Report3'] }
           },
           {
             path: '/report/report4',
             name: 'Report4',
             component: () => import('@/views/func1/report/Report4'),
             // component: () => import('@/views/other/RoleList'),
-            meta: { title: '企业点位统计' }
+            meta: { title: '企业点位统计', permission: ['Report4'] }
           },
           {
             path: '/report/report5',
             name: 'Report5',
             component: () => import('@/views/func1/report/Report5'),
             // component: () => import('@/views/other/RoleList'),
-            meta: { title: '所有点位统计' }
+            meta: { title: '所有点位统计', permission: ['Report5'] }
           }
         ]
       },
@@ -432,34 +432,56 @@ export const asyncRouterMap = [
         path: '/system',
         name: 'system',
         component: PageView,
-        meta: { title: '系统设置', icon: 'slack', permission: ['dashboard'] },
+        meta: { title: '系统设置', icon: 'slack' },
         redirect: '/system/dict-list',
         children: [
           {
             path: '/system/dict-list',
             name: 'DictList',
             component: () => import('@/views/func1/dic/DictList'),
-            meta: { title: '基础数据' }
+            meta: { title: '基础数据', permission: ['BaseDataManager'] }
+          },
+          {
+            path: '/system/role/index',
+            name: 'RoleListIndex',
+            redirect: '/system/role/list',
+            component: () => import('@/views/RouteView'),
+            meta: { title: '角色列表',  permission: ['RoleManager'] },
+            hideChildrenInMenu: true,
+            children: [
+              {
+                path: '/system/role/list',
+                name: 'RoleList',
+                component: () => import('@/views/func1/role/RoleList'),
+                meta: { title: '角色列表', hidden: true, bread: false, permission: ['RoleManager'] }
+              },
+              {
+                path: '/system/role/edit',
+                name: 'RoleEdit',
+                component: () => import('@/views/func1/role/RoleEdit'),
+                meta: { title: '角色编辑', hidden: true, permission: ['RoleManager'] }
+              },
+            ]
           },
           {
             path: '/system/user/index',
             name: 'UserListIndex',
             redirect: '/system/user/list',
             component: () => import('@/views/RouteView'),
-            meta: { title: '用户列表',  },
+            meta: { title: '用户列表', },
             hideChildrenInMenu: true,
             children: [
               {
                 path: '/system/user/list',
                 name: 'UserList',
                 component: () => import('@/views/func1/user/UserList'),
-                meta: { title: '用户列表', hidden: true, bread: false, }
+                meta: { title: '用户列表', hidden: true, bread: false, permission: ['UserManager'] }
               },
               {
                 path: '/system/user/edit',
                 name: 'UserEdit',
                 component: () => import('@/views/func1/user/UserEdit'),
-                meta: { title: '用户编辑', hidden: true }
+                meta: { title: '用户编辑', hidden: true, permission: ['UserManager']  }
               },
             ]
           },

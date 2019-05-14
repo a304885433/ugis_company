@@ -21,6 +21,10 @@ export default {
     search: {
       type: Boolean,
       default: false
+    },
+    addAction: {
+      type: String,
+      default: null
     }
   },
   watch: {
@@ -81,10 +85,10 @@ export default {
     },
     renderMenuItem(item) {
       return (
-        <Item key={item.key}>
+        <Item key={item.key} >
           {this.renderIcon(item.icon)}
           {item.title}
-          <a class="btn" style="width: 20px;z-index:1300" {...{ on: { click: () => this.handlePlus(item) } }}><a-icon type="plus" /></a>
+          <a v-action={this.addAction} class="btn" style="width: 20px;z-index:1300" {...{ on: { click: () => this.handlePlus(item) } }}><a-icon type="plus" /></a>
         </Item>
       )
     },

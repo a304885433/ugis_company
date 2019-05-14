@@ -1,7 +1,7 @@
 <template>
   <a-card :bordered="false">
     <div class="table-operator">
-      <router-link :to="{name: 'UserEdit'}">
+      <router-link :to="{name: 'RoleEdit'}">
         <a-button type="primary"
                   v-action:create
                   icon="plus">新建</a-button>
@@ -15,19 +15,16 @@
       <span slot="action"
             slot-scope="text, record">
         <a @click="handleEdit(record)"
-           v-if="record.userName != 'admin'"
+           v-if="record.name != 'Admin'"
            v-action:update>编辑</a>
         <a-divider type="vertical"
-                   v-if="record.userName != 'admin'" />
-        <a-dropdown v-if="record.userName != 'admin'">
+                   v-if="record.name != 'Admin'" />
+        <a-dropdown v-if="record.name != 'Admin'">
           <a class="ant-dropdown-link">
             更多
             <a-icon type="down" />
           </a>
           <a-menu slot="overlay">
-            <!-- <a-menu-item>
-              <a href="javascript:;">禁用</a>
-            </a-menu-item> -->
             <a-menu-item>
               <a-popconfirm title="删除不可恢复，是否继续？"
                             @confirm="handleDelete(record)">
@@ -36,16 +33,6 @@
             </a-menu-item>
           </a-menu>
         </a-dropdown>
-      </span>
-      <span slot="isActive"
-            slot-scope="text">
-        <a-badge v-if="text == 1"
-                 status="success"
-                 text="启用" />
-
-        <a-badge v-else="text == 0"
-                 status="default"
-                 text="禁用" />
       </span>
     </s-table>
 
@@ -56,11 +43,11 @@
 
 <script>
   import { STable } from '@/components'
-  import { User } from '@/api/'
+  import { Role } from '@/api/'
   import moment from 'moment'
 
   export default {
-    name: 'UserList',
+    name: 'RoleList',
     components: {
       STable
     },
@@ -86,22 +73,16 @@
         // 表头
         columns: [
           {
-            title: '用户名',
-            dataIndex: 'userName'
-          },
-          {
-            title: '姓名',
+            title: '角色编码',
             dataIndex: 'name'
           },
           {
-            title: '状态',
-            dataIndex: 'isActive',
-            scopedSlots: { customRender: 'isActive' }
+            title: '角色名',
+            dataIndex: 'displayName'
           },
           {
-            title: '创建时间',
-            dataIndex: 'creationTime',
-            customRender: (val) => this.dateFormat(val)
+            title: '备注',
+            dataIndex: 'description',
           },
           {
             title: '操作',
@@ -112,9 +93,8 @@
         ],
         // 加载数据方法 必须为 Promise 对象
         loadData: parameter => {
-          return User.GetAll(parameter)
+          return Role.GetAll(parameter)
             .then(res => {
-              console.log('getRoleList', res)
               return res.result
             })
         },
@@ -129,7 +109,7 @@
     methods: {
       handleEdit(record) {
         this.$router.push({
-          name: 'UserEdit',
+          name: 'RoleEdit',
           query: {
             id: record.id
           }
@@ -137,7 +117,7 @@
       },
 
       handleDelete(record) {
-        User.Delete({ id: record.id }).then(() => {
+        Role.Delete({ id: record.id }).then(() => {
           this.$refs.table.refresh(true)
         })
       },

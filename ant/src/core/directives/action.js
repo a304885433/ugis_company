@@ -16,18 +16,37 @@ import store from '@/store'
  */
 const action = Vue.directive('action', {
   inserted: function (el, binding, vnode) {
-    const actionName = binding.arg
-    const roles = store.getters.roles
-    const elVal = vnode.context.$route.meta.permission
-    const permissionId = elVal instanceof String && [elVal] || elVal
-    roles.permissions.forEach(p => {
-      if (!permissionId.includes(p.permissionId)) {
-        return
+    // 读取路由定义的权限
+    const routerPermissions = vnode.context.$route.meta.permission
+    const permissions = typeof permissions === 'string' && [routerPermissions] || routerPermissions
+    // 读取当前动作点的权限
+    let actions = []
+    if (binding.arg) {
+      actions.push(binding.arg)
+    }
+    if (typeof binding.value === 'string') {
+      actions.push(binding.value)
+    }
+    else if (binding.value instanceof Array) {
+      actions = actions.concat(binding.value)
+    }
+    let hasPermission = false
+    for (let p of permissions) {
+      for (let actionName of actions) {
+        let ap = `${p}.${actionName}`
+        console.log(ap)
+        if (abp.auth.hasPermission(ap)) {
+          hasPermission = true
+          break
+        }
       }
-      if (p.actionList && !p.actionList.includes(actionName)) {
-        el.parentNode && el.parentNode.removeChild(el) || (el.style.display = 'none')
+      if(hasPermission){
+        break
       }
-    })
+    }
+    if (!hasPermission) {
+      el.parentNode && el.parentNode.removeChild(el) || (el.style.display = 'none')
+    }
   }
 })
 

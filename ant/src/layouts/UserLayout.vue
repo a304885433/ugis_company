@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="desc">
-          系统V1.0
+          V1.0
         </div>
       </div>
 

@@ -3,7 +3,7 @@
           :form="form"
           class="form">
 
-    <a-form-item label="企业名称">
+    <a-form-item label="核查时间">
       <a-input placeholder="请输入企业名称"
                v-decorator="[
                                   'name',
@@ -237,7 +237,6 @@ rules: [{ validator: validateFile }]
         callback()
       },
       normFile(e) {
-        console.log('Upload event:', e);
         if (Array.isArray(e)) {
           return e;
         }
@@ -263,19 +262,21 @@ rules: [{ validator: validateFile }]
         }, 50);
       },
       validateFile(rule, value, callback) {
-        for (let file of value) {
-          if (file.status == 'error') {
-            const lt10M = file.size / 1024 / 1024 < 10
-            if (!lt10M) {
-              callback(new Error(`${file.name} 不能超过 10M `))
-              return
-            } else {
-              callback(new Error(`${file.name} 上传失败 `))
+        if (value) {
+          for (let file of value) {
+            if (file.status == 'error') {
+              const lt10M = file.size / 1024 / 1024 < 10
+              if (!lt10M) {
+                callback(new Error(`${file.name} 不能超过 10M `))
+                return
+              } else {
+                callback(new Error(`${file.name} 上传失败 `))
+              }
             }
-          }
-          if (file.percent < 100) {
-            callback(new Error('上传中...'))
-            return
+            if (file.percent < 100) {
+              callback(new Error('上传中...'))
+              return
+            }
           }
         }
         // Note: 必须总是返回一个 callback，否则 validateFieldsAndScroll 无法响应

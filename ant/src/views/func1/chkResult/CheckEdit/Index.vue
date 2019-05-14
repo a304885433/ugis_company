@@ -40,6 +40,7 @@
       <a-button type="primary"
                 @click="validate"
                 style="margin-right: 10px;"
+                v-action="['create','update']"
                 :loading="loading">提交</a-button>
       <a-button type="default"
                 @click="$router.go(-1)">取消</a-button>

@@ -58,7 +58,7 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
           const result = response.result
-          // if (result.role && result.role.permissions.length > 0) {
+          // if (result.role ) {
           //   const role = result.role
           //   role.permissions = result.role.permissions
           //   role.permissions.map(per => {

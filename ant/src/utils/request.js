@@ -19,7 +19,7 @@ const err = (error) => {
     const token = Util.abp.auth.getToken()
     if (error.response.status === 403) {
       notification.error({
-        message: 'Forbidden',
+        message: data && data.error && data.error.message || 'Forbidden',
         description: data.message
       })
     }

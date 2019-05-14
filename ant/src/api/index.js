@@ -3,6 +3,7 @@ import * as companyInfoService from './companyInfo'
 import * as chkResultService from './chkResult'
 import * as reportService from './report'
 import * as userService from './user'
+import * as roleService from './role'
 const api = {
   Login: '/auth/login',
   Logout: '/auth/logout',
@@ -22,3 +23,4 @@ export const Dic = new crud('Dic')
 export const ChkResult = new crud('ChkResult', chkResultService)
 export const Report =  reportService
 export const User = new crud('User', userService)
+export const Role = new crud('Role', roleService)

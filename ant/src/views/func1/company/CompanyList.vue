@@ -55,6 +55,7 @@
     <div class="table-operator">
       <router-link :to="{name: 'CompanyEdit'}">
         <a-button type="primary"
+                  v-action:create
                   icon="plus">新建</a-button>
       </router-link>
     </div>
@@ -77,11 +78,12 @@
       <span slot="action"
             slot-scope="text, record">
         <template>
-          <a @click="handleEdit(record)">编辑</a>
+          <a @click="handleEdit(record)"
+             v-action:update>编辑</a>
           <a-divider type="vertical" />
           <a-popconfirm title="删除不可恢复，是否继续？"
                         @confirm="handleDelete(record.id)">
-            <a>删除</a>
+            <a v-action:delete>删除</a>
           </a-popconfirm>
         </template>
       </span>
