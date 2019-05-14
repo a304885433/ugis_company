@@ -6,67 +6,56 @@
     public static class PermissionNames
     {
         /// <summary>
-        /// 租户列表页面
+        /// 租户管理
         /// </summary>
-        public const string Pages_Tenants = "Pages.Tenants";
+        public const string TenantManager = "TenantManager";
         /// <summary>
-        /// 用户列表页面
+        /// 用户管理
         /// </summary>
-        public const string Pages_Users = "Pages.Users";
+        public const string UserManager = "UserManager";
         /// <summary>
-        /// 角色列表页面
+        /// 角色管理
         /// </summary>
-        public const string Pages_Roles = "Pages.Roles";
+        public const string RoleManager = "RoleManager";
+        /// <summary>
+        /// 企业管理
+        /// </summary>
+        public const string CompanyManager = "CompanyManager";
 
         /// <summary>
-        /// 企业列表页面
+        /// 现场排查
         /// </summary>
-        public const string Pages_Company = "Pages.Company";
-
-        /// <summary>
-        /// 企业编辑编辑
-        /// </summary>
-        public const string Pages_CompanyEdit = "Pages.CompanyEdit";
-
-        /// <summary>
-        /// 现场排查列表
-        /// </summary>
-        public const string Pages_Check = "Pages.Check";
-
-        /// <summary>
-        /// 现场排查编辑
-        /// </summary>
-        public const string Pages_CheckEdit = "Pages.CheckEdit";
+        public const string CheckManager = "CheckManager";
 
         /// <summary>
         /// 报表1
         /// </summary>
-        public const string Pages_Report1 = "Pages.Report1";
+        public const string Report1 = "Report1";
 
         /// <summary>
         /// 报表2
         /// </summary>
-        public const string Pages_Report2 = "Pages.Report2";
+        public const string Report2 = "Report2";
 
         /// <summary>
         /// 报表3
         /// </summary>
-        public const string Pages_Report3 = "Pages.Report3";
+        public const string Report3 = "Report3";
 
         /// <summary>
         /// 报表4
         /// </summary>
-        public const string Pages_Report4 = "Pages.Report4";
+        public const string Report4 = "Report4";
 
         /// <summary>
         /// 报表5
         /// </summary>
-        public const string Pages_Report5 = "Pages.Report5";
+        public const string Report5 = "Report5";
 
         /// <summary>
         /// 基础数据
         /// </summary>
-        public const string Pages_BaseData = "Pages.BaseData";
+        public const string BaseDataManager = "BaseDataManager";
 
 
     }

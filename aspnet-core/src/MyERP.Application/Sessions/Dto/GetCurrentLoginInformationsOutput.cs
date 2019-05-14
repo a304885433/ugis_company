@@ -1,4 +1,7 @@
-﻿namespace MyERP.Sessions.Dto
+﻿using MyERP.Users.Dto;
+using System.Collections.Generic;
+
+namespace MyERP.Sessions.Dto
 {
     public class GetCurrentLoginInformationsOutput
     {
@@ -7,5 +10,6 @@
         public UserLoginInfoDto User { get; set; }
 
         public TenantLoginInfoDto Tenant { get; set; }
+
     }
 }

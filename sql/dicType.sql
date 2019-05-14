@@ -1,0 +1,10 @@
+SET IDENTITY_INSERT dbo.DicType ON 
+TRUNCATE TABLE dicType 
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) values (1,'2019-04-25 20:35:57.0025937',NULL,NULL,NULL,N'药品信息',1,N'yaopin',N'{"name":"药品"}',NULL)
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) values (2,'2019-04-25 20:35:57.0048552',NULL,NULL,NULL,N'排放方式',2,N'paifangfangshi',N'{"name":"排放方式"}',NULL)
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) values (3,'2019-04-25 20:35:57.0048663',NULL,NULL,NULL,N'废水类型',3,N'feishuileixing',N'{"name":"废水"}',NULL)
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) values (4,'2019-04-25 20:35:57.0048674',NULL,NULL,NULL,N'点位信息',4,N'dianweixinxi',N'{"name":"点位"}',NULL)
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) values (5,'2019-04-25 20:35:57.0048697',NULL,NULL,NULL,N'因子信息',5,N'yinzixinxi',N'{"name":"因子"}',NULL)
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) VALUES (6,'2019-04-28 22:27:23.0595206',0,'2019-04-28 22:27:23.0595206',0,N'采集方式',0,N'shoujifangshi',N'{"name":"采集方式"}',NULL)
+INSERT INTO [dicType] ([Id],[CreationTime],[CreatorUserId],[LastModificationTime],[LastModifierUserId],[TypeName],[OrderId],[TypeCode],[ExtensionData],[ParentTypeCode]) values (7,'2019-04-28 22:27:23.0595206',0,'2019-04-28 22:27:23.0595206',0,N'重点污染物',0,N'wuranwu',N'{"name":"重点污染物"}',NULL)
+SET IDENTITY_INSERT dbo.DicType OFF 

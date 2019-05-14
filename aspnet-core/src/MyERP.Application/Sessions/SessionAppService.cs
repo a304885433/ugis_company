@@ -2,6 +2,9 @@
 using System.Threading.Tasks;
 using Abp.Auditing;
 using MyERP.Sessions.Dto;
+using System.Linq;
+using Abp.AutoMapper;
+using MyERP.Users.Dto;
 
 namespace MyERP.Sessions
 {
@@ -27,7 +30,9 @@ namespace MyERP.Sessions
 
             if (AbpSession.UserId.HasValue)
             {
-                output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetCurrentUserAsync());
+                var user = await GetCurrentUserAsync();
+
+                output.User = ObjectMapper.Map<UserLoginInfoDto>(user);
             }
 
             return output;

@@ -16,7 +16,7 @@ namespace MyERP.UGIS
             this.dicTypeRepository = dicTypeRepository;
         }
 
-        public async Task Index()
+        public async Task GetIndex()
         {
             await InitDicType();
         }
@@ -64,6 +64,12 @@ namespace MyERP.UGIS
                         ExtensionData = JsonConvert.SerializeObject(new { name= "收集方式" }),
                         OrderId = 5,
                         TypeName = "收集方式"
+                    },
+                    new DicType(){
+                        TypeCode = "wuranwu",
+                        ExtensionData = JsonConvert.SerializeObject(new { name= "重点污染物" }),
+                        OrderId = 6,
+                        TypeName = "重点污染物"
                     }
                 };
             list.ForEach(t =>

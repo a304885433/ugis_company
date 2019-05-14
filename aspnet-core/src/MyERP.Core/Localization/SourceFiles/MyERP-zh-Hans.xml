@@ -96,8 +96,25 @@
     <text name="DefaultPasswordIs">默认密码为：{0}</text>
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
-    
-    
+
+    <!-- 操作权限 -->
+    <text name="create">新增</text>
+    <text name="update">修改</text>
+    <text name="delete">删除</text>
+    <text name="read">查询</text>
+    <text name="export">导出</text>
+    <!-- 功能模块 -->
+    <text name="CompanyManager">企业管理</text>
+    <text name="CheckManager">检查数据</text>
+    <text name="Report1">企业排查统计</text>
+    <text name="Report2">企业因子统计</text>
+    <text name="Report3">所有因子统计</text>
+    <text name="Report4">企业点位统计</text>
+    <text name="Report5">所有点位统计</text>
+    <text name="BaseDataManager">基础数据</text>
+    <text name="RoleManager">角色管理</text>
+    <text name="UserManager">用户管理</text>
+
   </texts>
 </localizationDictionary>
 

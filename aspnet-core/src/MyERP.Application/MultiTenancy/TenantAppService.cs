@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MyERP.MultiTenancy
 {
-    [AbpAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpAuthorize(PermissionNames.TenantManager)]
     public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
     {
         private readonly TenantManager _tenantManager;
