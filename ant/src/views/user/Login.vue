@@ -210,14 +210,18 @@
         })
       },
       loginSuccess(res) {
-        this.$router.push({ name: 'dashboard' })
-        // 延迟 1 秒显示欢迎信息
-        setTimeout(() => {
-          this.$notification.success({
-            message: '欢迎',
+        this.$notification.success({
+            message: '登录成功',
             description: `${timeFix()}，欢迎回来`
           })
-        }, 1000)
+          setTimeout(()=>{
+            location.reload()
+          },200)
+         // 延迟 1 秒显示欢迎信息
+        // this.$router.push({ name: 'dashboard' })
+        //  setTimeout(() => {
+        //  
+        // }, 1000)
       },
       requestFailed(err) {
         this.$notification['error']({

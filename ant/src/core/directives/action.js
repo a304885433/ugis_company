@@ -34,7 +34,6 @@ const action = Vue.directive('action', {
     for (let p of permissions) {
       for (let actionName of actions) {
         let ap = `${p}.${actionName}`
-        console.log(ap)
         if (abp.auth.hasPermission(ap)) {
           hasPermission = true
           break
