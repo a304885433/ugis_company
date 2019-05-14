@@ -41,12 +41,25 @@
                                                               ]" />
             </a-form-item>
 
+            <a-form-item label="角色名称">
+                <a-select placeholder="请选择角色"
+                          v-decorator="[
+                    'roleName',
+                    {rules: [{ required: true, message: '请选择角色'}]}
+                  ]">
+                    <a-select-option v-for="item in roles"
+                                     :key="item.name"
+                                     :value="item.name">{{item.displayName}}</a-select-option>
+                </a-select>
+            </a-form-item>
+
         </a-form>
 
         <!-- fixed footer toolbar -->
         <footer-tool-bar :style="{ width: isSideMenu() && isDesktop() ? `calc(100% - ${sidebarOpened ? 256 : 80}px)` : '100%'}">
             <a-button type="primary"
                       @click="handleSubmit"
+                      v-action="['create','update']"
                       style="margin-right: 10px;"
                       :loading="loading">提交</a-button>
             <a-button type="default"
@@ -58,7 +71,7 @@
 <script>
     import FooterToolBar from '@/components/FooterToolbar'
     import { mixin, mixinDevice } from '@/utils/mixin'
-    import { User } from '@/api/'
+    import { User, Role } from '@/api/'
 
     export default {
         name: 'UserEdit',
@@ -72,12 +85,19 @@
                 form: this.$form.createForm(this),
                 loading: false,
                 mdl: null,
+                roles: [],
             }
         },
         created() {
+            this.getRoles()
             this.getData()
         },
         methods: {
+            getRoles() {
+                Role.GetRolesAsync().then(res => {
+                    this.roles = res.result.items
+                })
+            },
             getData() {
                 let id = this.$route.query.id
                 if (!id) {
@@ -97,6 +117,8 @@
                     this.loading = true
                     values.surname = values.userName
                     values.isActive = 1
+                    values.RoleNames = [values.roleName]
+                    delete values.roleName
                     if (!this.mdl) {
                         User.Create(values).then(() => {
                             this.$router.go(-1)

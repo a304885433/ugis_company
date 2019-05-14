@@ -49,7 +49,7 @@
               <a-form-item label="排查日期">
                 <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
                   <a-date-picker v-model="queryParam.startChkDate"
-                  format="YYYY-MM-DD HH:mm:ss"
+                                 format="YYYY-MM-DD HH:mm:ss"
                                  style="width: 100%" />
                 </a-form-item>
                 <span :style="{ display: 'inline-block', width: '24px', textAlign: 'center' }">
@@ -57,8 +57,8 @@
                 </span>
                 <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
                   <a-date-picker v-model="queryParam.endChkDate"
-                  format="YYYY-MM-DD HH:mm:ss"
-                  style="width: 100%" />
+                                 format="YYYY-MM-DD HH:mm:ss"
+                                 style="width: 100%" />
                 </a-form-item>
               </a-form-item>
             </a-col>
@@ -107,21 +107,8 @@
     <div class="table-operator">
       <a-button type="primary"
                 icon="plus"
+                v-action:create
                 @click="handleAdd">新建</a-button>
-      <a-dropdown v-action:edit
-                  v-if="selectedRowKeys.length > 0">
-        <a-menu slot="overlay">
-          <a-menu-item key="1">
-            <a-icon type="delete" />删除</a-menu-item>
-          <!-- lock | unlock -->
-          <a-menu-item key="2">
-            <a-icon type="lock" />锁定</a-menu-item>
-        </a-menu>
-        <a-button style="margin-left: 8px">
-          批量操作
-          <a-icon type="down" />
-        </a-button>
-      </a-dropdown>
     </div>
 
     <s-table ref="table"
@@ -137,15 +124,6 @@
             slot-scope="text">
         <a-badge :status="text | statusTypeFilter"
                  :text="text | statusFilter" />
-      </span>
-
-      <span slot="action"
-            slot-scope="text, record">
-        <template>
-          <a @click="handleEdit(record)">配置</a>
-          <a-divider type="vertical" />
-          <a @click="handleSub(record)">订阅报警</a>
-        </template>
       </span>
     </s-table>
   </a-card>
@@ -205,7 +183,7 @@
           {
             title: '排查时间',
             dataIndex: 'chkDate',
-            customRender: (date) => moment( date ).format('YYYY-MM-DD HH:mm:ss')
+            customRender: (date) => moment(date).format('YYYY-MM-DD HH:mm:ss')
           },
           // {
           //   title: '操作',
@@ -217,10 +195,10 @@
         // 加载数据方法 必须为 Promise 对象
         loadData: parameter => {
           let param = Object.assign(parameter, this.queryParam)
-          if(param.startChkDate) {
+          if (param.startChkDate) {
             param.startChkDate = moment(param.startChkDate).format('YYYY-MM-DD HH:mm:ss')
           }
-          if(param.endChkDate) {
+          if (param.endChkDate) {
             param.endChkDate = moment(param.endChkDate).format('YYYY-MM-DD HH:mm:ss')
           }
           return ChkResult.GetCustomAll(param)
@@ -278,8 +256,8 @@
           this.chkPointArr = res.result.filter(t => t.typeCode == 'dianweixinxi')
         })
       },
-      getPoluType(id){
-        CompanyInfo.GetPoluType({id}).then(res=>{
+      getPoluType(id) {
+        CompanyInfo.GetPoluType({ id }).then(res => {
           this.poluTypeArr = res.result
         })
       },

@@ -57,6 +57,7 @@
       </span>
       <a-button type="primary"
                 @click="validate"
+                v-action="['create','update']"
                 style="margin-right: 10px;"
                 :loading="loading">提交</a-button>
       <a-button type="default"
@@ -70,7 +71,6 @@
   import WaterInfo from './WaterInfo'
   import YaoPin from './YaoPin'
   import PoluType from './PoluType'
-  import Test from './Test3'
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
   import { Dic, CompanyInfo } from '@/api/'
@@ -99,8 +99,7 @@
       BaseInfo,
       WaterInfo,
       YaoPin,
-      PoluType,
-      Test
+      PoluType
     },
     data() {
       return {
@@ -216,7 +215,6 @@
       // 最终全页面提交
       validate() {
         const { $refs: { baseInfoForm, waterInfoForm, yaopinTable, poluTypeTable }, $notification } = this
-
         let poluTypeData = poluTypeTable.data
         let yaopinData = yaopinTable.data
 
