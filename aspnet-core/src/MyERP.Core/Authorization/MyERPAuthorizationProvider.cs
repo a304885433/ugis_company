@@ -7,46 +7,45 @@ namespace MyERP.Authorization
 {
     public class MyERPAuthorizationProvider : AuthorizationProvider
     {
-        private string[] curAction = new[] { "create", "update", "read" };
         private string[] curdAction = new[] { "create", "update", "read", "delete" };
-        private string[] formAction = new[] { "save" };
-        private string[] reportAction = new[] { "export" };
+        private string[] reportAction = new[] { "read", "export" };
 
         public override void SetPermissions(IPermissionDefinitionContext context)
         {
             // 默认权限
-            context.CreatePermission(PermissionNames.Pages_Users, L("Users"));
-            context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
-            context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+            //context.CreatePermission(PermissionNames.Users, L("Users"));
+            //context.CreatePermission(PermissionNames.Roles, L("Roles"));
+            //context.CreatePermission(PermissionNames.Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
 
-            CreatePermission(context, PermissionNames.Pages_Company, curdAction);
-            CreatePermission(context, PermissionNames.Pages_CompanyEdit, formAction);
-            CreatePermission(context, PermissionNames.Pages_Check, curAction);
-            CreatePermission(context, PermissionNames.Pages_CheckEdit, formAction);
-            CreatePermission(context, PermissionNames.Pages_Report1);
-            CreatePermission(context, PermissionNames.Pages_Report2);
-            CreatePermission(context, PermissionNames.Pages_Report4);
-            CreatePermission(context, PermissionNames.Pages_Report5);
-            CreatePermission(context, PermissionNames.Pages_BaseData, curdAction);
+            CreatePermission(context, PermissionNames.UserManager, curdAction);
+            CreatePermission(context, PermissionNames.RoleManager, curdAction);
+            CreatePermission(context, PermissionNames.CompanyManager, curdAction);
+            CreatePermission(context, PermissionNames.CheckManager, curdAction);
+            CreatePermission(context, PermissionNames.Report1, reportAction);
+            CreatePermission(context, PermissionNames.Report2, reportAction);
+            CreatePermission(context, PermissionNames.Report3, reportAction);
+            CreatePermission(context, PermissionNames.Report4, reportAction);
+            CreatePermission(context, PermissionNames.Report5, reportAction);
+            CreatePermission(context, PermissionNames.BaseDataManager, curdAction);
         }
 
-        private void CreatePermission(IPermissionDefinitionContext context, string name, string[] actions = null, string[] extraActions = null )
+        private void CreatePermission(IPermissionDefinitionContext context, string name, string[] actions = null, string[] extraActions = null)
         {
             context.CreatePermission(name, L(name));
-            //if (actions != null && actions.Length > 0)
-            //{
-            //    foreach (var item in actions)
-            //    {
-            //        context.CreatePermission(item, L(item));
-            //    }
-            //}
-            //if (extraActions != null && extraActions.Length > 0)
-            //{
-            //    foreach (var item in extraActions)
-            //    {
-            //        context.CreatePermission(item, L(item));
-            //    }
-            //}
+            if (actions != null && actions.Length > 0)
+            {
+                foreach (var item in actions)
+                {
+                    context.CreatePermission($"{name}.{item}", L(item));
+                }
+            }
+            if (extraActions != null && extraActions.Length > 0)
+            {
+                foreach (var item in extraActions)
+                {
+                    context.CreatePermission($"{name}.{item}", L(item));
+                }
+            }
         }
 
         private static ILocalizableString L(string name)
