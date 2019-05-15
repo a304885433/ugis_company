@@ -217,11 +217,6 @@
           setTimeout(()=>{
             location.reload()
           },200)
-         // 延迟 1 秒显示欢迎信息
-        // this.$router.push({ name: 'dashboard' })
-        //  setTimeout(() => {
-        //  
-        // }, 1000)
       },
       requestFailed(err) {
         this.$notification['error']({
