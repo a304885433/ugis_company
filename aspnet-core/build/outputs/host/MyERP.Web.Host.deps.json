@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "7f40e7f383258cb2c7a4d42d6f7158e52c8aafca"
+    "signature": "f5c2c9918a076ae1cb04d175d1fbc0f729c40b00"
   },
   "compilationOptions": {
     "defines": [
@@ -43,21 +43,6 @@
         },
         "compile": {
           "MyERP.Web.Host.dll": {}
-        }
-      },
-      "Abp.Castle.Log4Net/4.3.0": {
-        "dependencies": {
-          "Abp": "4.3.0",
-          "log4net": "2.0.8"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Abp.Castle.Log4Net.dll": {
-            "assemblyVersion": "4.3.0.0",
-            "fileVersion": "4.3.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Abp.Castle.Log4Net.dll": {}
         }
       },
       "AutoMapper/8.0.0": {
@@ -3990,6 +3975,18 @@
           "Abp.AutoMapper.dll": {}
         }
       },
+      "Abp.Castle.Log4Net/4.3.0": {
+        "dependencies": {
+          "Abp": "4.3.0",
+          "log4net": "2.0.8"
+        },
+        "runtime": {
+          "Abp.Castle.Log4Net.dll": {}
+        },
+        "compile": {
+          "Abp.Castle.Log4Net.dll": {}
+        }
+      },
       "Abp.EntityFramework.Common/4.3.0": {
         "dependencies": {
           "Abp": "4.3.0"
@@ -4115,7 +4112,6 @@
         "dependencies": {
           "Abp.AspNetCore": "4.3.0",
           "Abp.AspNetCore.SignalR": "4.3.0",
-          "Abp.ZeroCore": "4.3.0",
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.2.0",
           "MyERP.Application": "1.0.0",
@@ -4318,13 +4314,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Abp.Castle.Log4Net/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kqAPHJGkBW4U/IKZg0p5YHE0oy8h50iWMMb+kMCSFrece/q+w3Kgs6okUHAbzsyeREAShCpj6VZcoW97UHkAhQ==",
-      "path": "abp.castle.log4net/4.3.0",
-      "hashPath": "abp.castle.log4net.4.3.0.nupkg.sha512"
     },
     "AutoMapper/8.0.0": {
       "type": "package",
@@ -6253,6 +6242,11 @@
       "sha512": ""
     },
     "Abp.AutoMapper/4.3.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Abp.Castle.Log4Net/4.3.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
