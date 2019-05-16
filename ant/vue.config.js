@@ -44,9 +44,7 @@ module.exports = {
           }, {
             from: 'src/lib/abp.js',
             to: 'static'
-          }]),
-          // 依赖大小分析工具
-          new BundleAnalyzerPlugin(),
+          }])
         ]
       }
     } else {
@@ -63,7 +61,9 @@ module.exports = {
             {
               from: 'src/lib/abp.js',
               to: 'static'
-            }])
+            }]),
+          // 依赖大小分析工具
+          new BundleAnalyzerPlugin(),
         ]
       }
     }
