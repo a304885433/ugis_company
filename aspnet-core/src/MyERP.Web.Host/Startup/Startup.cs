@@ -98,7 +98,9 @@ namespace MyERP.Web.Host.Startup
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseAbp(options => { options.UseAbpRequestLocalization = false;
+            app.UseAbp(options =>
+            {
+                options.UseAbpRequestLocalization = false;
             }); // Initializes ABP framework.
 
             Clock.Provider = ClockProviders.Local;
@@ -156,11 +158,17 @@ namespace MyERP.Web.Host.Startup
                 }
             }
 
-            app.Run(async (context) =>
+            // wwwroot 存在index的时候，兼容后台支持模式
+            var path = Path.Combine(env.WebRootPath, "index.html");
+            if (System.IO.File.Exists(path))
             {
-                context.Response.ContentType = "text/html";
-                await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
-            });
+                app.Run(async (context) =>
+                {
+                    context.Response.ContentType = "text/html";
+                    await context.Response.SendFileAsync(path);
+                });
+            }
+
         }
     }
 }
