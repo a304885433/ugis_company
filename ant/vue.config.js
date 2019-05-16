@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -29,7 +30,7 @@ module.exports = {
   //   ]
   // },
 
-  configureWebpack: config =>{
+  configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       return {
         plugins: [
@@ -50,17 +51,19 @@ module.exports = {
       return {
         plugins: [
           new CopyWebpackPlugin([
-          //   {
-          //   from: 'node_modules/@aspnet/signalr/dist/browser/signalr.min.js',
-          //   to: 'dist'
-          // }, {
-          //   from: 'node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js',
-          //   to: 'dist'
-          // }, 
-          {
-            from: 'src/lib/abp.js',
-            to: 'static'
-          }])
+            //   {
+            //   from: 'node_modules/@aspnet/signalr/dist/browser/signalr.min.js',
+            //   to: 'dist'
+            // }, {
+            //   from: 'node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js',
+            //   to: 'dist'
+            // }, 
+            {
+              from: 'src/lib/abp.js',
+              to: 'static'
+            }]),
+          // 依赖大小分析工具
+          new BundleAnalyzerPlugin(),
         ]
       }
     }
@@ -132,11 +135,6 @@ module.exports = {
         ws: false,
         changeOrigin: true,
       },
-      '/AbpUserConfiguration': {
-        target: 'http://10.211.55.7:3001/',
-        ws: false,
-        changeOrigin: true,
-      }
     }
   },
 

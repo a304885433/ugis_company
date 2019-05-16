@@ -28,7 +28,10 @@ services:
                 aliases:
                    - aspnetcore # 计算机名称，用来做反向代理
         ports:
-            - "9002:80"
+            - "3001:80"
+        volumes:    # 文件夹映射
+            - ./App_Data:/app/App_Data/
+ 
 
 networks: ##定义网络组
   mynet: ## 网络组名称
