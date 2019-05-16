@@ -158,8 +158,12 @@ namespace MyERP.Web.Host.Startup
 
             app.Run(async (context) =>
             {
-                context.Response.ContentType = "text/html";
-                await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
+                var path = Path.Combine(env.WebRootPath, "index.html");
+                if (System.IO.File.Exists(path))
+                {
+                    context.Response.ContentType = "text/html";
+                    await context.Response.SendFileAsync(path);
+                }
             });
         }
     }

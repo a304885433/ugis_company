@@ -20,3 +20,4 @@ aspnet-core/src/CloundInvest.Migrator/Logs/Logs.txt
 **/node_modules/
 /aspnet-core/docker/host/Mvc-Logs
 /aspnet-core/docker/mvc
+*.txt
