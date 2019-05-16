@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-chart :width="width" :height="height" :padding="[0]" :data="data" :scale="scale">
     <v-tooltip :show-title="false" />
     <v-coord type="rect" direction="TL" />
@@ -110,4 +110,4 @@ export default {
     }
   }
 }
-</script>
+</script> -->
