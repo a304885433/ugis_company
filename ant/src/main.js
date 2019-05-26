@@ -25,12 +25,12 @@ if (!Util.abp.utils.getCookieValue('Abp.Localization.CultureName')) {
 }
 
 // 注册过滤器
-import * as filters from './filters' // global filters
+import * as filters from './utils/filter' // global filters
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
   Vue.prototype[key] = filters[key]
 })
-import * as prototypes from './filters/prototype' // global filters
+import * as prototypes from './utils/prototype' // global filters
 Object.keys(prototypes).forEach(key => {
   Vue.prototype[key] = prototypes[key]
 })

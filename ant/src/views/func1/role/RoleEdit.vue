@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div style="max-width: 800px">
         <a-divider v-if="isMobile()" />
         <div v-if="mdl.id">
@@ -58,7 +58,6 @@
     import { Role } from '@/api/'
     import { mixinDevice } from '@/utils/mixin'
     import { actionToObject } from '@/utils/permissions'
-    import pick from 'lodash.pick'
 
     export default {
         name: 'RoleEdit',
@@ -201,4 +200,4 @@
 <style scoped>
 
 
-</style>
+</style> -->

@@ -44,3 +44,16 @@ export const cutStrByFullLength = (str = '', maxLength) => {
     return pre
   }, '')
 }
+
+
+
+/**
+ * 实现jsonpath get对象数据
+ * @param {*} object 
+ * @param {*} path 
+ * @param {*} defaultValue 
+ */
+export function get(object, path, defaultValue) {
+  return (!Array.isArray(path) ? path.replace(/\[/g, '.').replace(/\]/g, '').split('.') : path)
+          .reduce((o, k) => (o || {})[k], object) || defaultValue;
+}

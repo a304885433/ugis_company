@@ -15,7 +15,8 @@
                   :showSubmit="false"
                   :paifangDicArr="paifangDicArr"
                   :shoujiDicArr="shoujiDicArr"
-                  :dianweiDicArr="dianweiDicArr" />
+                  :dianweiDicArr="dianweiDicArr" 
+                  :contaminantsDicArr="contaminantsDicArr"/>
     </a-card>
 
     <!-- table -->
@@ -77,18 +78,6 @@
   import moment from 'moment'
 
   const fieldLabels = {
-    name: '仓库名',
-    url: '仓库域名',
-    owner: '仓库管理员',
-    approver: '审批人',
-    dateRange: '生效日期',
-    type: '仓库类型',
-    name2: '任务名',
-    url2: '任务描述',
-    owner2: '执行人',
-    approver2: '责任人',
-    dateRange2: '生效日期',
-    type2: '任务类型'
   }
 
   export default {
@@ -115,6 +104,7 @@
         paifangDicArr: [],
         shoujiDicArr: [],
         dianweiDicArr: [],
+        contaminantsDicArr: [],
         mdl: {},
       }
     },
@@ -171,6 +161,7 @@
           this.shoujiDicArr = this.dicArr.filter(t => t.typeCode == 'shoujifangshi')
           this.paifangDicArr = this.dicArr.filter(t => t.typeCode == 'paifangfangshi')
           this.dianweiDicArr = this.dicArr.filter(t => t.typeCode == 'dianweixinxi')
+          this.contaminantsDicArr = this.dicArr.filter(t => t.typeCode == 'wuranwu')
         })
       },
       handleSubmit(e) {
@@ -251,6 +242,8 @@
               return
             }
             waterValues.chkPointIdList = waterValues.chkPointIdList.join(',')
+            waterValues.purchaseFile = this.getUploadFile(waterValues.purchaseFile)
+
             let mdlCompanyInfo = this.mdl ? this.mdl.companyInfo : {}
             let data = {
               companyInfo: Object.assign(mdlCompanyInfo, values, waterValues),

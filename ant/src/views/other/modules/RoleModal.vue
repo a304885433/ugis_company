@@ -24,7 +24,6 @@
 <script>
 import { getPermissions } from '@/api/manage'
 import { actionToObject } from '@/utils/permissions'
-import pick from 'lodash.pick'
 
 export default {
   name: 'RoleModal',
@@ -71,7 +70,7 @@ export default {
       }
 
       this.$nextTick(() => {
-        this.form.setFieldsValue(pick(this.mdl, 'id', 'name', 'status', 'describe'))
+         this.form.setFieldsValue(this.mdl)
       })
       console.log('this.mdl', this.mdl)
     },

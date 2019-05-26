@@ -88,7 +88,6 @@
 
 <script>
 import moment from 'moment'
-import pick from 'lodash.pick'
 
 export default {
   name: 'TableEdit',
@@ -149,7 +148,7 @@ export default {
       new Promise((resolve) => {
         setTimeout(resolve, 1500)
       }).then(() => {
-        const formData = pick(data, ['no', 'callNo', 'status', 'description', 'updatedAt'])
+        const formData = data ; //pick(data, ['no', 'callNo', 'status', 'description', 'updatedAt'])
         formData.updatedAt = moment(data.updatedAt)
         console.log('formData', formData)
         form.setFieldsValue(formData)

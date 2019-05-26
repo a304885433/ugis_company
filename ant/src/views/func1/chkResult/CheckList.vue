@@ -7,8 +7,10 @@
                  :sm="24">
             <a-form-item label="企业名称">
               <a-select v-model="queryParam.companyId"
-                        placeholder="请选择"
+                        placeholder="全部"
                         :allowClear="true"
+                        showSearch
+                        :filterOption="filterSelect"
                         @change="handleCompanyChange">
                 <a-select-option v-for="item in companyArr"
                                  :value="item.id"
@@ -21,8 +23,10 @@
                  :sm="24">
             <a-form-item label="排查点位">
               <a-select v-model="queryParam.chkPointId"
-                        placeholder="请选择"
+                        placeholder="全部"
                         :allowClear="true"
+                        showSearch
+                        :filterOption="filterSelect"
                         default-value="0">
                 <a-select-option v-for="item in chkPointArr"
                                  :value="item.id"
@@ -35,8 +39,10 @@
                    :sm="24">
               <a-form-item label="排查因子">
                 <a-select v-model="queryParam.poluTypeId"
-                          placeholder="请选择"
+                          placeholder="全部"
                           :allowClear="true"
+                          showSearch
+                          :filterOption="filterSelect"
                           default-value="0">
                   <a-select-option v-for="item in poluTypeArr"
                                    :value="item.id"
@@ -113,17 +119,12 @@
 
     <s-table ref="table"
              size="default"
-             rowKey="key"
+             :rowKey="newid"
              :columns="columns"
              :data="loadData">
       <span slot="serial"
             slot-scope="text, record, index">
         {{ index + 1 }}
-      </span>
-      <span slot="status"
-            slot-scope="text">
-        <a-badge :status="text | statusTypeFilter"
-                 :text="text | statusFilter" />
       </span>
     </s-table>
   </a-card>
@@ -143,16 +144,17 @@
       return {
         mdl: {},
         // 高级搜索 展开/关闭
-        advanced: false,
+        advanced: true,
         // 查询参数
         queryParam: {
-          chkPointId: null,
-          poluTypeId: null,
-          startChkDate: null,
-          endChkDate: null,
-          startConcentration: null,
-          endConcentration: null,
-          chkBatch: null,
+          companyId: undefined,
+          chkPointId: undefined,
+          poluTypeId: undefined,
+          startChkDate: undefined,
+          endChkDate: undefined,
+          startConcentration: undefined,
+          endConcentration: undefined,
+          chkBatch: undefined,
         },
         // 表头
         columns: [
@@ -176,10 +178,10 @@
             title: '浓度',
             dataIndex: 'concentration',
           },
-          {
-            title: '排查批次',
-            dataIndex: 'chkBatch',
-          },
+          // {
+          //   title: '排查批次',
+          //   dataIndex: 'chkBatch',
+          // },
           {
             title: '排查时间',
             dataIndex: 'chkDate',
@@ -216,14 +218,6 @@
         poluTypeArr: [],
         companyArr: [],
         chkPointArr: [],
-      }
-    },
-    filters: {
-      statusFilter(type) {
-        return statusMap[type].text
-      },
-      statusTypeFilter(type) {
-        return statusMap[type].status
       }
     },
     created() {
