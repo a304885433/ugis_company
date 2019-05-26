@@ -47,6 +47,21 @@ namespace MyERP.UGIS
         public int WaterAmount { get; set; }
 
         /// <summary>
+        /// 废水月处理量（批复）
+        /// </summary>
+        public decimal PlanWaterAmount { get; set; }
+
+        /// <summary>
+        /// 废水月处理量（实际）
+        /// </summary>
+        public decimal FactWaterAmount { get; set; }
+
+        /// <summary>
+        /// 废水设施处理能力
+        /// </summary>
+        public decimal WaterAmountBz { get; set; }
+
+        /// <summary>
         /// 污水处理工艺流程图
         /// </summary>
         public string CraftFile { get; set; }
@@ -70,6 +85,16 @@ namespace MyERP.UGIS
         /// 环评公司名称
         /// </summary>
         public string EnvCompany { get; set; }
+
+        /// <summary>
+        /// 环责险保额
+        /// </summary>
+        public decimal EnvInsuredAmount { get; set; }
+
+        /// <summary>
+        /// 环责险期限
+        /// </summary>
+        public string EnvDeadline { get; set; }
 
         /// <summary>
         /// 企业危险评级
@@ -123,5 +148,20 @@ namespace MyERP.UGIS
         /// </summary>
         [Column(TypeName = "decimal(18,10)")]
         public decimal Y { get; set; }
+
+        /// <summary>
+        /// 污染物Id
+        /// </summary>
+        public int ContaminantsId { get; set; }
+
+        /// <summary>
+        /// 转移总量
+        /// </summary>
+        public decimal TransferTotal { get; set; }
+
+        /// <summary>
+        /// 原材料采购清单
+        /// </summary>
+        public string PurchaseFile { get; set; }
     }
 }

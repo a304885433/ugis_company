@@ -211,6 +211,21 @@
             废水月处理量（吨）
             </summary>
         </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.PlanWaterAmount">
+            <summary>
+            废水月处理量（批复）
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.FactWaterAmount">
+            <summary>
+            废水月处理量（实际）
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.WaterAmountBz">
+            <summary>
+            废水设施处理能力
+            </summary>
+        </member>
         <member name="P:MyERP.UGIS.CompanyInfo.CraftFile">
             <summary>
             污水处理工艺流程图
