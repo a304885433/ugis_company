@@ -96,8 +96,6 @@
 </template>
 
 <script>
-import pick from 'lodash.pick'
-
 const stepForms = [
   ['name', 'desc'],
   ['target', 'template', 'type'],
@@ -129,7 +127,7 @@ export default {
       this.visible = true
       const { form: { setFieldsValue } } = this
       this.$nextTick(() => {
-        setFieldsValue(pick(record, []))
+        setFieldsValue(record)
       })
     },
     handleNext (step) {

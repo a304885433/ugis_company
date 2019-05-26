@@ -66,7 +66,6 @@
 import { getRoleList, getPermissions } from '@/api/manage'
 import { mixinDevice } from '@/utils/mixin'
 import { actionToObject } from '@/utils/permissions'
-import pick from 'lodash.pick'
 
 export default {
   name: 'RoleList',
@@ -124,7 +123,12 @@ export default {
       }
 
       this.$nextTick(() => {
-        this.form.setFieldsValue(pick(this.mdl, 'id', 'name', 'status', 'describe'))
+        this.form.setFieldsValue({
+          id: this.mdl.id,
+          name: this.mdl.name,
+          status: this.mdl.status,
+          describe: this.mdl.describe,
+        })
       })
       console.log('this.mdl', this.mdl)
     },

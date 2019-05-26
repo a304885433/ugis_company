@@ -145,6 +145,7 @@
             this.$notification.warn({
               message: '未填写因子排查数据',
             })
+            return
           }
 
           if (!this.checkTableData(data, 'poluTypeId', '因子数据不完整，请调整！')) {
