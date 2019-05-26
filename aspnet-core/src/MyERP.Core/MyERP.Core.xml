@@ -251,6 +251,16 @@
             环评公司名称
             </summary>
         </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.EnvInsuredAmount">
+            <summary>
+            环责险保额
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.EnvDeadline">
+            <summary>
+            环责险期限
+            </summary>
+        </member>
         <member name="P:MyERP.UGIS.CompanyInfo.RiskBand">
             <summary>
             企业危险评级
@@ -299,6 +309,21 @@
         <member name="P:MyERP.UGIS.CompanyInfo.Y">
             <summary>
             纬度
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.ContaminantsId">
+            <summary>
+            污染物Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.TransferTotal">
+            <summary>
+            转移总量
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.PurchaseFile">
+            <summary>
+            原材料采购清单
             </summary>
         </member>
         <member name="T:MyERP.UGIS.CompanyMedcineType">
