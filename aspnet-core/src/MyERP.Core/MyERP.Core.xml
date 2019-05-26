@@ -101,6 +101,31 @@
             开启多租户
             </summary>
         </member>
+        <member name="M:MyERP.Sqls.ISqlExecuter.Execute(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            执行给定的命令
+            </summary>
+            <param name="sql">命令字符串</param>
+            <param name="parameters">要应用于命令字符串的参数</param>
+            <returns>执行命令后由数据库返回的结果</returns>
+        </member>
+        <member name="M:MyERP.Sqls.ISqlExecuter.SqlQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            创建一个原始 SQL 查询，该查询将返回给定泛型类型的元素。
+            </summary>
+            <param name="sql">SQL 查询字符串</param>
+            <param name="parameters">要应用于 SQL 查询字符串的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyERP.Sqls.ISqlExecuter.SqlQuery``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            创建一个原始 SQL 查询，该查询将返回给定泛型类型的元素。
+            </summary>
+            <typeparam name="T">查询所返回对象的类型</typeparam>
+            <param name="sql">SQL 查询字符串</param>
+            <param name="parameters">要应用于 SQL 查询字符串的参数</param>
+            <returns></returns>
+        </member>
         <member name="P:MyERP.Timing.AppTimes.StartupTime">
             <summary>
             Gets the startup time of the application.
@@ -249,6 +274,16 @@
         <member name="P:MyERP.UGIS.CompanyInfo.ChkPointIdList">
             <summary>
             排查点位信息
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.X">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyInfo.Y">
+            <summary>
+            纬度
             </summary>
         </member>
         <member name="T:MyERP.UGIS.CompanyMedcineType">

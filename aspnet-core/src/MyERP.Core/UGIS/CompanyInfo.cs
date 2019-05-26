@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MyERP.UGIS
@@ -109,5 +110,18 @@ namespace MyERP.UGIS
         /// 排查点位信息
         /// </summary>
         public string ChkPointIdList { get; set; }
+
+        /// <summary>
+        /// 经度
+        /// </summary>
+        [Column(TypeName = "decimal(18,10)")]
+
+        public decimal X { get; set; }
+
+        /// <summary>
+        /// 纬度
+        /// </summary>
+        [Column(TypeName = "decimal(18,10)")]
+        public decimal Y { get; set; }
     }
 }

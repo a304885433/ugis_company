@@ -7,7 +7,6 @@ using Abp.EntityFrameworkCore.Uow;
 using Abp.MultiTenancy;
 using MyERP.EntityFrameworkCore.Seed.Host;
 using MyERP.EntityFrameworkCore.Seed.Tenants;
-using MyERP.EntityFrameworkCore.Seed.SyncDesp;
 
 namespace MyERP.EntityFrameworkCore.Seed
 {

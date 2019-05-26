@@ -12,8 +12,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MyERP.Extensions;
 
-namespace MyERP.EntityFrameworkCore.Seed.SyncDesp
+namespace MyERP.EntityFrameworkCore.DB
 {
     //            new Seed.SyncDesp.DBDescriptionUpdater<MyERPDbContext>(context).UpdateDatabaseDescriptions();
 
@@ -83,7 +84,6 @@ namespace MyERP.EntityFrameworkCore.Seed.SyncDesp
                     SetDBDescription(tableName, string.IsNullOrEmpty(columnName) ? prop.Name : columnName,
                          propComment.Summary);
                 }
-
                 else
                 {
                     SetDBDescription(tableName, prop.Name, propComment.Summary);
