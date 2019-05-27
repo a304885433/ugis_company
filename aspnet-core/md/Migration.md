@@ -12,9 +12,10 @@ MyERP.EntityFrameworkCore 下运行
 将Migration同步到数据库
 >命令示例
 - EntityFrameworkCore\Update-Database 
-- Update-Database -Verbos
-- Update-Database -Script -Verbos （同步的同时返回Sql）
-- Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: AddPostAbstract
+- EntityFrameworkCore\Update-Database -Verbos
+- EntityFrameworkCore\Update-Database -Script -Verbos （同步的同时返回Sql）
+- EntityFrameworkCore\Update-Database -Script  20190501091050_add_ChkUserName.cs
+- EntityFrameworkCore\Update-Database -Script -SourceMigration: 20190417100906_init_db.cs -TargetMigration: 20190501091050_add_ChkUserName.cs
 - Update-Database -Verbos -ConnectionString "Data Source=.;Initial Catalog=TestDb;Integrated Security=False;User ID=sa;Password=***;MultipleActiveResultSets=True" ConnectionProviderName "System.Data.SqlClient"
 - Update-Database -TargetMigration:"MigrationName" （更新到指定版本）
 - Update-Database –TargetMigration: AddBlogUrl （EF 更新到指定版本）

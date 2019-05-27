@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyERP.EntityFrameworkCore;
 
 namespace MyERP.Migrations
 {
     [DbContext(typeof(MyERPDbContext))]
-    partial class MyERPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190526070150_company_xy")]
+    partial class company_xy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1129,8 +1131,6 @@ namespace MyERP.Migrations
 
                     b.Property<string>("Contact");
 
-                    b.Property<int>("ContaminantsId");
-
                     b.Property<string>("CraftDes");
 
                     b.Property<string>("CraftFile");
@@ -1144,12 +1144,6 @@ namespace MyERP.Migrations
                     b.Property<int>("EmissionTypeID");
 
                     b.Property<string>("EnvCompany");
-
-                    b.Property<string>("EnvDeadline");
-
-                    b.Property<decimal>("EnvInsuredAmount");
-
-                    b.Property<decimal>("FactWaterAmount");
 
                     b.Property<string>("IssSheetFile");
 
@@ -1169,19 +1163,11 @@ namespace MyERP.Migrations
 
                     b.Property<string>("PipeFile");
 
-                    b.Property<decimal>("PlanWaterAmount");
-
-                    b.Property<string>("PurchaseFile");
-
                     b.Property<int>("RiskBand");
 
                     b.Property<string>("Tel");
 
-                    b.Property<decimal>("TransferTotal");
-
                     b.Property<int>("WaterAmount");
-
-                    b.Property<decimal>("WaterAmountBz");
 
                     b.Property<int>("WaterTypeID");
 

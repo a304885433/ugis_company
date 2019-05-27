@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace MyERP.EntityFrameworkCore.Seed.SyncDesp
+namespace MyERP.Extensions
 {
     public static class TypeExtensions
     {
