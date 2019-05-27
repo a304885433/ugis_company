@@ -2,7 +2,7 @@
 
 $buildFolder = (Get-Item -Path "./" -Verbose).FullName
 $slnFolder = Join-Path $buildFolder "../"
-$outputFolder = Join-Path $buildFolder "outputs"
+$outputFolder = $buildFolder
 $webHostFolder = Join-Path $slnFolder "src/MyERP.Web.Host"
 
 ## CLEAR ######################################################################
