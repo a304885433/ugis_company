@@ -48,8 +48,8 @@
               <a-button type="primary"
                         :loading="loading"
                         @click="handleQuery">查询</a-button>
-              <!-- <a-button style="margin-left: 8px"
-                  @click="exportXls">导出</a-button> -->
+              <a-button style="margin-left: 8px"
+                  @click="exportXls">导出</a-button>
             </span>
           </a-col>
         </a-row>
@@ -111,7 +111,8 @@
         width: 100,
         height: 100,
         dataSource: [],
-        scale: []
+        scale: [],
+        colList: null,
       }
     },
     created() {
@@ -137,7 +138,14 @@
       exportXls() {
         if (!this.data.length) {
           this.$message.warn('没有需要导出的数据！')
+          return
         }
+        let request = {
+          colList: this.colList, 
+          data: this.data,
+          name: '所有因子统计'
+        }
+        this.download(request)
       },
       loadData(queryParam) {
         let param = Object.assign({}, queryParam)
@@ -150,6 +158,7 @@
         this.loading = true
         return Report.GetReport3(param)
           .then(res => {
+            this.colList = res.result.colList
             this.columns = res.result.colList.map(t => {
               return {
                 dataIndex: t.colId,

@@ -46,7 +46,7 @@ module.exports = {
             to: 'static'
           }]),
           // 依赖大小分析工具
-          new BundleAnalyzerPlugin(),
+          // new BundleAnalyzerPlugin(),
         ]
       }
     } else {

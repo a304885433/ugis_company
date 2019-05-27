@@ -46,8 +46,8 @@
               <a-button type="primary"
                         :loading="loading"
                         @click="handleQuery">查询</a-button>
-              <!-- <a-button style="margin-left: 8px"
-                 @click="exportXls">导出</a-button> -->
+              <a-button style="margin-left: 8px"
+                 @click="exportXls">导出</a-button>
             </span>
           </a-col>
         </a-row>
@@ -81,14 +81,7 @@
         companyArr: [],
         chkPointArr: [],
         loading: false,
-      }
-    },
-    filters: {
-      statusFilter(type) {
-        return statusMap[type].text
-      },
-      statusTypeFilter(type) {
-        return statusMap[type].status
+        colList: null,
       }
     },
     created() {
@@ -114,7 +107,14 @@
       exportXls() {
         if (!this.data.length) {
           this.$message.warn('没有需要导出的数据！')
+          return
         }
+        let request = {
+          colList: this.colList, 
+          data: this.data,
+          name: '所有点位统计'
+        }
+        this.download(request)
       },
       loadData(queryParam) {
         let param = Object.assign({}, queryParam)
@@ -127,6 +127,7 @@
         this.loading = true
         return Report.GetReport5(param)
           .then(res => {
+            this.colList = res.result.colList
             this.columns = res.result.colList.map((t, index) => {
               return {
                 dataIndex: t.colId,

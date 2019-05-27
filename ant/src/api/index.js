@@ -4,6 +4,7 @@ import * as chkResultService from './chkResult'
 import * as reportService from './report'
 import * as userService from './user'
 import * as roleService from './role'
+import * as fileService from './file'
 const api = {
   Login: '/auth/login',
   Logout: '/auth/logout',
@@ -24,3 +25,5 @@ export const ChkResult = new crud('ChkResult', chkResultService)
 export const Report =  reportService
 export const User = new crud('User', userService)
 export const Role = new crud('Role', roleService)
+export const File =  fileService
+

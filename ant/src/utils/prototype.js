@@ -1,3 +1,4 @@
+import Util from '../lib/util'
 // 主要是封装vue组件最常用的方法，直接挂载在实例上
 
 /**
@@ -28,4 +29,36 @@ export function newid() {
  */
 export function filterSelect(input, option) {
     return option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
+}
+
+/**
+ * 下载文件
+ */
+export function download(requestData, actionUrl = '/api/File/Xls') {
+    var form = document.createElement("form")
+    form.style.display = "none"
+    form.action = actionUrl
+    form.method = "post"
+    form.target = '_blank'
+    document.body.appendChild(form)
+
+    let parms = {
+        json: JSON.stringify(requestData)
+    }
+    const token = Util.abp.auth.getToken()
+    if (!!token) {
+        parms["Authorization"] = "Bearer " + token;
+    }
+    parms[".AspNetCore.Culture"] = Util.abp.utils.getCookieValue("Abp.Localization.CultureName");
+    parms["Abp.TenantId"] = Util.abp.multiTenancy.getTenantIdCookie();
+
+    for (var key in parms) {
+        var input = document.createElement("input")
+        input.type = "hidden"
+        input.name = key
+        input.value = parms[key]
+        //input.value = encodeURIComponent(parms[key]);
+        form.appendChild(input)
+    }
+    form.submit()
 }
