@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using MyERP.UGIS.Dto;
+using Newtonsoft.Json;
+using OfficeOpenXml;
 
 namespace MyERP.Controllers
 {
@@ -133,6 +136,53 @@ namespace MyERP.Controllers
                 return File(by, MimeTypeNamesHelper.GetMimeType(ext), input.Name);
             }
             return null;
+        }
+
+        /// <summary>
+        /// 适配前端Excel导出
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> Xls([FromForm]string json)
+        {
+            var input = JsonConvert.DeserializeObject<FileXlsInput>(json);
+            var ms = new MemoryStream();
+            using (ExcelPackage package = new ExcelPackage(ms))
+            {
+                // 添加worksheet
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("sheet1");
+
+                // 添加头
+                var rowIndex = 1;
+                var colIndex = 1;
+                foreach (var col in input.ColList)
+                {
+                    worksheet.Cells[rowIndex, colIndex++].Value = col.Name;
+                }
+
+                rowIndex++;
+                // 添加数据
+                foreach (var data in input.Data)
+                {
+                    colIndex = 1;
+                    foreach (var col in input.ColList)
+                    {
+                        if (data.TryGetValue(col.ColId, out var val))
+                        {
+                            worksheet.Cells[rowIndex, colIndex].Value = val.ToString();
+                        }
+
+                        colIndex++;
+                    }
+                    rowIndex++;
+                }
+
+                package.Save();
+            }
+
+            var by = ms.ToArray();
+            return File(by, MimeTypeNames.ApplicationOctetStream, input.Name+".xlsx");
         }
     }
 }
