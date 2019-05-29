@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '污染源排查系统',
+      default: '水污染源监测',
       required: false
     },
     showTitle: {

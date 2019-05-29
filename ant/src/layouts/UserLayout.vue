@@ -5,7 +5,7 @@
         <div class="header">
           <a href="/">
             <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">污染源现场排查系统</span>
+            <span class="title">{{ L('AppName') }}</span>
           </a>
         </div>
         <div class="desc">
@@ -22,7 +22,7 @@
           <a href="#_self">条款</a> -->
         </div>
         <div class="copyright">
-          Copyright &copy; 2018 
+          Copyright {{ L('CopyRight') }}
         </div>
       </div>
     </div>
@@ -38,7 +38,8 @@ export default {
   components: { RouteView },
   mixins: [mixinDevice],
   data () {
-    return {}
+    return {
+    }
   },
   mounted () {
     document.body.classList.add('userLayout')
