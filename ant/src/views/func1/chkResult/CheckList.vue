@@ -84,12 +84,12 @@
                 </a-form-item>
               </a-form-item>
             </a-col>
-            <a-col :md="8"
+            <!-- <a-col :md="8"
                    :sm="24">
               <a-form-item label="排查批次">
                 <a-input v-model="queryParam.chkBatch" />
               </a-form-item>
-            </a-col>
+            </a-col> -->
           </template>
           <a-col :md="!advanced && 8 || 24"
                  :sm="24">
