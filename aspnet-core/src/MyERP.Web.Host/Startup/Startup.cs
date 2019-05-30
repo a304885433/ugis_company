@@ -24,6 +24,7 @@ using System.IO;
 using MyERP.Web.Host.Middleware;
 using MyERP.Base;
 using Abp.Timing;
+using Microsoft.Extensions.FileProviders;
 
 namespace MyERP.Web.Host.Startup
 {
@@ -107,7 +108,12 @@ namespace MyERP.Web.Host.Startup
 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(env.WebRootPath, @"admin")),
+                RequestPath = new PathString("")
+            });
 
             app.UseAuthentication();
 
@@ -159,7 +165,7 @@ namespace MyERP.Web.Host.Startup
             }
 
             // wwwroot 存在index的时候，兼容后台支持模式
-            var path = Path.Combine(env.WebRootPath, "index.html");
+            var path = Path.Combine(env.WebRootPath,"Admin", "index.html");
             if (System.IO.File.Exists(path))
             {
                 app.Run(async (context) =>

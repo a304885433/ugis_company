@@ -22,9 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "md", "md", "{F7887093-7254-45CA-A123-936EFB160882}"
 	ProjectSection(SolutionItems) = preProject
 		md\doc2.md = md\doc2.md
-		md\doc3.md = md\doc3.md
-		md\doc4.md = md\doc4.md
 		md\Migration.md = md\Migration.md
+		md\Publish.md = md\Publish.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "abp", "abp", "{83595D46-706A-4FA8-A430-887BB756A3D0}"

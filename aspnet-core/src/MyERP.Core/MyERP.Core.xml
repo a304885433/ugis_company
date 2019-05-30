@@ -81,6 +81,16 @@
             基础数据
             </summary>
         </member>
+        <member name="F:MyERP.Authorization.PermissionNames.ContactMe">
+            <summary>
+            联系我们
+            </summary>
+        </member>
+        <member name="F:MyERP.Authorization.PermissionNames.CustomPage">
+            <summary>
+            自定义
+            </summary>
+        </member>
         <member name="T:MyERP.MyERPConsts">
             <summary>
             常量
