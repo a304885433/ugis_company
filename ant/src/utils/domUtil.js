@@ -16,4 +16,4 @@ export const setDocumentTitle = function (title) {
   }
 }
 
-export const domTitle = '污染源现场排查系统'
+export const domTitle = '水污染源快速监测排查平台系统'

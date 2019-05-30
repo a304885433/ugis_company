@@ -9,10 +9,10 @@
       <a-form-item>
         <a-input size="large"
                  type="text"
-                 placeholder="账户: admin"
+                 placeholder="账请输入帐户名"
                  v-decorator="[
                 'username',
-                {rules: [{ required: true, message: '请输入帐户名或邮箱地址' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
+                {rules: [{ required: true, message: '请输入帐户名' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
               ]">
           <a-icon slot="prefix"
                   type="user"
