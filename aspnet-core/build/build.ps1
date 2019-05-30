@@ -22,11 +22,11 @@ MKDIR host
 dotnet publish --output (Join-Path $outputFolder "host")
 
 ## Build Vue And Copy
-$vueFolder = Join-Path $slnFolder "../ant"
-Set-Location $vueFolder
-yarn install
-yarn build
-XCOPY /y /s /e (Join-Path $slnFolder "../ant/dist/*.*") (Join-Path $outputFolder "host/wwwroot")
+# $vueFolder = Join-Path $slnFolder "../ant"
+# Set-Location $vueFolder
+# yarn install
+# yarn build
+# XCOPY /y /s /e (Join-Path $slnFolder "../ant/dist/*.*") (Join-Path $outputFolder "host/wwwroot")
 
 ## CREATE DOCKER IMAGES #######################################################
 

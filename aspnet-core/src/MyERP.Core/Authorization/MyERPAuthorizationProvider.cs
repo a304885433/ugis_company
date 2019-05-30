@@ -9,6 +9,7 @@ namespace MyERP.Authorization
     {
         private string[] curdAction = new[] { "create", "update", "read", "delete" };
         private string[] reportAction = new[] { "read", "export" };
+        private string[] rAction = new[] { "read" };
 
         public override void SetPermissions(IPermissionDefinitionContext context)
         {

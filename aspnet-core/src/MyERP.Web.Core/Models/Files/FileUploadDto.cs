@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyERP.Models
 {
-    public class FileUploadDto
+    public class FileUploadDto 
     {
         /// <summary>
         /// 大小

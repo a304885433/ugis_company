@@ -57,6 +57,16 @@
         /// </summary>
         public const string BaseDataManager = "BaseDataManager";
 
+        /// <summary>
+        /// 联系我们
+        /// </summary>
+        public const string ContactMe = "ContactMe";
+
+        /// <summary>
+        /// 自定义
+        /// </summary>
+        public const string CustomPage = "CustomPage";
+
 
     }
 }

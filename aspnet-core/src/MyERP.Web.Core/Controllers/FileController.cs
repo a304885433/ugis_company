@@ -26,9 +26,8 @@ namespace MyERP.Controllers
             this._hostingEnvironment = hostingEnvironment;
         }
 
-
         /// <summary>
-        /// 上传设备图片
+        /// 上传单张
         /// </summary>
         /// <param name="image"></param>
         /// <param name="fileName"></param>
@@ -76,8 +75,11 @@ namespace MyERP.Controllers
             return null;
         }
 
-
-
+        /// <summary>
+        /// 上传多张
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<List<FileUploadDto>> UploadMany(FileUploadInput input)
         {
@@ -122,6 +124,11 @@ namespace MyERP.Controllers
             return list;
         }
 
+        /// <summary>
+        /// 下载
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> Download(FileDownInput input)
         {
@@ -183,6 +190,26 @@ namespace MyERP.Controllers
 
             var by = ms.ToArray();
             return File(by, MimeTypeNames.ApplicationOctetStream, input.Name+".xlsx");
+        }
+
+        /// <summary>
+        /// 获取服务器静态页面
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult> Html(string name)
+        {
+            name = name.Replace(".", "").Replace("/","").Replace("\\","");
+            // 得到服务端路径""
+            string webRootPath = _hostingEnvironment.WebRootPath;
+            var filePath = Path.Combine(webRootPath, "html", name+".html");
+            if (System.IO.File.Exists(filePath))
+            {
+                var by = await System.IO.File.ReadAllBytesAsync(filePath);
+                return File(by, MimeTypeNames.TextHtml);
+            }
+            return null;
         }
     }
 }
