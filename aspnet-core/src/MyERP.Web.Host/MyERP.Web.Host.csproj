@@ -78,7 +78,4 @@
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
   </Target>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="C:\Windows\System32\iisreset.exe /stop&#xD;&#xA;xcopy /y $(SolutionDir)src\MyERP.Web.Host\bin\Debug\netcoreapp2.2\*.dll $(SolutionDir)build\Host&#xD;&#xA;C:\Windows\System32\iisreset.exe /start&#xD;&#xA;" />
-  </Target>
 </Project>
