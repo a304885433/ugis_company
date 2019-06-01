@@ -88,7 +88,7 @@
       </a-col>
       <a-col :md="12"
              :sm="24">
-        <a-form-item label="转移总量">
+        <a-form-item label="转移总量(吨/月)">
           <a-input-number placeholder="请输入转移总量"
                           style="width: 100%;"
                           v-decorator="[
