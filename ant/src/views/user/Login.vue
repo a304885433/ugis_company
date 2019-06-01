@@ -9,7 +9,7 @@
       <a-form-item>
         <a-input size="large"
                  type="text"
-                 placeholder="账请输入帐户名"
+                 placeholder="请输入帐户名"
                  v-decorator="[
                 'username',
                 {rules: [{ required: true, message: '请输入帐户名' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}

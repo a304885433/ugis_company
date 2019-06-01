@@ -105,6 +105,7 @@
                     return
                 }
                 User.Get({ id }).then((res) => {
+                    res.result.roleName = res.result.roleNames && res.result.roleNames[0]
                     this.mdl = Object.assign({}, res.result)
                     this.form.setFieldsValue({ ...res.result })
                 })
@@ -117,7 +118,7 @@
                     this.loading = true
                     values.surname = values.userName
                     values.isActive = 1
-                    values.RoleNames = [values.roleName]
+                    values.roleNames = [values.roleName]
                     delete values.roleName
                     if (!this.mdl) {
                         User.Create(values).then(() => {

@@ -99,6 +99,11 @@
             scopedSlots: { customRender: 'isActive' }
           },
           {
+            title: '所属角色',
+            dataIndex: 'roleNames',
+            customRender: (val) =>  val && val.length ? val[0]: ''
+          },
+          {
             title: '创建时间',
             dataIndex: 'creationTime',
             customRender: (val) => this.dateFormat(val)

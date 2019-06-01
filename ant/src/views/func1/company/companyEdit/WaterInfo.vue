@@ -111,6 +111,7 @@ rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
+                @preview="filePreview"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -175,6 +176,32 @@ rules: [{ validator: validateFile }]
         setTimeout(() => {
           this.form.setFieldsValue({ ...record })
         }, 50);
+      },
+      filePreview(file) {
+        let url = file.url
+        let ext = file.ext
+        if(!url && file.response){
+          let r = file.response.result
+          if(!r || !r.uid){
+            return 
+          }
+          ext = r.ext 
+          url = `http://${location.host}/api/file/download?id=${r.uid}&name=${r.name}`
+        }
+        if (ext == '.jpg' || ext == '.png' || ext == '.bmp' || ext == '.jpeg') {
+          this.$success({
+            title: '图片预览',
+            width: 600,
+            okText: '确定',
+            content: (  // JSX support
+              <div>
+                <img style="width:500px;" src={url} />
+              </div>
+            ),
+          });
+        } else {
+          window.open(url, '_blank')
+        }
       },
       normFile(e) {
         if (Array.isArray(e)) {

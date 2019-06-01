@@ -79,6 +79,7 @@ rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
+                @preview="filePreview"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -156,6 +157,7 @@ rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
+                @preview="filePreview"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -182,6 +184,7 @@ rules: [{ validator: validateFile }]
 }]"
                 name="files"
                 action="/api/File/Upload"
+                @preview="filePreview"
                 list-type="picture">
         <a-button>
           <a-icon type="upload" /> 点击上传
@@ -242,8 +245,9 @@ rules: [{ validator: validateFile }]
       <a-col :md="6"
              :sm="24">
         <a-form-item label="环责险购买情况（保额）">
-          <a-input-number placeholder="请输入环责险购买情况（保额）" style="width: 100%;"
-                   v-decorator="[ 'envInsuredAmount', {rules: [{ required: true, message: '请输入环责险购买情况（保额）'}]} ]">
+          <a-input-number placeholder="请输入环责险购买情况（保额）"
+                          style="width: 100%;"
+                          v-decorator="[ 'envInsuredAmount', {rules: [{ required: true, message: '请输入环责险购买情况（保额）'}]} ]">
           </a-input-number>
         </a-form-item>
       </a-col>
@@ -260,6 +264,7 @@ rules: [{ validator: validateFile }]
     <a-form-item v-if="showSubmit">
       <a-button htmlType="submit">保存</a-button>
     </a-form-item>
+
   </a-form>
 </template>
 
@@ -313,6 +318,32 @@ rules: [{ validator: validateFile }]
           return e;
         }
         return e && e.fileList;
+      },
+      filePreview(file) {
+        let url = file.url
+        let ext = file.ext
+        if(!url && file.response){
+          let r = file.response.result
+          if(!r || !r.uid){
+            return 
+          }
+          ext = r.ext 
+          url = `http://${location.host}/api/file/download?id=${r.uid}&name=${r.name}`
+        }
+        if (ext == '.jpg' || ext == '.png' || ext == '.bmp' || ext == '.jpeg') {
+          this.$success({
+            title: '图片预览',
+            width: 600,
+            okText: '确定',
+            content: (  // JSX support
+              <div>
+                <img style="width:500px;" src={url} />
+              </div>
+            ),
+          });
+        } else {
+          window.open(url, '_blank')
+        }
       },
       parseFile(fileJSON) {
         if (!fileJSON) return []

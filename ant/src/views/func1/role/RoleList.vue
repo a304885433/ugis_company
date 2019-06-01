@@ -119,6 +119,9 @@
       handleDelete(record) {
         Role.Delete({ id: record.id }).then(() => {
           this.$refs.table.refresh(true)
+        }).catch(err=>{
+          let res = err.response.data
+          this.$message.error(res.error.message)
         })
       },
       onChange(selectedRowKeys, selectedRows) {

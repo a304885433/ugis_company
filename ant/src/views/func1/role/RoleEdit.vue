@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div style="max-width: 800px">
         <a-divider v-if="isMobile()" />
         <div v-if="mdl.id">
@@ -8,7 +8,7 @@
                 :layout="isMobile() ? 'vertical' : 'horizontal'">
             <a-form-item label="角色编码">
                 <a-input v-decorator="[ 'name', {rules: [{ required: true, message: '请输入角色编码!' }]} ]"
-                            placeholder="请填写角色编码" />
+                         placeholder="请填写角色编码" />
             </a-form-item>
 
             <a-form-item label="角色名称">
@@ -78,9 +78,8 @@
         methods: {
             init() {
                 let id = this.$route.query.id
-                id = 3
                 if (id) {
-                    Role.GetRoleForEdit({id}).then(res =>{
+                    Role.GetRoleForEdit({ id }).then(res => {
                         this.mdl = Object.assign({}, res.result)
                         this.form.setFieldsValue({
                             name: this.mdl.role.name,
@@ -138,7 +137,7 @@
                     checkedAll: e.target.checked
                 })
             },
-            loadPermissions(allpermissions, rolePermissions ) {
+            loadPermissions(allpermissions, rolePermissions) {
                 // 处理层级
                 let data = []
                 for (let p of allpermissions) {
@@ -146,9 +145,9 @@
                     // 是根节点
                     if (index == -1) {
                         let children = allpermissions.filter(t => t.name.startsWith(p.name + '.'))
-                        let selected  = rolePermissions && rolePermissions.filter(t=> t.startsWith(p.name + '.')) || []
+                        let selected = rolePermissions && rolePermissions.filter(t => t.startsWith(p.name + '.')) || []
                         let checkAll = children.length == selected.length
-                        let indeterminate = (selected.length > 0 && selected.length < children.length) ? true: false
+                        let indeterminate = (selected.length > 0 && selected.length < children.length) ? true : false
                         data.push({
                             name: p.displayName,
                             value: p.name,
@@ -173,22 +172,28 @@
                     }
                     // 读取权限
                     let permissions = []
-                    for(let p of this.permissions){
-                        if(p.selected && p.selected.length) {
+                    for (let p of this.permissions) {
+                        if (p.selected && p.selected.length) {
                             permissions.push(p.value)
                             permissions = permissions.concat(p.selected)
                         }
                     }
                     values.permissions = permissions
-                    if(this.mdl.role){
+                    if (this.mdl.role) {
                         values.id = this.mdl.role.id
-                        Role.Update(values).then(()=>{
-                        this.$message.success('保存成功')
-                         })
-                    }else{
-                        Role.Create(values).then(()=>{
-                        this.$message.success('保存成功')
-                    })
+                        Role.Update(values).then(() => {
+                            this.$message.success('保存成功')
+                        }).catch(err => {
+                            let res = err.response.data
+                            this.$message.error(res.error.message)
+                        })
+                    } else {
+                        Role.Create(values).then(() => {
+                            this.$message.success('保存成功')
+                        }).catch(err => {
+                            let res = err.response.data
+                            this.$message.error(res.error.message)
+                        })
                     }
                 })
                 console.log(this.permissions)
@@ -200,4 +205,4 @@
 <style scoped>
 
 
-</style> -->
+</style>

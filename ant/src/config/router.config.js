@@ -497,12 +497,12 @@ export const asyncRouterMap = [
             component: () => import('@/views/Html'),
             meta: { title: '联系我们' , html: 'html1'  }
           },
-          {
-            path: '/system/user/html2',
-            name: 'Html2',
-            component: () => import('@/views/Html'),
-            meta: { title: '自定义' , permission: ['UserManager'], html: 'html2'  }
-          }
+          // {
+          //   path: '/system/user/html2',
+          //   name: 'Html2',
+          //   component: () => import('@/views/Html'),
+          //   meta: { title: '自定义' , permission: ['UserManager'], html: 'html2'  }
+          // }
         ]
       }
     ]
