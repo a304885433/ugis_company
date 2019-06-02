@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using MyERP.Authorization;
 using MyERP.Authorization.Roles;
 using MyERP.Authorization.Users;
@@ -22,12 +24,14 @@ namespace MyERP.Roles
     {
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
 
-        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager)
+        public RoleAppService(IRepository<Role> repository, IRepository<UserRole,long> userRoleRepository, RoleManager roleManager, UserManager userManager)
             : base(repository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _userRoleRepository = userRoleRepository;
         }
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
@@ -85,8 +89,16 @@ namespace MyERP.Roles
         public override async Task Delete(EntityDto<int> input)
         {
             CheckDeletePermission();
-
+        
             var role = await _roleManager.FindByIdAsync(input.Id.ToString());
+
+            // 检查角色下是否还有用户
+            var hasUser = await _userRoleRepository.CountAsync(t => t.RoleId == role.Id);
+            if (hasUser > 0)
+            {
+                throw new UserFriendlyException("角色下还有用户，删除失败！");
+            }
+
             var users = await _userManager.GetUsersInRoleAsync(role.NormalizedName);
 
             foreach (var user in users)
