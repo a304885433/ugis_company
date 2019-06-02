@@ -56,11 +56,11 @@
                 </a-form-item>
             </a-col>
         </a-row>
-        <a-form-item label="排查批次">
+        <!-- <a-form-item label="排查批次">
                 <a-input placeholder="排查批次"
                          v-decorator="[ 'chkBatch']">
                 </a-input>
-            </a-form-item>
+            </a-form-item> -->
     </a-form>
 </template>
 
