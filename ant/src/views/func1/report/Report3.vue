@@ -49,7 +49,7 @@
                         :loading="loading"
                         @click="handleQuery">查询</a-button>
               <a-button style="margin-left: 8px"
-                  @click="exportXls">导出</a-button>
+                        @click="exportXls">导出</a-button>
             </span>
           </a-col>
         </a-row>
@@ -141,7 +141,7 @@
           return
         }
         let request = {
-          colList: this.colList, 
+          colList: this.colList,
           data: this.data,
           name: '所有因子统计'
         }
@@ -209,4 +209,21 @@
       }
     }
   }
+
+  var rightPromiseOuter = function (i) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (i > 0) {
+          resolve(i);
+        } else {
+          reject(3333)
+        }
+      }, 1000);
+    }).catch(err=>{
+      console.log('统一异常接管')
+      return false 
+    });
+  }
+
+
 </script>

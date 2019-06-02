@@ -185,7 +185,7 @@
           {
             title: '排查时间',
             dataIndex: 'chkDate',
-            customRender: (date) => moment(date).format('YYYY-MM-DD HH:mm:ss')
+            customRender: (date) => moment(date).format('YYYY-MM-DD')
           },
           // {
           //   title: '操作',
