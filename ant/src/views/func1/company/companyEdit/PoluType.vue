@@ -75,13 +75,13 @@
                         scopedSlots: { customRender: 'poluTypeId' }
                     },
                     {
-                        title: '排放限值(单位）',
+                        title: '排放限值(吨/月）',
                         dataIndex: 'unit',
                         width: '20%',
                         scopedSlots: { customRender: 'unit' }
                     },
                     {
-                        title: '排放标准名称(单位）',
+                        title: '排放标准名称',
                         dataIndex: 'emissionStdType',
                         scopedSlots: { customRender: 'emissionStdType' }
                     },

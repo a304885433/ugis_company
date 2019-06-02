@@ -55,7 +55,7 @@
               <a-form-item label="排查日期">
                 <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
                   <a-date-picker v-model="queryParam.startChkDate"
-                                 format="YYYY-MM-DD HH:mm:ss"
+                                 format="YYYY-MM-DD"
                                  style="width: 100%" />
                 </a-form-item>
                 <span :style="{ display: 'inline-block', width: '24px', textAlign: 'center' }">
@@ -63,7 +63,7 @@
                 </span>
                 <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
                   <a-date-picker v-model="queryParam.endChkDate"
-                                 format="YYYY-MM-DD HH:mm:ss"
+                                 format="YYYY-MM-DD"
                                  style="width: 100%" />
                 </a-form-item>
               </a-form-item>
@@ -185,7 +185,7 @@
           {
             title: '排查时间',
             dataIndex: 'chkDate',
-            customRender: (date) => moment(date).format('YYYY-MM-DD HH:mm:ss')
+            customRender: (date) => moment(date).format('YYYY-MM-DD')
           },
           // {
           //   title: '操作',
@@ -198,10 +198,10 @@
         loadData: parameter => {
           let param = Object.assign(parameter, this.queryParam)
           if (param.startChkDate) {
-            param.startChkDate = moment(param.startChkDate).format('YYYY-MM-DD HH:mm:ss')
+            param.startChkDate = moment(param.startChkDate).format('YYYY-MM-DD 00:00:00')
           }
           if (param.endChkDate) {
-            param.endChkDate = moment(param.endChkDate).format('YYYY-MM-DD HH:mm:ss')
+            param.endChkDate = moment(param.endChkDate).format('YYYY-MM-DD 23:59:59')
           }
           return ChkResult.GetCustomAll(param)
             .then(res => {
