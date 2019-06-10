@@ -8,21 +8,21 @@
                  :pagination="false"
                  :loading="memberLoading">
 
-            <template slot="poluTypeId"
-                      slot-scope="text, record">
+            <template slot="contaminantsId"
+                      slot-scope="text, record, index">
                 <a-select style="width: 100%"
-                          v-model="record.poluTypeId">
-                    <a-select-option v-for="dic in poluTypeArr"
+                          v-model="record.contaminantsId">
+                    <a-select-option v-for="dic in contaminantsDicArr"
                                      :key="dic.id"
                                      :value="dic.id">{{dic.name}}</a-select-option>
                 </a-select>
             </template>
-            <template slot="concentration"
-                      slot-scope="text, record">
+            <template slot="transferTotal"
+                      slot-scope="text, record, index">
                 <a-input-number style="width: 100%"
-                                :precision="3"
+                                :precision="2"
                                 :step="1"
-                                v-model="record.concentration" />
+                                v-model="record.transferTotal" />
             </template>
             <template slot="operation"
                       slot-scope="text, record, index">
@@ -41,25 +41,29 @@
 </template>
 
 <script>
-    import Bus from '@/views/core/bus'
     export default {
-        name: 'CheckItem',
+        name: 'Contaminants',
+        props: {
+            contaminantsDicArr: Array
+        },
+        components: {
+        },
         data() {
             return {
                 form: null,
                 memberLoading: false,
                 columns: [
                     {
-                        title: '因子',
-                        dataIndex: 'poluTypeId',
+                        title: '污染物',
+                        dataIndex: 'contaminantsId',
                         width: '20%',
-                        scopedSlots: { customRender: 'poluTypeId' }
+                        scopedSlots: { customRender: 'contaminantsId' }
                     },
                     {
-                        title: '浓度',
-                        dataIndex: 'concentration',
+                        title: '转移总量(吨/月)',
+                        dataIndex: 'transferTotal',
                         width: '30%',
-                        scopedSlots: { customRender: 'concentration' }
+                        scopedSlots: { customRender: 'transferTotal' }
                     },
                     {
                         title: '操作',
@@ -68,23 +72,16 @@
                     }
                 ],
                 data: [],
-                poluTypeArr: []
+                errors: []
             }
         },
         created() {
-            this.form = this.$form.createForm(this)
-            Bus.$on('GetCompanyPoluType', (data) => {
-                this.poluTypeArr = data
-                // 清空已有的数据
-                for (let d of this.data) {
-                    d.poluTypeId = null
-                }
-            })
+            this.form = this.$form.createForm(this);
         },
         methods: {
             edit(data) {
                 this.data = data.map((val, index) => {
-                    val.key = new Date().getTime()
+                    val.key = index
                     return val
                 })
             },
@@ -97,9 +94,8 @@
             },
             handleAdd() {
                 this.data.push({
-                    key: new Date().getTime(),
-                    poluTypeId: null,
-                    concentration: null,
+                    contaminantsId: null,
+                    transferTotal: null,
                 })
             },
             remove(index) {
@@ -108,3 +104,54 @@
         }
     }
 </script>
+
+<style lang="less"
+       scoped>
+    .card {
+        margin-bottom: 24px;
+    }
+
+    .popover-wrapper {
+        /deep/ .antd-pro-pages-forms-style-errorPopover .ant-popover-inner-content {
+            min-width: 256px;
+            max-height: 290px;
+            padding: 0;
+            overflow: auto;
+        }
+    }
+
+    .antd-pro-pages-forms-style-errorIcon {
+        user-select: none;
+        margin-right: 24px;
+        color: #f5222d;
+        cursor: pointer;
+        i {
+            margin-right: 4px;
+        }
+    }
+
+    .antd-pro-pages-forms-style-errorListItem {
+        padding: 8px 16px;
+        list-style: none;
+        border-bottom: 1px solid #e8e8e8;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover {
+            background: #e6f7ff;
+        }
+        .antd-pro-pages-forms-style-errorIcon {
+            float: left;
+            margin-top: 4px;
+            margin-right: 12px;
+            padding-bottom: 22px;
+            color: #f5222d;
+        }
+        .antd-pro-pages-forms-style-errorField {
+            margin-top: 2px;
+            color: rgba(0, 0, 0, .45);
+            font-size: 12px;
+        }
+    }
+
+</style>

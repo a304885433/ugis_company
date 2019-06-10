@@ -5,18 +5,16 @@
             :bordered="false">
       <base-info ref="baseInfoForm"
                  :showSubmit="false"
+                 :dianweiDicArr="dianweiDicArr"
                  :waterDicArr="waterDicArr" />
     </a-card>
 
     <a-card class="card"
-            title="排污信息"
+            title="污染物信息"
             :bordered="false">
-      <water-info ref="waterInfoForm"
-                  :showSubmit="false"
-                  :paifangDicArr="paifangDicArr"
-                  :shoujiDicArr="shoujiDicArr"
-                  :dianweiDicArr="dianweiDicArr" 
-                  :contaminantsDicArr="contaminantsDicArr"/>
+      <contaminants ref="contaminantsTable"
+                    :showSubmit="false"
+                    :contaminantsDicArr="contaminantsDicArr" />
     </a-card>
 
     <!-- table -->
@@ -71,6 +69,7 @@
   import BaseInfo from './BaseInfo'
   import WaterInfo from './WaterInfo'
   import YaoPin from './YaoPin'
+  import Contaminants from './Contaminants'
   import PoluType from './PoluType'
   import FooterToolBar from '@/components/FooterToolbar'
   import { mixin, mixinDevice } from '@/utils/mixin'
@@ -86,6 +85,7 @@
     components: {
       FooterToolBar,
       BaseInfo,
+      Contaminants,
       WaterInfo,
       YaoPin,
       PoluType
@@ -205,9 +205,10 @@
 
       // 最终全页面提交
       validate() {
-        const { $refs: { baseInfoForm, waterInfoForm, yaopinTable, poluTypeTable }, $notification } = this
+        const { $refs: { baseInfoForm, contaminantsTable, yaopinTable, poluTypeTable }, $notification } = this
         let poluTypeData = poluTypeTable.data
         let yaopinData = yaopinTable.data
+        let contaminantsData = contaminantsTable.data
 
         // 验证表单通过
         baseInfoForm.form.validateFields((err, values) => {
@@ -216,6 +217,8 @@
             values.craftFile = this.getUploadFile(values.craftFile)
             values.pipeFile = this.getUploadFile(values.pipeFile)
             values.issSheetFile = this.getUploadFile(values.issSheetFile)
+            values.purchaseFile = this.getUploadFile(values.purchaseFile)
+            values.chkPointIdList = values.chkPointIdList.join(',')
           } catch (e) {
             this.$message.warn(e.message)
             return
@@ -228,42 +231,37 @@
             return
           }
 
-          waterInfoForm.form.validateFields((waterErr, waterValues) => {
-            if (waterErr) {
-              const errors = Object.assign({}, waterInfoForm.form.getFieldsError())
-              const tmp = { ...errors }
-              this.errorList(tmp)
-              return
-            }
-            if (!this.checkTableData(poluTypeData, 'poluTypeId', '排查点位因子数据不完整，请调整！')) {
-              return
-            }
-            if (!this.checkTableData(yaopinData, 'medTypeId', '药品数据不完整，请调整！')) {
-              return
-            }
-            waterValues.chkPointIdList = waterValues.chkPointIdList.join(',')
-            waterValues.purchaseFile = this.getUploadFile(waterValues.purchaseFile)
+          if (!this.checkTableData(contaminantsData, 'contaminantsId', '污染物数据不完整，请调整！')) {
+            return
+          }
+          if (!this.checkTableData(poluTypeData, 'poluTypeId', '排查点位因子数据不完整，请调整！')) {
+            return
+          }
+          if (!this.checkTableData(yaopinData, 'medTypeId', '药品数据不完整，请调整！')) {
+            return
+          }
 
-            let mdlCompanyInfo = this.mdl ? this.mdl.companyInfo : {}
-            let data = {
-              companyInfo: Object.assign(mdlCompanyInfo, values, waterValues),
-              companyPoluTypeList: poluTypeData,
-              companyMedcineTypeList: yaopinData
+
+          let mdlCompanyInfo = this.mdl ? this.mdl.companyInfo : {}
+          let data = {
+            companyInfo: Object.assign(mdlCompanyInfo, values),
+            companyPoluTypeList: poluTypeData,
+            companyMedcineTypeList: yaopinData,
+            CompanyContaminantsList: contaminantsData,
+          }
+          this.loading = true
+          return CompanyInfo.SaveForEdit(data).then((res) => {
+            this.$message.info(`保存成功`)
+            if (!this.$route.query.id) {
+              this.$router.push({ path: '/manage/company/edit', query: { id: res.result } })
             }
-            this.loading = true
-            return CompanyInfo.SaveForEdit(data).then((res) => {
-              this.$message.info(`保存成功`)
-              if (!this.$route.query.id) {
-                this.$router.push({ path: '/manage/company/edit', query: { id: res.result } })
-              }
-            }).catch(err => {
-              $notification.error({
-                message: '保存失败，请稍后重试！',
-                description: err.message
-              })
-            }).finally(() => {
-              this.loading = false
+          }).catch(err => {
+            $notification.error({
+              message: '保存失败，请稍后重试！',
+              description: err.message
             })
+          }).finally(() => {
+            this.loading = false
           })
         })
       },
