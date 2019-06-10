@@ -33,6 +33,11 @@ namespace MyERP.EntityFrameworkCore
         /// </summary>
         public DbSet<CompanyPoluType> CompanyPoluType { get; set; }
         /// <summary>
+        /// 企业污染物排放信息
+        /// </summary>
+        public DbSet<CompanyContaminants> CompanyContaminants { get; set; }
+
+        /// <summary>
         /// 字典
         /// </summary>
         public DbSet<Dic> Dic { get; set; }

@@ -1,0 +1,1 @@
+ dotnet .\MyERP.Migrator.dll -q

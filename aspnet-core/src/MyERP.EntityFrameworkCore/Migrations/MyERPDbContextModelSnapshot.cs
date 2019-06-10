@@ -15,7 +15,7 @@ namespace MyERP.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -1098,7 +1098,8 @@ namespace MyERP.Migrations
 
                     b.Property<int>("CompanyId");
 
-                    b.Property<decimal>("Concentration");
+                    b.Property<decimal>("Concentration")
+                        .HasColumnType("decimal(18,3)");
 
                     b.Property<DateTime>("CreationTime");
 
@@ -1115,6 +1116,31 @@ namespace MyERP.Migrations
                     b.ToTable("ChkResult");
                 });
 
+            modelBuilder.Entity("MyERP.UGIS.CompanyContaminants", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<int>("ContaminantsId");
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<decimal>("TransferTotal");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyContaminants");
+                });
+
             modelBuilder.Entity("MyERP.UGIS.CompanyInfo", b =>
                 {
                     b.Property<int>("Id")
@@ -1128,8 +1154,6 @@ namespace MyERP.Migrations
                     b.Property<int>("CollTypeID");
 
                     b.Property<string>("Contact");
-
-                    b.Property<int>("ContaminantsId");
 
                     b.Property<string>("CraftDes");
 
@@ -1176,8 +1200,6 @@ namespace MyERP.Migrations
                     b.Property<int>("RiskBand");
 
                     b.Property<string>("Tel");
-
-                    b.Property<decimal>("TransferTotal");
 
                     b.Property<int>("WaterAmount");
 

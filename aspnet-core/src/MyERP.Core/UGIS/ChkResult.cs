@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MyERP.UGIS
@@ -38,6 +39,7 @@ namespace MyERP.UGIS
         /// <summary>
         /// 浓度
         /// </summary>
+        [Column(TypeName = "decimal(18,3)")]
         public decimal Concentration { get; set; }
 
         /// <summary>

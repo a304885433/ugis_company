@@ -181,6 +181,26 @@
             排查人
             </summary>
         </member>
+        <member name="T:MyERP.UGIS.CompanyContaminants">
+            <summary>
+            企业污染物
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyContaminants.CompanyId">
+            <summary>
+            企业Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyContaminants.ContaminantsId">
+            <summary>
+            污染物Id
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyContaminants.TransferTotal">
+            <summary>
+            转移总量
+            </summary>
+        </member>
         <member name="T:MyERP.UGIS.CompanyInfo">
             <summary>
             企业信息
@@ -319,16 +339,6 @@
         <member name="P:MyERP.UGIS.CompanyInfo.Y">
             <summary>
             纬度
-            </summary>
-        </member>
-        <member name="P:MyERP.UGIS.CompanyInfo.ContaminantsId">
-            <summary>
-            污染物Id
-            </summary>
-        </member>
-        <member name="P:MyERP.UGIS.CompanyInfo.TransferTotal">
-            <summary>
-            转移总量
             </summary>
         </member>
         <member name="P:MyERP.UGIS.CompanyInfo.PurchaseFile">
