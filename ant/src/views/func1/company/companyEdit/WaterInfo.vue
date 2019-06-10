@@ -72,7 +72,7 @@
         </a-form-item>
       </a-col>
     </a-row> -->
-    <a-row class="form-row">
+    <!-- <a-row class="form-row">
       <a-col :md="12"
              :sm="24">
         <a-form-item label="污染物">
@@ -100,35 +100,8 @@
           </a-input-number>
         </a-form-item>
       </a-col>
-    </a-row>
-    <a-form-item v-bind="formItemLayout"
-                 style="text-align: left;"
-                 label="原材料采购清单">
-      <a-upload v-decorator="['purchaseFile', {
-valuePropName: 'fileList',
-getValueFromEvent: normFile,
-rules: [{ validator: validateFile }]
-}]"
-                name="files"
-                action="/api/File/Upload"
-                @preview="filePreview"
-                list-type="picture">
-        <a-button>
-          <a-icon type="upload" /> 点击上传
-        </a-button>
-      </a-upload>
-    </a-form-item>
-    <a-form-item label="排查点位">
-      <a-select placeholder="排查点位"
-                mode="multiple"
-                v-decorator="[ 'chkPointIdList',
-                    {rules: [{ required: true, message: '请选择排查点位'}]}
-                  ]">
-        <a-select-option v-for="dic in dianweiDicArr"
-                         :key="dic.id"
-                         :value="dic.id">{{dic.name}}</a-select-option>
-      </a-select>
-    </a-form-item>
+    </a-row> -->
+    
 
   </a-form>
 </template>
@@ -188,6 +161,7 @@ rules: [{ validator: validateFile }]
           ext = r.ext 
           url = `http://${location.host}/api/file/download?id=${r.uid}&name=${r.name}`
         }
+        ext = ext.toLowerCase()
         if (ext == '.jpg' || ext == '.png' || ext == '.bmp' || ext == '.jpeg') {
           this.$success({
             title: '图片预览',

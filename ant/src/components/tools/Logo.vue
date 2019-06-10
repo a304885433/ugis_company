@@ -1,8 +1,7 @@
 <template>
   <div class="logo">
     <router-link :to="{name:'dashboard'}">
-      <LogoSvg alt="logo" />
-      <h1 v-if="showTitle">{{ title }}</h1>
+      <div style="width: 200px;margin-right: -35px;" v-if="showTitle">{{ title }}</div>
     </router-link>
   </div>
 </template>
@@ -18,7 +17,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '水污染源监测',
+      default: '水污染源快速监测排查平台系统',
       required: false
     },
     showTitle: {

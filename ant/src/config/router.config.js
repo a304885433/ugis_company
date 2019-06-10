@@ -15,9 +15,10 @@ export const asyncRouterMap = [
       {
         path: '/dashboard',
         name: 'dashboard',
-        redirect: '/manage/check/list',
-        component: RouteView,
-        meta: { title: '仪表盘', icon: bxAnaalyse },
+        // redirect: '/manage/check/list',
+        // component: RouteView,
+        component: () => import('@/views/Html'),
+        meta: { title: '首页',  html: 'html2', icon: bxAnaalyse },
       },
       //   children: [
       //     {
@@ -424,6 +425,13 @@ export const asyncRouterMap = [
             component: () => import('@/views/func1/report/Report5'),
             // component: () => import('@/views/other/RoleList'),
             meta: { title: '所有点位统计', permission: ['Report5'] }
+          },
+          {
+            path: '/report/report6',
+            name: 'Report6',
+            component: () => import('@/views/func1/report/Report6'),
+            // component: () => import('@/views/other/RoleList'),
+            meta: { title: '检测数据查询', permission: ['CheckManager'] }
           }
         ]
       },

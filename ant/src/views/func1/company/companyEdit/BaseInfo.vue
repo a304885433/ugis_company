@@ -261,8 +261,33 @@ rules: [{ validator: validateFile }]
       </a-col>
     </a-row>
 
-    <a-form-item v-if="showSubmit">
-      <a-button htmlType="submit">保存</a-button>
+    <a-form-item v-bind="formItemLayout"
+                 style="text-align: left;"
+                 label="原材料采购清单">
+      <a-upload v-decorator="['purchaseFile', {
+valuePropName: 'fileList',
+getValueFromEvent: normFile,
+rules: [{ validator: validateFile }]
+}]"
+                name="files"
+                action="/api/File/Upload"
+                @preview="filePreview"
+                list-type="picture">
+        <a-button>
+          <a-icon type="upload" /> 点击上传
+        </a-button>
+      </a-upload>
+    </a-form-item>
+    <a-form-item label="排查点位">
+      <a-select placeholder="排查点位"
+                mode="multiple"
+                v-decorator="[ 'chkPointIdList',
+                    {rules: [{ required: true, message: '请选择排查点位'}]}
+                  ]">
+        <a-select-option v-for="dic in dianweiDicArr"
+                         :key="dic.id"
+                         :value="dic.id">{{dic.name}}</a-select-option>
+      </a-select>
     </a-form-item>
 
   </a-form>
@@ -277,6 +302,9 @@ rules: [{ validator: validateFile }]
         default: false
       },
       waterDicArr: {
+        type: Array,
+      },
+      dianweiDicArr: {
         type: Array,
       }
     },
@@ -322,14 +350,15 @@ rules: [{ validator: validateFile }]
       filePreview(file) {
         let url = file.url
         let ext = file.ext
-        if(!url && file.response){
+        if (!url && file.response) {
           let r = file.response.result
-          if(!r || !r.uid){
-            return 
+          if (!r || !r.uid) {
+            return
           }
-          ext = r.ext 
+          ext = r.ext
           url = `http://${location.host}/api/file/download?id=${r.uid}&name=${r.name}`
         }
+        ext = ext.toLowerCase()
         if (ext == '.jpg' || ext == '.png' || ext == '.bmp' || ext == '.jpeg') {
           this.$success({
             title: '图片预览',
@@ -360,6 +389,7 @@ rules: [{ validator: validateFile }]
         record.craftFile = this.parseFile(record.craftFile)
         record.pipeFile = this.parseFile(record.pipeFile)
         record.issSheetFile = this.parseFile(record.issSheetFile)
+        record.purchaseFile = this.parseFile(record.purchaseFile)
         setTimeout(() => {
           this.form.setFieldsValue({ ...record })
         }, 50);
