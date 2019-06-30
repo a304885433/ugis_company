@@ -53,6 +53,10 @@ namespace MyERP.EntityFrameworkCore
         /// 试剂耗材
         /// </summary>
         public DbSet<Reagent> Reagent { get; set; }
+        /// <summary>
+        /// 企业文件
+        /// </summary>
+        public DbSet<CompanyFile> CompanyFile { get; set; }
 
     }
 }

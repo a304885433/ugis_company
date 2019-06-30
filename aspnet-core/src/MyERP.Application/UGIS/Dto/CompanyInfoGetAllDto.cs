@@ -7,7 +7,7 @@ using System.Text;
 namespace MyERP.UGIS.Dto
 {
     [AutoMapTo(typeof(CompanyInfo))]
-    public class CompanyInfoGetAllDto : PagedResultRequestDto
+    public class CompanyInfoGetAllDto : PagedAndSortedResultRequestDto
     {
         public string Tel { get; set; }
         public string Name { get; set; }

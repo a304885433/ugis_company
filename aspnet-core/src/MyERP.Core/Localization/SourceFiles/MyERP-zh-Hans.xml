@@ -116,6 +116,7 @@
     <text name="UserManager">用户管理</text>
     <text name="ContactMe">联系我们</text>
     <text name="CustomPage">自定义</text>
+    <text name="CompanyFile">企业图片</text>
 
   </texts>
 </localizationDictionary>

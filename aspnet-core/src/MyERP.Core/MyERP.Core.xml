@@ -81,6 +81,11 @@
             基础数据
             </summary>
         </member>
+        <member name="F:MyERP.Authorization.PermissionNames.CompanyFile">
+            <summary>
+            企业图片
+            </summary>
+        </member>
         <member name="F:MyERP.Authorization.PermissionNames.ContactMe">
             <summary>
             联系我们
@@ -199,6 +204,41 @@
         <member name="P:MyERP.UGIS.CompanyContaminants.TransferTotal">
             <summary>
             转移总量
+            </summary>
+        </member>
+        <member name="T:MyERP.UGIS.CompanyFile">
+            <summary>
+            通用文件存储
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyFile.Size">
+            <summary>
+            大小
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyFile.Name">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyFile.Ext">
+            <summary>
+            文件扩展名
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyFile.Url">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyFile.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:MyERP.UGIS.CompanyFile.UId">
+            <summary>
+            图片标识
             </summary>
         </member>
         <member name="T:MyERP.UGIS.CompanyInfo">

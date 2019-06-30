@@ -28,6 +28,7 @@ namespace MyERP.Authorization
             CreatePermission(context, PermissionNames.Report4, reportAction);
             CreatePermission(context, PermissionNames.Report5, reportAction);
             CreatePermission(context, PermissionNames.BaseDataManager, curdAction);
+            CreatePermission(context, PermissionNames.CompanyFile, curdAction);
         }
 
         private void CreatePermission(IPermissionDefinitionContext context, string name, string[] actions = null, string[] extraActions = null)

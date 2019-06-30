@@ -8,7 +8,7 @@ namespace MyERP.UGIS.Dto
     /// <summary>
     /// 查询所有字典的输入参数
     /// </summary>
-    public class GetAllDicInput : PagedResultRequestDto, ISortedResultRequest
+    public class GetAllDicInput : PagedAndSortedResultRequestDto
     {
         /// <summary>
         /// 字典类型Code
@@ -23,7 +23,7 @@ namespace MyERP.UGIS.Dto
         /// <summary>
         /// 排序
         /// </summary>
-        public string Sorting { get; set; } = "OrderId ASC";
+        public override string Sorting { get; set; } = "OrderId ASC";
 
         /// <summary>
         /// 多个Id

@@ -9,8 +9,13 @@ using Abp.Linq;
 
 namespace Abp.Application.Services
 {
+    /// <summary>
+    /// Curd服务（简单模式） 指定实体和Dto，
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    /// <typeparam name="TEntityDto">实体Dto类型</typeparam>
     public abstract class MyAsyncCrudAppService<TEntity, TEntityDto>
-        : MyAsyncCrudAppService<TEntity, TEntityDto, int>
+        : MyAsyncCrudAppService<TEntity, TEntityDto, int, IPagedAndSortedResultRequest>
         where TEntity : class, IEntity<int>
         where TEntityDto : IEntityDto<int>
     {
@@ -21,21 +26,16 @@ namespace Abp.Application.Services
         }
     }
 
-    public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey>
-        : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, PagedAndSortedResultRequestDto>
-        where TEntity : class, IEntity<TPrimaryKey>
-        where TEntityDto : IEntityDto<TPrimaryKey>
-        where TPrimaryKey : struct
-    {
-        protected MyAsyncCrudAppService(IRepository<TEntity, TPrimaryKey> repository)
-            : base(repository)
-        {
-
-        }
-    }
-
+    /// <summary>
+    /// Curd服务（查询模式） 指定查询类型，实体新增修改保存默认使用实体Dto类型
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    /// <typeparam name="TEntityDto">实体Dto类型</typeparam>
+    /// <typeparam name="TPrimaryKey">实体主键参数类型</typeparam>
+    /// <typeparam name="TGetAllInput">实体GetAll 输入参数类型</typeparam>
     public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput>
         : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TEntityDto, TEntityDto, TEntityDto>
+        where TGetAllInput : IPagedAndSortedResultRequest
         where TEntity : class, IEntity<TPrimaryKey>
         where TEntityDto : IEntityDto<TPrimaryKey>
         where TPrimaryKey : struct
@@ -47,13 +47,45 @@ namespace Abp.Application.Services
         }
     }
 
-    public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TSaveInput>
-        : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TCreateInput, TSaveInput>
+    /// <summary>
+    /// Curd服务（实体修改简单模式）  分别指定查询、修改类型(用于新增、修改、保存)
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    /// <typeparam name="TEntityDto">实体Dto类型</typeparam>
+    /// <typeparam name="TPrimaryKey">实体主键参数类型</typeparam>
+    /// <typeparam name="TGetAllInput">实体GetAll 输入参数类型</typeparam>
+    /// <typeparam name="TSaveInput">实体Save 输入参数类型</typeparam>
+    public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TSaveInput>
+        : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TSaveInput, TSaveInput, TSaveInput>
+        where TGetAllInput : IPagedAndSortedResultRequest
+        where TEntity : class, IEntity<TPrimaryKey>
+        where TEntityDto : IEntityDto<TPrimaryKey>
+        where TSaveInput : IEntityDto<TPrimaryKey>
+        where TPrimaryKey : struct
+    {
+        protected MyAsyncCrudAppService(IRepository<TEntity, TPrimaryKey> repository)
+            : base(repository)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// Curd服务（实体修改高级模式） 分别指定查询、新增、修改类型(保存类型同修改)
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    /// <typeparam name="TEntityDto">实体Dto类型</typeparam>
+    /// <typeparam name="TPrimaryKey">实体主键参数类型</typeparam>
+    /// <typeparam name="TGetAllInput">实体GetAll 输入参数类型</typeparam>
+    /// <typeparam name="TCreateInput">实体Create 输入参数类型</typeparam>
+    /// <typeparam name="TUpdateInput">实体Update 输入参数类型</typeparam>
+    public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput>
+        : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TUpdateInput>
         where TGetAllInput : IPagedAndSortedResultRequest
         where TEntity : class, IEntity<TPrimaryKey>
         where TEntityDto : IEntityDto<TPrimaryKey>
        where TCreateInput : IEntityDto<TPrimaryKey>
-        where TSaveInput : IEntityDto<TPrimaryKey>
+        where TUpdateInput : IEntityDto<TPrimaryKey>
         where TPrimaryKey : struct
     {
         protected MyAsyncCrudAppService(IRepository<TEntity, TPrimaryKey> repository)
@@ -63,11 +95,22 @@ namespace Abp.Application.Services
         }
     }
 
+    /// <summary>
+    /// Curd服务实现（实体修改复杂模式） 分别指定查询、新增、修改、保存类型
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    /// <typeparam name="TEntityDto">实体Dto类型</typeparam>
+    /// <typeparam name="TPrimaryKey">实体主键参数类型</typeparam>
+    /// <typeparam name="TGetAllInput">实体GetAll 输入参数类型</typeparam>
+    /// <typeparam name="TCreateInput">实体Create 输入参数类型</typeparam>
+    /// <typeparam name="TUpdateInput">实体Update 输入参数类型</typeparam>
+    /// <typeparam name="TSaveInput">实体Save 输入参数类型</typeparam>
     public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TSaveInput>
-        : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, EntityDto<TPrimaryKey>, TSaveInput>
+    : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, EntityDto<TPrimaryKey>, EntityDto<TPrimaryKey>, TSaveInput>
         where TEntity : class, IEntity<TPrimaryKey>
         where TEntityDto : IEntityDto<TPrimaryKey>
         where TUpdateInput : IEntityDto<TPrimaryKey>
+        where TGetAllInput : IPagedAndSortedResultRequest
         where TSaveInput : IEntityDto<TPrimaryKey>
         where TPrimaryKey : struct
     {
@@ -78,22 +121,18 @@ namespace Abp.Application.Services
         }
     }
 
-    public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TSaveInput>
-    : MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, EntityDto<TPrimaryKey>, TSaveInput>
-        where TEntity : class, IEntity<TPrimaryKey>
-        where TEntityDto : IEntityDto<TPrimaryKey>
-        where TUpdateInput : IEntityDto<TPrimaryKey>
-        where TGetInput : IEntityDto<TPrimaryKey>
-        where TSaveInput : IEntityDto<TPrimaryKey>
-        where TPrimaryKey : struct
-    {
-        protected MyAsyncCrudAppService(IRepository<TEntity, TPrimaryKey> repository)
-            : base(repository)
-        {
-
-        }
-    }
-
+    /// <summary>
+    /// Curd服务实现 全类型自定义
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    /// <typeparam name="TEntityDto">实体Dto类型</typeparam>
+    /// <typeparam name="TPrimaryKey">实体主键参数类型</typeparam>
+    /// <typeparam name="TGetAllInput">实体GetAll 输入参数类型</typeparam>
+    /// <typeparam name="TCreateInput">实体Create 输入参数类型</typeparam>
+    /// <typeparam name="TUpdateInput">实体Update 输入参数类型</typeparam>
+    /// <typeparam name="TGetInput">实体Get 输入参数类型</typeparam>
+    /// <typeparam name="TDeleteInput">实体Delete 输入参数类型</typeparam>
+    /// <typeparam name="TSaveInput">实体Save 输入参数类型</typeparam>
     public abstract class MyAsyncCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput, TSaveInput>
        : CrudAppServiceBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput>,
         IAsyncCrudAppService<TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput>
@@ -113,6 +152,11 @@ namespace Abp.Application.Services
             AsyncQueryableExecuter = NullAsyncQueryableExecuter.Instance;
         }
 
+        /// <summary>
+        /// 获取单个实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual async Task<TEntityDto> Get(TGetInput input)
         {
             CheckGetPermission();
@@ -121,6 +165,11 @@ namespace Abp.Application.Services
             return MapToEntityDto(entity);
         }
 
+        /// <summary>
+        /// 分页获取实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual async Task<PagedResultDto<TEntityDto>> GetAll(TGetAllInput input)
         {
             CheckGetAllPermission();
@@ -149,6 +198,11 @@ namespace Abp.Application.Services
 
         }
 
+        /// <summary>
+        /// 获取查询出来的全部实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual async Task<List<TEntityDto>> GetAllItem(TGetAllInput input)
         {
             CheckGetAllPermission();
@@ -172,7 +226,12 @@ namespace Abp.Application.Services
             }
         }
 
-        public virtual async Task<int> GetTotal(TGetAllInput input)
+        /// <summary>
+        /// 统计实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public virtual async Task<int> Count(TGetAllInput input)
         {
             CheckGetAllPermission();
 
@@ -183,6 +242,11 @@ namespace Abp.Application.Services
             return totalCount;
         }
 
+        /// <summary>
+        /// 创建实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual async Task<TEntityDto> Create(TCreateInput input)
         {
             CheckCreatePermission();
@@ -195,6 +259,11 @@ namespace Abp.Application.Services
             return MapToEntityDto(entity);
         }
 
+        /// <summary>
+        /// 修改实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual async Task<TEntityDto> Update(TUpdateInput input)
         {
             CheckUpdatePermission();
@@ -207,6 +276,11 @@ namespace Abp.Application.Services
             return MapToEntityDto(entity);
         }
 
+        /// <summary>
+        /// 保存实体，新增或修改
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual async Task<TEntityDto> Save(TSaveInput input)
         {
             if (input.Id.Equals(default(TPrimaryKey)))
@@ -235,6 +309,11 @@ namespace Abp.Application.Services
 
         }
 
+        /// <summary>
+        /// 保存一组实体，新增或修改
+        /// </summary>
+        /// <param name="inputs"></param>
+        /// <returns></returns>
         public virtual async Task<List<TEntityDto>> SaveChanges(List<TSaveInput> inputs)
         {
             var list = new List<TEntityDto>();
@@ -246,7 +325,11 @@ namespace Abp.Application.Services
             return list;
         }
 
-
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public virtual Task Delete(TDeleteInput input)
         {
             CheckDeletePermission();
@@ -254,6 +337,11 @@ namespace Abp.Application.Services
             return Repository.DeleteAsync(input.Id);
         }
 
+        /// <summary>
+        /// 根据Id获取实体
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         protected virtual Task<TEntity> GetEntityByIdAsync(TPrimaryKey id)
         {
             return Repository.GetAsync(id);

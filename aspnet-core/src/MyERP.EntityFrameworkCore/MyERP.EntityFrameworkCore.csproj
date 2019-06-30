@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20190111071724_Upgraded_To_Abp_v4_1_0.cs" />
     <Compile Remove="Migrations\20190425115803_update-database.cs" />
     <Compile Remove="Migrations\20190425115803_update-database.Designer.cs" />
+    <Compile Remove="Migrations\20190619151603_CompanyFileId.cs" />
+    <Compile Remove="Migrations\20190619151603_CompanyFileId.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.4" />
