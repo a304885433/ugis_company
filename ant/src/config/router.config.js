@@ -330,16 +330,17 @@ export const asyncRouterMap = [
             path: '/manage/company',
             name: 'CompanyListIndex',
             redirect: '/manage/company/list',
-            component: () => import('@/views/RouteView'),
+            // component: RouteView,
+            component: () => import('@/views/RouteView.vue'),
             hideChildrenInMenu: true,
-            meta: { title: '企业信息', permission: ['CompanyManager'] },
+            meta: { title: '企业信息', hiddenHeaderContent: true, permission: ['CompanyManager'] },
             children: [
               {
                 path: '/manage/company/list',
                 name: 'CompanyList',
                 component: () => import('@/views/func1/company/CompanyList'),
                 meta: {
-                  title: '企业信息', hidden: true, permission: ['CompanyManager']
+                  title: '企业信息', permission: ['CompanyManager']
                 },
               },
               {
@@ -348,7 +349,7 @@ export const asyncRouterMap = [
                 hidden: true,
                 component: () => import('@/views/func1/company/companyEdit/Index'),
                 meta: {
-                  title: '新增企业', hidden: true, permission: ['CompanyManager']
+                  title: '新增企业', permission: ['CompanyManager']
                 }
               },
             ]
@@ -365,19 +366,35 @@ export const asyncRouterMap = [
                 path: '/manage/check/list',
                 name: 'CheckList',
                 component: () => import('@/views/func1/chkResult/CheckList'),
-                meta: { title: '', hidden: true, permission: ['CheckManager'] }
+                meta: { title: '检测数据', hidden: true, permission: ['CheckManager'] }
               },
-              // {
-              //   path: '/manage/check/wizard',
-              //   name: 'CheckWizard',
-              //   component: () => import('@/views/func1/chkResult/CheckWizard/Index'),
-              //   meta: { title: '增加排查', hidden: true, permission: ['user'] }
-              // },
               {
                 path: '/manage/check/edit',
                 name: 'CheckEdit',
                 component: () => import('@/views/func1/chkResult/CheckEdit/Index'),
                 meta: { title: '新增检测数据', hidden: true, permission: ['CheckManager'] }
+              },
+            ]
+          },
+          {
+            path: '/manage/file/index',
+            name: 'FileIndex',
+            hideChildrenInMenu: true,
+            redirect: '/manage/file/list',
+            component: () => import('@/views/RouteView.vue'),
+            meta: { title: '图片列表', },
+            children: [
+              {
+                path: '/manage/file/list',
+                name: 'FileList',
+                component: () => import('@/views/func1/files/FileList'),
+                meta: { title: '图片列表', hidden: true, permission: ['CompanyFile'] }
+              },
+              {
+                path: '/manage/file/edit',
+                name: 'FileEdit',
+                component: () => import('@/views/func1/files/FileEdit'),
+                meta: { title: '上传图片', permission: ['CheckManager'] }
               },
             ]
           },
