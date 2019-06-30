@@ -25,5 +25,6 @@ export const ChkResult = new crud('ChkResult', chkResultService)
 export const Report =  reportService
 export const User = new crud('User', userService)
 export const Role = new crud('Role', roleService)
+export const CompanyFile = new crud('CompanyFile')
 export const File =  fileService
 

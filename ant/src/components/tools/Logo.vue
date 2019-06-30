@@ -1,7 +1,8 @@
 <template>
   <div class="logo">
     <router-link :to="{name:'dashboard'}">
-      <div style="width: 200px;margin-right: -35px;" v-if="showTitle">{{ title }}</div>
+        <!-- <LogoSvg alt="logo" /> -->
+        <h1 style=""  v-if="showTitle">{{ title }}</h1>
     </router-link>
   </div>
 </template>
