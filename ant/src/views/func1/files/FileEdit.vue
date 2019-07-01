@@ -4,6 +4,19 @@
         <a-form :form="form"
                 class="form"
                 :submit="handleSubmit">
+
+            <a-form-item label="企业">
+                <a-select placeholder="请选择企业"
+                          v-decorator="[ 'companyId',
+                              {rules: [{ required: true, message: '请选择企业'}]}
+                            ]"
+                          @change="handleCompanyChange">
+                    <a-select-option v-for="item in companyArr"
+                                     :key="item.id"
+                                     :value="item.id">{{item.name}}</a-select-option>
+                </a-select>
+            </a-form-item>
+
             <a-form-item label="说明">
                 <a-input placeholder="请输入说明"
                          v-decorator="['remark' ]" />
@@ -43,7 +56,8 @@ rules: [{ validator: validateFile }]
         </a-modal>
 
         <!-- fixed footer toolbar -->
-        <footer-tool-bar :style="{ width: isSideMenu() && isDesktop() ? `calc(100% - ${sidebarOpened ? 256 : 80}px)` : '100%'}">
+        <footer-tool-bar
+                         :style="{ width: isSideMenu() && isDesktop() ? `calc(100% - ${sidebarOpened ? 256 : 80}px)` : '100%'}">
             <a-button type="primary"
                       @click="handleSubmit"
                       v-action="['create','update']"
@@ -66,6 +80,11 @@ rules: [{ validator: validateFile }]
         components: {
             FooterToolBar,
         },
+        props: {
+            companyArr: {
+                type: Array
+            }
+        },
         data() {
             return {
                 errors: [],
@@ -82,6 +101,7 @@ rules: [{ validator: validateFile }]
             }
         },
         created() {
+            this.companyArr = this.$route.params.companyArr
         },
         methods: {
             handleSubmit() {
@@ -90,13 +110,14 @@ rules: [{ validator: validateFile }]
                         return
                     }
                     this.loading = true
-                    let files =  this.getUploadFile( values.file);
+                    let files = this.getUploadFile(values.file);
                     return CompanyFile.Create({
                         remark: values.remark,
+                        companyId: values.companyId,
                         files
-                    }).then(()=>{
-                      this.$router.go(-1);  
-                    }).finally(()=>{
+                    }).then(() => {
+                        this.$router.go(-1);
+                    }).finally(() => {
                         this.loading = false
                     })
                 })

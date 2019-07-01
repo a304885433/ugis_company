@@ -1,10 +1,30 @@
 <template>
   <a-card :bordered="false">
 
-    <div class="table-operator">
+    <div class="table-page-search-wrapper">
       <a-form layout="inline"
               :form="form">
         <a-row :gutter="48">
+
+          <a-col :md="8"
+                 :sm="24">
+            <a-form-item label="企业名称">
+              <a-select v-decorator="[
+              'companyId'
+            ]"
+                        placeholder="全部"
+                        :allowClear="true"
+                        style="width: 100%"
+                        showSearch
+                        :filterOption="filterSelect">
+                <a-select-option v-for="item in companyArr"
+                                 :value="item.id"
+                                 :chkPointId="item.chkPointIdList"
+                                 :key="item.id">{{ item.name }}</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+
           <a-col :md="8"
                  :sm="24">
             <a-form-item label="摘要">
@@ -12,38 +32,44 @@
                        v-decorator="[ 'remark' ]" />
             </a-form-item>
           </a-col>
+
           <a-col :md="8"
                  :sm="24">
             <a-form-item label="上传日期">
-              <a-date-picker format="YYYY-MM-DD"
-                             style="width: 100%"
-                             v-decorator="[
-                  'startTime'
-                ]" />
+              <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }">
+                <a-date-picker format="YYYY-MM-DD"
+                               style="width: 100%"
+                               v-decorator="[
+          'startTime'
+        ]" />
+              </a-form-item>
+              <span :style="{ display: 'inline-block', width: '24px', textAlign: 'center' }">
+                -
+              </span>
+              <a-form-item :style="{ display: 'inline-block', width: 'calc(50% - 12px)' }"
+                           :colon="false">
+                <a-date-picker format="YYYY-MM-DD"
+                               style="width: 100%"
+                               v-decorator="[
+                     'endTime',
+                   ]" />
+              </a-form-item>
             </a-form-item>
           </a-col>
-          <a-col :md="8"
-                 :sm="24">
-            <a-form-item label="-"
-                         :colon="false">
-              <a-date-picker format="YYYY-MM-DD"
-                             style="width: 100%"
-                             v-decorator="[
-                  'endTime',
-                ]" />
-            </a-form-item>
-          </a-col>
+
+        </a-row>
+
+        <a-row>
           <a-col :md="24"
                  :sm="24">
             <span class="table-page-search-submitButtons">
               <a-button type="primary"
                         :loading="loading"
                         @click="handleQuery(1)">查询</a-button>
-              <router-link :to="{name: 'FileEdit'}">
-                <a-button type="primary"
-                          v-action:create
-                          icon="plus">新建</a-button>
-              </router-link>
+              <a-button type="primary"
+                        v-action:create
+                        @click="handleAdd"
+                        icon="plus">新建</a-button>
             </span>
           </a-col>
         </a-row>
@@ -116,7 +142,7 @@
 </template>
 
 <script>
-  import { CompanyFile } from '@/api/'
+  import { CompanyFile, CompanyInfo } from '@/api/'
   import moment from 'moment'
 
   export default {
@@ -160,11 +186,17 @@
         curr: null,
         editVisible: false,
         hasP: false,
+        companyId: null,
+        companyArr: [],
       }
     },
     created() {
       this.handleQuery(1)
       this.hasP = window.abp.auth.hasPermission('CompanyFile.update') || window.abp.auth.hasPermission('CompanyFile.delete')
+      // 获取公司信息
+      CompanyInfo.GetAllItem().then(res => {
+        this.companyArr = res.result
+      })
     },
     methods: {
       handleEdit(record) {
@@ -174,6 +206,10 @@
             id: record.id
           }
         })
+      },
+      handleAdd(record) {
+        debugger
+        this.$router.push({ name: 'FileEdit', params: { companyArr: this.companyArr } })
       },
       handleQuery(pageIndex, pageSize) {
         this.pageIndex = pageIndex
@@ -268,7 +304,7 @@
     /* height: 225px; */
   }
 
-  .ant-card-body {
+  .card-item :global(.ant-card-body) {
     padding: 10px !important;
     color: red !important;
   }
