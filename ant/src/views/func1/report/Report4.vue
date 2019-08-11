@@ -155,7 +155,7 @@
                 dataIndex: t.colId,
                 title: t.name,
                 fixed: index == 0 ? 'left' : undefined,
-                width: 100,
+                width:  index == 0 ?300: 100,
               }
             })
             this.data = res.result.data
