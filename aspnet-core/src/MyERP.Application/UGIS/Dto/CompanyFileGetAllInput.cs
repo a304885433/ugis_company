@@ -14,6 +14,11 @@ namespace MyERP.UGIS.Dto
     public class CompanyFileGetAllInput : PagedAndSortedResultRequestDto
     {
         /// <summary>
+        /// 企业Id
+        /// </summary>
+        public int? CompanyId { get; set; }
+
+        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime? StartTime { get; set; }

@@ -211,6 +211,11 @@
             通用文件存储
             </summary>
         </member>
+        <member name="P:MyERP.UGIS.CompanyFile.CompanyId">
+            <summary>
+            企业Id
+            </summary>
+        </member>
         <member name="P:MyERP.UGIS.CompanyFile.Size">
             <summary>
             大小

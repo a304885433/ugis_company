@@ -11,6 +11,11 @@ namespace MyERP.UGIS
    public class CompanyFile : AuditedEntity
     {
         /// <summary>
+        /// 企业Id
+        /// </summary>
+        public int CompanyId { get; set; }
+
+        /// <summary>
         /// 大小
         /// </summary>
         public long Size { get; set; }

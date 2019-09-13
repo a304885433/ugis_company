@@ -17,7 +17,7 @@ namespace MyERP.UGIS
     /// <summary>
     /// 企业图片服务
     /// </summary>
-    public class CompanyFileAppService : MyAsyncCrudAppService<CompanyFile, CompanyFileDto, int, 
+    public class CompanyFileAppService : MyAsyncCrudAppService<CompanyFile, CompanyFileDto, int,
         CompanyFileGetAllInput, CompanyFileUpdateInput>
     {
         public CompanyFileAppService(IRepository<CompanyFile, int> repository) : base(repository)
@@ -27,6 +27,7 @@ namespace MyERP.UGIS
         protected override IQueryable<CompanyFile> CreateFilteredQuery(CompanyFileGetAllInput input)
         {
             return base.CreateFilteredQuery(input)
+                .WhereIf(input.CompanyId.HasValue && input.CompanyId != 0, t => t.CompanyId == input.CompanyId)
                 .WhereIf(input.StartTime.HasValue, t => t.CreationTime >= input.StartTime)
                 .WhereIf(input.EndTime.HasValue, t => t.CreationTime <= input.EndTime)
                 .WhereIf(!input.Remark.IsNullOrEmpty(), t => t.Remark != null && t.Remark.Contains(input.Remark));
@@ -37,8 +38,9 @@ namespace MyERP.UGIS
             var files = JsonConvert.DeserializeObject<List<CompanyFile>>(input.Files);
             CompanyFile fileEntity = null;
             foreach (var file in files)
-            {
+            { 
                 file.Remark = input.Remark;
+                file.CompanyId = input.CompanyId;
                 fileEntity = await Repository.InsertAsync(file);
             }
 

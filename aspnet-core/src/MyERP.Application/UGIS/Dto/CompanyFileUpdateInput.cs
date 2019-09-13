@@ -21,5 +21,11 @@ namespace MyERP.UGIS.Dto
         /// 文件JSON
         /// </summary>
         public string Files { get; set; }
+
+        /// <summary>
+        /// 企业Id
+        /// </summary>
+        public int CompanyId { get; set; }
     }
+
 }
