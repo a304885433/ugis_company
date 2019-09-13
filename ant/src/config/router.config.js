@@ -9,7 +9,7 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: '首页' },
-    redirect: '/manage/check/list',
+    redirect: '/dashboard',
     children: [
       // dashboard
       {
