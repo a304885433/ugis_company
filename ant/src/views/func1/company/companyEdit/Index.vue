@@ -138,9 +138,11 @@
             this.mdl.companyInfo.chkPointIdList = this.mdl.companyInfo.chkPointIdList.split(',').map(t => parseInt(t))
           }
           this.$refs.baseInfoForm.edit(this.mdl.companyInfo)
-          this.$refs.waterInfoForm.edit(this.mdl.companyInfo)
+          // this.$refs.waterInfoForm.edit(this.mdl.companyInfo)
           this.$refs.yaopinTable.edit(this.mdl.companyMedcineTypeList)
           this.$refs.poluTypeTable.edit(this.mdl.companyPoluTypeList)
+          this.$refs.contaminantsTable.edit(this.mdl.companyContaminantsList)
+          
         })
       },
       clearData() {
