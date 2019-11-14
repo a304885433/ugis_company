@@ -128,11 +128,14 @@ namespace MyERP.UGIS
 
             var medTypeList = await _companyMedcineTypeRepository.GetAllListAsync(t => t.CompanyId == id);
 
+            var companyContaminantsList = await _companyContaminantsRepository.GetAllListAsync(t => t.CompanyId == id);
+
             return new CompanyInfoSaveDto()
             {
                 CompanyInfo = companyInfo.MapTo<CompanyInfoDto>(),
                 CompanyMedcineTypeList = medTypeList.MapTo<List<CompanyMedcineTypeDto>>(),
                 CompanyPoluTypeList = poluTypeList.MapTo<List<CompanyPoluTypeDto>>(),
+                CompanyContaminantsList = companyContaminantsList.MapTo<List<CompanyContaminantsDto>>(),
             };
 
         }
