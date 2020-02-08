@@ -21,9 +21,9 @@
           <a href="#_self">隐私</a>
           <a href="#_self">条款</a> -->
         </div>
-        <div class="copyright">
+        <!-- <div class="copyright">
           Copyright {{ L('CopyRight') }}
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
