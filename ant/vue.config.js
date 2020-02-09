@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const QiniuPlugin = require('qiniu-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -45,6 +47,19 @@ module.exports = {
             from: 'src/lib/abp.js',
             to: 'static'
           }]),
+          new QiniuPlugin({
+            publicPath: 'http://static.acumener.com/ugis', // 七牛云域名，自动替换 publicPath
+            ACCESS_KEY: 'BLnO-O7kPqfjruStmKCIYHkCxR4L5TrALTegZgoC',
+            SECRET_KEY: 'J0Tp-q50jm8OJXcU2JlZlZDzdWuIqJtkzb2srC8J',
+            bucket: 'kuaiji',
+            path: '/ugis'
+          }),
+          // gzip
+          // new CompressionWebpackPlugin({
+          //   test: /\.js$|\.html$|\.css/,
+          //   threshold: 10240,
+          //   deleteOriginalAssets: false
+          // })
           // 依赖大小分析工具
           // new BundleAnalyzerPlugin(),
         ]
