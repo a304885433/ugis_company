@@ -23,5 +23,11 @@ namespace MyERP.UGIS.Dto
         /// 企业排放信息
         /// </summary>
         public List<CompanyMedcineTypeDto> CompanyMedcineTypeList { get; set; }
+
+        /// <summary>
+        /// 企业排放信息
+        /// </summary>
+        public List<CompanyContaminantsDto> CompanyContaminantsList { get; set; }
+        
     }
 }

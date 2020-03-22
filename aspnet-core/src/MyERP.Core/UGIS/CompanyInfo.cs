@@ -150,16 +150,6 @@ namespace MyERP.UGIS
         public decimal Y { get; set; }
 
         /// <summary>
-        /// 污染物Id
-        /// </summary>
-        public int ContaminantsId { get; set; }
-
-        /// <summary>
-        /// 转移总量
-        /// </summary>
-        public decimal TransferTotal { get; set; }
-
-        /// <summary>
         /// 原材料采购清单
         /// </summary>
         public string PurchaseFile { get; set; }

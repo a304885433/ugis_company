@@ -8,7 +8,7 @@ namespace MyERP.UGIS.Dto
     /// <summary>
     /// 获取排查结果输入参数
     /// </summary>
-    public class GetAllChkResultInput : PagedResultRequestDto
+    public class GetAllChkResultInput : PagedAndSortedResultRequestDto
     {
         /// <summary>
         /// 企业Id

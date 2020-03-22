@@ -1,17 +1,18 @@
 cd host
 
-# åˆ é™¤ä¸éœ€è¦çš„æ–‡ä»¶
+# É¾³ý²»ÐèÒªµÄÎÄ¼þ
 del *.xml
 del *.pdb
 
-# æ‹·è´éœ€è¦æ›´æ–°çš„æ–‡ä»¶
+# ¿½±´ÐèÒª¸üÐÂµÄÎÄ¼þ
 rd "../pack/" /s /q
 mkdir  "../pack/"
-xcopy /f /y MyERP.*.dll "../pack/"
-xcopy /f /y EPPlus.Core.dll "../pack/"
+xcopy /f /y *.dll "../pack/"
+# xcopy /f /y MyERP.*.dll "../pack/"
+
 xcopy /s /f "wwwroot/*.*"  "../pack/wwwroot/"
 
-# æ›´æ–°æ•°æ®åº“å‡çº§ç¨‹åº
+# ¸üÐÂÊý¾Ý¿âÉý¼¶³ÌÐò
 xcopy /f /y MyERP.*.dll "../updateDb/"
 
 pause > nul

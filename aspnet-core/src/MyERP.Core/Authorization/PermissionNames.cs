@@ -58,6 +58,11 @@
         public const string BaseDataManager = "BaseDataManager";
 
         /// <summary>
+        /// 企业图片
+        /// </summary>
+        public const string CompanyFile = "CompanyFile";
+
+        /// <summary>
         /// 联系我们
         /// </summary>
         public const string ContactMe = "ContactMe";
